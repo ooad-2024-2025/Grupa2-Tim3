@@ -32,10 +32,7 @@
 ✔ Statistika zakazanih termina  
 ✔ Prikaz finansijskih izvještaja  
 
-## **Tehnologije**  
-🔹 Frontend: HTML, CSS, JavaScript  
-🔹 Backend: Node.js / Python (Django ili Flask)  
-🔹 Baza podataka: MySQL / PostgreSQL  
+ 
 
 ## **Akteri sistema**  
 👤 **Korisnik** – zakazuje termine i ocjenjuje usluge  
