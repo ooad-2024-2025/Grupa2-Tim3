@@ -1,7 +1,7 @@
 # **BookMyStyle**  
 📌 *Rezerviši. Klikni. Zablistaj!*  
 
-<img src="assets/icon.png">
+![icon](https://github.com/user-attachments/assets/caf33500-b093-4291-8dbf-d4244acac0b0)
 
 ## **Opis projekta**  
 **BookMyStyle** je web aplikacija koja omogućava korisnicima jednostavno i brzo zakazivanje frizerskih usluga, bilo u salonu ili na adresi korisnika. Aplikacija povezuje klijente sa frizerima i omogućava upravljanje terminima, recenzijama i cijenama usluga.  
