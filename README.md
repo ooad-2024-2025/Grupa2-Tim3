@@ -26,7 +26,7 @@
 ✔ Potvrda dolaska na zakazani termin  
 ✔ Uvid u recenzije i ocjene  
 
-### **Administrator (Vlasnik salona)**  
+### **Administrator**  
 ✔ Upravljanje korisnicima i zaposlenicima  
 ✔ Unos i uređivanje usluga i cijena  
 ✔ Statistika zakazanih termina  
