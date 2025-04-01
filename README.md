@@ -26,16 +26,13 @@
 ✔ Potvrda dolaska na zakazani termin  
 ✔ Uvid u recenzije i ocjene  
 
-### **Administrator (Vlasnik salona)**  
+### **Administrator**  
 ✔ Upravljanje korisnicima i zaposlenicima  
 ✔ Unos i uređivanje usluga i cijena  
 ✔ Statistika zakazanih termina  
 ✔ Prikaz finansijskih izvještaja  
 
-## **Tehnologije**  
-🔹 Frontend: HTML, CSS, JavaScript  
-🔹 Backend: Node.js / Python (Django ili Flask)  
-🔹 Baza podataka: MySQL / PostgreSQL  
+ 
 
 ## **Akteri sistema**  
 👤 **Korisnik** – zakazuje termine i ocjenjuje usluge  
