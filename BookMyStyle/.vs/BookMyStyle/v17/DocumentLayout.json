@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{24C94B6C-30E4-483F-BB47-57D5EB30E99B}|BookMyStyle\\BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C94B6C-30E4-483F-BB47-57D5EB30E99B}|BookMyStyle\\BookMyStyle.csproj|solutionrelative:bookmystyle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Program.cs",
+              "RelativeDocumentMoniker": "BookMyStyle\\Program.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Program.cs",
+              "RelativeToolTip": "BookMyStyle\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T08:52:14.632Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

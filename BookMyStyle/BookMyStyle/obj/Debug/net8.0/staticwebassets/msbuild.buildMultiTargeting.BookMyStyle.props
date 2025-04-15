@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BookMyStyle.props" />
+</Project>
