@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-BookMyStyle-e1faae44-dd59-4db8-851f-5bded6f30f80")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookMyStyle")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2819231890c5b0be08eb9e938492cd86a6218989")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookMyStyle")]
