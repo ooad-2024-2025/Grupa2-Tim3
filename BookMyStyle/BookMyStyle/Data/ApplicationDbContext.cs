@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BookMyStyle.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookMyStyle.Data
@@ -9,5 +10,9 @@ namespace BookMyStyle.Data
             : base(options)
         {
         }
+        public DbSet<Recenzija> Recenzije { get; set; }
+        public DbSet<Obavijest> Obavijesti { get; set; }
+        public DbSet<Salon> Salon { get; set; }
+
     }
 }
