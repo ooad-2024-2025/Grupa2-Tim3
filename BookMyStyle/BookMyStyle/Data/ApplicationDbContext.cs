@@ -13,6 +13,8 @@ namespace BookMyStyle.Data
         public DbSet<Recenzija> Recenzije { get; set; }
         public DbSet<Obavijest> Obavijesti { get; set; }
         public DbSet<Salon> Salon { get; set; }
+        public DbSet<Termin> Termin { get; set; }
 
+        
     }
 }
