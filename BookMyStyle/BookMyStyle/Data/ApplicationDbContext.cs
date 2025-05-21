@@ -14,7 +14,7 @@ namespace BookMyStyle.Data
         public DbSet<Obavijest> Obavijesti { get; set; }
         public DbSet<Salon> Salon { get; set; }
         public DbSet<Termin> Termin { get; set; }
-
-        
+        public DbSet<Korisnik> Korisnik { get; set; }
+     
     }
 }

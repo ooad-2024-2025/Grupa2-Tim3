@@ -17,10 +17,47 @@ namespace BookMyStyle.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.14")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("BookMyStyle.Models.Korisnik", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("DaLiDolaziNaAdresu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SalonID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SalonID");
+
+                    b.ToTable("Korisnik");
+                });
 
             modelBuilder.Entity("BookMyStyle.Models.Obavijest", b =>
                 {
@@ -357,6 +394,17 @@ namespace BookMyStyle.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Usluga");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Korisnik", b =>
+                {
+                    b.HasOne("BookMyStyle.Models.Salon", "Salon")
+                        .WithMany()
+                        .HasForeignKey("SalonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Salon");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
