@@ -2,12 +2,14 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
+
 namespace BookMyStyle.Models
 {
-    public class Korisnik
+    public class Korisnik 
     {
         [Key]
-        public int Id { get; set; }
+        public int korisnikId { get; set; }
 
         [Required]
         public string Ime { get; set; }
@@ -22,11 +24,11 @@ namespace BookMyStyle.Models
         public string Password { get; set; }
 
         [Required]
-        public bool DaLiDolaziNaAdresu { get; set; }  
+        public string tipFrizera { get; set; }
 
-        [ForeignKey("Salon")]
-        public int SalonID { get; set; }
+        [ForeignKey("terminID")]
+        public int terminID { get; set; }
 
-        public virtual Salon Salon { get; set; }  
+          
     }
 }

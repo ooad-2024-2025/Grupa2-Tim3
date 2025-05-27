@@ -6,19 +6,22 @@ namespace BookMyStyle.Models
     public class Salon
     {
         [Key]
-        public int ID { get; set; }
+        public int salonID { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required, StringLength(30)]
         public string Naziv { get; set; }
 
-        [Required]
-        [StringLength(200)]
+        [Required, StringLength(50)]
         public string Adresa { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string RadnoVrijeme { get; set; }
+
+       
+
+        
+
+        
 
        
     }

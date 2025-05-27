@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace BookMyStyle.Data.Migrations
+namespace BookMyStyle.Migrations
 {
     /// <inheritdoc />
-    public partial class termin3 : Migration
+    public partial class mmm : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

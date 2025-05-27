@@ -9,29 +9,84 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BookMyStyle.Data.Migrations
+namespace BookMyStyle.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250521084820_termin")]
-    partial class termin
+    [Migration("20250527111911_mmm")]
+    partial class mmm
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.14")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BookMyStyle.Models.Obavijest", b =>
+            modelBuilder.Entity("BookMyStyle.Models.Korisnik", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("korisnikId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("korisnikId"));
+
+                    b.Property<string>("Ime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("terminID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("tipFrizera")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("korisnikId");
+
+                    b.ToTable("Korisnik");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.KorisnikSalon", b =>
+                {
+                    b.Property<int>("korisniksalonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("korisniksalonId"));
+
+                    b.Property<int>("korisnikID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("salonID")
+                        .HasColumnType("int");
+
+                    b.HasKey("korisniksalonId");
+
+                    b.ToTable("KorisnikSalon");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Obavijest", b =>
+                {
+                    b.Property<int>("obavijestID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("obavijestID"));
 
                     b.Property<DateTime>("DatumIVrijeme")
                         .HasColumnType("datetime2");
@@ -41,74 +96,169 @@ namespace BookMyStyle.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.HasKey("ID");
+                    b.Property<int>("terminID")
+                        .HasColumnType("int");
 
-                    b.ToTable("Obavijesti");
+                    b.HasKey("obavijestID");
+
+                    b.ToTable("Obavijest");
                 });
 
             modelBuilder.Entity("BookMyStyle.Models.Recenzija", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("recenzijaID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("recenzijaID"));
 
                     b.Property<DateTime>("DatumObjave")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("Komentar")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<int>("Ocjena")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("SalonID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Recenzije");
-                });
-
-            modelBuilder.Entity("BookMyStyle.Models.Salon", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("Adresa")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Naziv")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("RadnoVrijeme")
+                    b.Property<int>("Ocjena")
+                        .HasColumnType("int");
+
+                    b.Property<int>("korisnikID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("salonID")
+                        .HasColumnType("int");
+
+                    b.HasKey("recenzijaID");
+
+                    b.ToTable("Recenzija");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Salon", b =>
+                {
+                    b.Property<int>("salonID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("salonID"));
+
+                    b.Property<string>("Adresa")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("RadnoVrijeme")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("salonID");
 
                     b.ToTable("Salon");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Termin", b =>
+                {
+                    b.Property<int>("terminID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("terminID"));
+
+                    b.Property<string>("AdresaSalona")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Datum")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NazivFrizera")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("NazivSalona")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("Vrijeme")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("salonID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("uslugaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("terminID");
+
+                    b.ToTable("Termin");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.TerminUsluga", b =>
+                {
+                    b.Property<int>("terminuslugaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("terminuslugaId"));
+
+                    b.Property<int>("terminID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("uslugaID")
+                        .HasColumnType("int");
+
+                    b.HasKey("terminuslugaId");
+
+                    b.ToTable("TerminUsluga");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Usluga", b =>
+                {
+                    b.Property<int>("uslugaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("uslugaID"));
+
+                    b.Property<double>("Cijena")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<double>("Popust")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Tip")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("Trajanje")
+                        .HasColumnType("int");
+
+                    b.Property<int>("salonID")
+                        .HasColumnType("int");
+
+                    b.HasKey("uslugaID");
+
+                    b.ToTable("Usluga");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -7,7 +7,7 @@ namespace BookMyStyle.Models
     public class Recenzija
     {
         [Key]
-        public int ID { get; set; }
+        public int recenzijaID { get; set; }
 
         [Range(1, 5, ErrorMessage = "Ocjena mora biti između 1 i 5.")]
         public int Ocjena { get; set; }
@@ -15,21 +15,16 @@ namespace BookMyStyle.Models
         [Required]
         public DateTime DatumObjave { get; set; }
 
-        [Required]
-        [StringLength(1000)]
+        [Required, StringLength(100)]
         public string Komentar { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Ime { get; set; }
+        [ForeignKey("korisnikID")]
+        public int korisnikID { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Prezime { get; set; }
 
-        [ForeignKey("Salon")]
-        public int SalonID { get; set; }
+        [ForeignKey("salonID")]
+        public int salonID { get; set; }
+      
         
-
     }
 }

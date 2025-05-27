@@ -1,32 +1,37 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
-public class Termin
+namespace BookMyStyle.Models
 {
-    [Key]
-    public int ID { get; set; }
+    public class Termin
+    {
+        [Key]
+        public int terminID { get; set; }
+
+        [StringLength(30)]
+        public string NazivSalona { get; set; }
+
+        [StringLength(50)]
+        public string AdresaSalona { get; set; }
+
+        [StringLength(20)]
+        public string NazivFrizera { get; set; }
+        [Required]
+
+        public DateTime Datum { get; set; }
+
+        [Required]
+        public DateTime Vrijeme { get; set; }
+
+        [ForeignKey("salonID")]
+        public int salonID { get; set; }
 
 
-    [Required]
-    [StringLength(50)]
-    public string NazivSalona { get; set; }
+        [ForeignKey("uslugaID")]
+        public int uslugaID { get; set; }
 
+    }
 
-    [Required]
-    [StringLength(50)]
-    public string AdresaSalona { get; set; }
-
-
-    [Required]
-    [StringLength(50)]
-    public string NazivFrizera { get; set; }
-
-    [Required]
-    public Usluga Usluga { get; set; }
-
-
-    [Required]
-    public DateTime DatumIVrijeme { get; set; }
 }

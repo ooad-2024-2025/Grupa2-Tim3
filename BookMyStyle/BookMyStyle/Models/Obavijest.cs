@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookMyStyle.Models
 {
     public class Obavijest
     {
         [Key]
-        public int ID { get; set; }
+        public int obavijestID { get; set; }
 
         [Required]
         [StringLength(1000)]
@@ -14,5 +15,9 @@ namespace BookMyStyle.Models
 
         [Required]
         public DateTime DatumIVrijeme { get; set; }
+
+
+        [ForeignKey("terminID")]
+        public int terminID { get; set; }
     }
 }
