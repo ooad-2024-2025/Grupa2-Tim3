@@ -1,0 +1,48 @@
+﻿@model BookMyStyle.Models.Recenzija
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Recenzija</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ocjena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ocjena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumObjave)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumObjave)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Komentar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Komentar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.korisnikID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.korisnikID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.salonID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.salonID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.recenzijaID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

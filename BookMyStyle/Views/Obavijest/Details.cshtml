@@ -1,0 +1,36 @@
+﻿@model BookMyStyle.Models.Obavijest
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Obavijest</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tekst)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tekst)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumIVrijeme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumIVrijeme)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.terminID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.terminID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.obavijestID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

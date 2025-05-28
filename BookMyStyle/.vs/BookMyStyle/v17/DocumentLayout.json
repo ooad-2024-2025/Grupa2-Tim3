@@ -1,0 +1,393 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\uslugacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\uslugacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\terminuslugacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\terminuslugacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\saloncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\saloncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\obavijestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\obavijestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\korisniksaloncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\korisniksaloncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\korisnikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\usluga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\usluga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\tipusluge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\tipusluge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\tipfrizera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\tipfrizera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\terminusluga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\terminusluga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\salon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\salon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\korisniksalon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\korisniksalon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\korisnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\korisnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\data\\migrations\\20250528122559_prvam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:data\\migrations\\20250528122559_prvam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UslugaController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\UslugaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UslugaController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\UslugaController.cs",
+              "RelativeToolTip": "Controllers\\UslugaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:36:55.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TerminUslugaController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\TerminUslugaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TerminUslugaController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\TerminUslugaController.cs",
+              "RelativeToolTip": "Controllers\\TerminUslugaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:36:20.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TerminController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\TerminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TerminController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\TerminController.cs",
+              "RelativeToolTip": "Controllers\\TerminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:35:34.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SalonController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\SalonController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SalonController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\SalonController.cs",
+              "RelativeToolTip": "Controllers\\SalonController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:34:34.122Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RecenzijaController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\RecenzijaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecenzijaController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\RecenzijaController.cs",
+              "RelativeToolTip": "Controllers\\RecenzijaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:31:59.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ObavijestController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\ObavijestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ObavijestController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\ObavijestController.cs",
+              "RelativeToolTip": "Controllers\\ObavijestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:31:25.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "KorisnikSalonController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\KorisnikSalonController.cs",
+              "RelativeDocumentMoniker": "Controllers\\KorisnikSalonController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\KorisnikSalonController.cs",
+              "RelativeToolTip": "Controllers\\KorisnikSalonController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:30:32.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KorisnikController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\KorisnikController.cs",
+              "RelativeDocumentMoniker": "Controllers\\KorisnikController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\KorisnikController.cs",
+              "RelativeToolTip": "Controllers\\KorisnikController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:30:00.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20250528122559_prvam.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Data\\Migrations\\20250528122559_prvam.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20250528122559_prvam.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Data\\Migrations\\20250528122559_prvam.cs",
+              "RelativeToolTip": "Data\\Migrations\\20250528122559_prvam.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:25:59.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-28T12:21:39.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Usluga.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Usluga.cs",
+              "RelativeDocumentMoniker": "Models\\Usluga.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Usluga.cs",
+              "RelativeToolTip": "Models\\Usluga.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAwwBMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:21:04.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TipUsluge.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TipUsluge.cs",
+              "RelativeDocumentMoniker": "Models\\TipUsluge.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TipUsluge.cs",
+              "RelativeToolTip": "Models\\TipUsluge.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:20:43.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TipFrizera.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TipFrizera.cs",
+              "RelativeDocumentMoniker": "Models\\TipFrizera.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TipFrizera.cs",
+              "RelativeToolTip": "Models\\TipFrizera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:20:21.559Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TerminUsluga.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TerminUsluga.cs",
+              "RelativeDocumentMoniker": "Models\\TerminUsluga.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\TerminUsluga.cs",
+              "RelativeToolTip": "Models\\TerminUsluga.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:19:56.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Termin.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Termin.cs",
+              "RelativeDocumentMoniker": "Models\\Termin.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Termin.cs",
+              "RelativeToolTip": "Models\\Termin.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAwwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:19:26.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Salon.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Salon.cs",
+              "RelativeDocumentMoniker": "Models\\Salon.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Salon.cs",
+              "RelativeToolTip": "Models\\Salon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:17:35.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Recenzija.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Recenzija.cs",
+              "RelativeDocumentMoniker": "Models\\Recenzija.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Recenzija.cs",
+              "RelativeToolTip": "Models\\Recenzija.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:17:17.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Obavijest.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Obavijest.cs",
+              "RelativeDocumentMoniker": "Models\\Obavijest.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Obavijest.cs",
+              "RelativeToolTip": "Models\\Obavijest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:16:48.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "KorisnikSalon.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\KorisnikSalon.cs",
+              "RelativeDocumentMoniker": "Models\\KorisnikSalon.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\KorisnikSalon.cs",
+              "RelativeToolTip": "Models\\KorisnikSalon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:16:26.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:15:03.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:21:09.796Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Korisnik.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Korisnik.cs",
+              "RelativeDocumentMoniker": "Models\\Korisnik.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Models\\Korisnik.cs",
+              "RelativeToolTip": "Models\\Korisnik.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:16:00.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T12:14:25.075Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
