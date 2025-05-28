@@ -54,7 +54,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("terminID,NazivSalona,AdresaSalona,NazivFrizera,Datum,Vrijeme,salonID,uslugaID")] Termin termin)
+        public async Task<IActionResult> Create([Bind("terminID,NazivSalona,AdresaSalona,NazivFrizera,DatumIVrijeme,salonID,uslugaID")] Termin termin)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("terminID,NazivSalona,AdresaSalona,NazivFrizera,Datum,Vrijeme,salonID,uslugaID")] Termin termin)
+        public async Task<IActionResult> Edit(int id, [Bind("terminID,NazivSalona,AdresaSalona,NazivFrizera,DatumIVrijeme,salonID,uslugaID")] Termin termin)
         {
             if (id != termin.terminID)
             {

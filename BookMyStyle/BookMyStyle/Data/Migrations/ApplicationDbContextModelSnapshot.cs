@@ -172,7 +172,7 @@ namespace BookMyStyle.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("Datum")
+                    b.Property<DateTime>("DatumIVrijeme")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NazivFrizera")
@@ -184,9 +184,6 @@ namespace BookMyStyle.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<DateTime>("Vrijeme")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("salonID")
                         .HasColumnType("int");
