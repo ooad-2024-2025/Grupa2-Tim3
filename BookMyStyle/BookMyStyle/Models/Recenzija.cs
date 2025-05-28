@@ -19,10 +19,8 @@ namespace BookMyStyle.Models
 
         [Required]
         [DataType(DataType.DateTime)]
-        [FutureDate(ErrorMessage = "Datum i vrijeme moraju biti u sadašnjosti ili prošlosti.")]
+        [TestDate(ErrorMessage = "Datum i vrijeme moraju biti u sadašnjosti ili prošlosti.")]
         [DisplayName("Datum i vrijeme objave: ")]
-       
-
         public DateTime DatumObjave { get; set; }
 
         [Required(ErrorMessage = "Komentar je obavezan.")]
@@ -40,20 +38,21 @@ namespace BookMyStyle.Models
         public int salonID { get; set; }
     }
 
-   
+
+    public class TestDateAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            if (value is DateTime dateTime)
+            {
+
+                return dateTime <= DateTime.Now;
+            }
+            return false;
+        }
+    }
 
 }
-public class FutureDateAttribute : ValidationAttribute
-{
-    public override bool IsValid(object value)
-    {
-        if (value is DateTime dateTime)
-        {
-            
-            return dateTime <= DateTime.Now;
-        }
-        return false;
-    }
-}
+
 
 

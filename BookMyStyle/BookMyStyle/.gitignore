@@ -1,0 +1,56 @@
+###############################
+# Build and user-specific files
+###############################
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+###############################
+# Visual Studio folders
+###############################
+.vs/
+
+###############################
+# ASP.NET Core configuration
+###############################
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+###############################
+# Entity Framework Migrations
+###############################
+Migrations/*Snapshot.cs
+
+###############################
+# Log and database files
+###############################
+*.log
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+###############################
+# Rider & ReSharper
+###############################
+.idea/
+_ReSharper.*
+*.ReSharper.*
+
+###############################
+# OS generated files
+###############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+###############################
+# Publish artifacts
+###############################
+*.Publish.xml
+.publish/
