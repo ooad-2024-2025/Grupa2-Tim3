@@ -13,20 +13,21 @@ namespace BookMyStyle.Models
 
        
         [Required]
-        [Range(1.0, 200.0, ErrorMessage = "Cijena usluge ne moze biti manja od 1.0 i veća od 200.0")]  
+        [Range(0.0, double.MaxValue, ErrorMessage = "Cijena usluge ne može biti negativna!")]
         [DisplayName("Cijena usluge:")]
         public double Cijena { get; set; }
 
 
         [Required]
         [StringLength(30, ErrorMessage = "Naziv usluge moze imati najviše 30 karaktera!")]
+        [RegularExpression(@"^[A-Za-zČĆŽŠĐčćžšđ\s]+$", ErrorMessage = "Naziv usluge može sadržavati samo slova i razmake.")]
         [DisplayName("Naziv usluge:")]
         public string Naziv { get; set; }
 
 
         [Required]
         [DisplayName("Popust:")]
-        [Range(0.0, 20.00, ErrorMessage = "Popust ne može biti veći za Vašu uslugu")]
+        [Range(0.0, 100.00, ErrorMessage = "Popust mora biti u opsegu od 0% - 100 %")]
         public double Popust { get; set; }
 
         
@@ -36,7 +37,7 @@ namespace BookMyStyle.Models
 
 
         [Required]
-        [DisplayName("Trajanje:")]
+        [DisplayName("Trajanje [min]: ")]
        
         public int Trajanje { get; set; }
 
