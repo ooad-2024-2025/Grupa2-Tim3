@@ -1,4 +1,10 @@
-﻿public enum TipFrizera
+﻿using System.ComponentModel.DataAnnotations;
+
+public enum TipFrizera
 {
-    Musko, Zensko
+    [Display(Name = "Muško")]
+    Musko,
+
+    [Display(Name = "Žensko")]
+    Zensko
 }
