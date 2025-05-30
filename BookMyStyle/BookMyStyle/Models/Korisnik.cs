@@ -23,7 +23,7 @@ namespace BookMyStyle.Models
         public string Prezime { get; set; }
 
         [EnumDataType(typeof(TipFrizera))] 
-        public string tipFrizera { get; set; }
+        public TipFrizera tipFrizera { get; set; }
 
         [ForeignKey("terminID")]
         public int terminID { get; set; }
