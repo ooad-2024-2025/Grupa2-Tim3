@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kpthFrnKsC6mQkCzfd29wXShilZbUbZQCIANCl5jw3I=",
+  "Hash": "nLKEWEhHXAoLuyxwTRDLLoe5GWkPqT6wgIZP1IwDiGU=",
   "Source": "BookMyStyle",
   "BasePath": "_content/BookMyStyle",
   "Mode": "Default",
@@ -1319,6 +1319,48 @@
       "OriginalItemSpec": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BookMyStyle.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.css",
+      "SourceId": "BookMyStyle",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\",
+      "BasePath": "_content/BookMyStyle",
+      "RelativePath": "css/bootstrap#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "99uy7z74oh",
+      "Integrity": "rRDfbaIxU2ZzIxzyS+N/9wiemM1jP5Gq6Gz32h2J+yQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap.css"
+    },
+    {
+      "Identity": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.min.css",
+      "SourceId": "BookMyStyle",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\",
+      "BasePath": "_content/BookMyStyle",
+      "RelativePath": "css/bootstrap.min#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kxu1c0g12r",
+      "Integrity": "2B4SUJljYIcMNqVl8rEIac0RoauRBfjOLZa+mnf4WE0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
+    },
+    {
       "Identity": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
       "SourceId": "BookMyStyle",
       "SourceType": "Discovered",
@@ -1333,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "l8qym8vxwm",
+      "Integrity": "Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2640,8 +2682,8 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
+      "Route": "css/bootstrap.99uy7z74oh.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2650,7 +2692,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "277467"
         },
         {
           "Name": "Content-Type",
@@ -2658,11 +2700,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"rRDfbaIxU2ZzIxzyS+N/9wiemM1jP5Gq6Gz32h2J+yQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 29 May 2025 23:10:25 GMT"
+          "Value": "Fri, 30 May 2025 18:22:02 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2672,15 +2714,134 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "99uy7z74oh"
         },
         {
           "Name": "label",
-          "Value": "css/site.css"
+          "Value": "css/bootstrap.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-rRDfbaIxU2ZzIxzyS+N/9wiemM1jP5Gq6Gz32h2J+yQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/bootstrap.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "277467"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rRDfbaIxU2ZzIxzyS+N/9wiemM1jP5Gq6Gz32h2J+yQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:22:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rRDfbaIxU2ZzIxzyS+N/9wiemM1jP5Gq6Gz32h2J+yQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/bootstrap.min.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224312"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2B4SUJljYIcMNqVl8rEIac0RoauRBfjOLZa+mnf4WE0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:22:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2B4SUJljYIcMNqVl8rEIac0RoauRBfjOLZa+mnf4WE0="
+        }
+      ]
+    },
+    {
+      "Route": "css/bootstrap.min.kxu1c0g12r.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "224312"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2B4SUJljYIcMNqVl8rEIac0RoauRBfjOLZa+mnf4WE0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 18:22:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kxu1c0g12r"
+        },
+        {
+          "Name": "label",
+          "Value": "css/bootstrap.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2B4SUJljYIcMNqVl8rEIac0RoauRBfjOLZa+mnf4WE0="
         }
       ]
     },
@@ -2695,7 +2856,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "882"
         },
         {
           "Name": "Content-Type",
@@ -2703,11 +2864,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 29 May 2025 23:10:25 GMT"
+          "Value": "Fri, 30 May 2025 22:02:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2717,7 +2878,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.l8qym8vxwm.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "882"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 22:02:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l8qym8vxwm"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw="
         }
       ]
     },

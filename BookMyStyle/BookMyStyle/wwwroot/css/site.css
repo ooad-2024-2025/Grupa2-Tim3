@@ -1,22 +1,43 @@
-html {
-  font-size: 14px;
+
+.form-control, .form-select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #179c7d !important;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+input, select, textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #179c7d !important;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+input::placeholder,
+textarea::placeholder {
+    color: #666666 !important;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* Dugmad */
+.btn-primary {
+    background-color: #179c7d !important;
+    border-color: #179c7d !important;
 }
 
+.btn-primary:hover {
+    background-color: #127a64 !important;
+    border-color: #127a64 !important;
+}
+
+/* Pozadina stranice */
 body {
-  margin-bottom: 60px;
+    background-color: #1e1e1e !important;
+    color: white !important;
+}
+
+/* Linkovi */
+a {
+    color: #179c7d !important;
+}
+
+a:hover {
+    color: #12c4a3 !important;
 }
