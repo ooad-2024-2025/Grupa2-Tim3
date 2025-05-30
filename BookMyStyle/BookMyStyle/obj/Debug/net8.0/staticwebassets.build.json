@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nLKEWEhHXAoLuyxwTRDLLoe5GWkPqT6wgIZP1IwDiGU=",
+  "Hash": "Lo4CCxyj7I0/7vWmlscHAd0YMqkB7+tquXn/n5LS56M=",
   "Source": "BookMyStyle",
   "BasePath": "_content/BookMyStyle",
   "Mode": "Default",
@@ -1375,8 +1375,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "l8qym8vxwm",
-      "Integrity": "Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=",
+      "Fingerprint": "2udla84ug4",
+      "Integrity": "SmNsNQvaa08PHbdY1eX7Z37u7ypNOUNUm4sXiQcUlOY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -2704,7 +2704,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 18:22:02 GMT"
+          "Value": "Fri, 30 May 2025 22:11:37 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2749,7 +2749,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 18:22:02 GMT"
+          "Value": "Fri, 30 May 2025 22:11:37 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2786,7 +2786,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 18:22:03 GMT"
+          "Value": "Fri, 30 May 2025 22:14:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2823,7 +2823,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 18:22:03 GMT"
+          "Value": "Fri, 30 May 2025 22:14:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2846,6 +2846,51 @@
       ]
     },
     {
+      "Route": "css/site.2udla84ug4.css",
+      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "786"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SmNsNQvaa08PHbdY1eX7Z37u7ypNOUNUm4sXiQcUlOY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 30 May 2025 22:11:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2udla84ug4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SmNsNQvaa08PHbdY1eX7Z37u7ypNOUNUm4sXiQcUlOY="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -2856,7 +2901,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "882"
+          "Value": "786"
         },
         {
           "Name": "Content-Type",
@@ -2864,11 +2909,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=\""
+          "Value": "\"SmNsNQvaa08PHbdY1eX7Z37u7ypNOUNUm4sXiQcUlOY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 22:02:14 GMT"
+          "Value": "Fri, 30 May 2025 22:11:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2878,52 +2923,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.l8qym8vxwm.css",
-      "AssetFile": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "882"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 30 May 2025 22:02:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "l8qym8vxwm"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Vd/S8EIdE6dK+nwndoijsHZQChScklV7EUDVLVGEWyw="
+          "Value": "sha256-SmNsNQvaa08PHbdY1eX7Z37u7ypNOUNUm4sXiQcUlOY="
         }
       ]
     },
