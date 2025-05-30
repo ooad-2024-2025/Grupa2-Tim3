@@ -33,9 +33,7 @@ namespace BookMyStyle.Data
             modelBuilder.Entity<Korisnik>(b =>
             {
                 b.Property(u => u.Ime);
-                b.Property(u => u.Prezime);
-                b.Property(u => u.Username);
-                b.Property(u => u.Password);
+                b.Property(u => u.Prezime);            
                 b.Property(u => u.tipFrizera);
                 b.Property(u => u.terminID);
             });

@@ -22,19 +22,6 @@ namespace BookMyStyle.Models
         [DisplayName("Prezime korisnika")]
         public string Prezime { get; set; }
 
-        [Required]
-        [StringLength(maximumLength: 20, MinimumLength = 3, ErrorMessage =
-            "Username smije imati između 3 i 20 karaktera")]
-        [RegularExpression(@"^[^\s]*$", ErrorMessage = "Nije dozvoljeno korištenje razmaka")]
-        [DisplayName("Username korisnika")]
-        public string Username { get; set; }
-
-        [Required]
-        [StringLength(maximumLength: 20, MinimumLength = 5, ErrorMessage =
-            "Šifra smije imati između 5 i 20 karaktera")]
-        [DisplayName("Šifra korisnika")]
-        public string Password { get; set; }
-
         [EnumDataType(typeof(TipFrizera))] 
         public string tipFrizera { get; set; }
 
