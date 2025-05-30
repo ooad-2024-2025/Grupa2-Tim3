@@ -1,0 +1,41 @@
+
+/* Postojeći stilovi (ne briši ostale ako ih imaš u projektu) */
+
+/* Osnovni izgled forme */
+.form-control, .form-select {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #179c7d;
+}
+
+/* Placeholder tekst da bude siv */
+input::placeholder,
+textarea::placeholder {
+    color: #666666;
+}
+
+/* Dugmad */
+.btn-primary {
+    background-color: #179c7d;
+    border-color: #179c7d;
+}
+
+.btn-primary:hover {
+    background-color: #127a64;
+    border-color: #127a64;
+}
+
+/* Pozadina stranice */
+body {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Linkovi */
+a {
+    color: #179c7d;
+}
+
+a:hover {
+    color: #12c4a3;
+}
