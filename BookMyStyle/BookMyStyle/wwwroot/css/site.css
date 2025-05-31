@@ -1,4 +1,5 @@
 
+/* Izgled formi i inputa */
 .form-control, .form-select {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -27,10 +28,11 @@ textarea::placeholder {
     border-color: #127a64 !important;
 }
 
-/* Pozadina stranice */
+/* Pozadina i boje teksta */
 body {
     background-color: #1e1e1e !important;
     color: white !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 /* Linkovi */
@@ -40,4 +42,18 @@ a {
 
 a:hover {
     color: #12c4a3 !important;
+}
+
+/* Upozorenja kod validacije */
+.field-validation-error,
+.validation-summary-errors,
+.input-validation-error {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+/* Uniformna širina elemenata za sve uređaje */
+.container, .form-group, .form-control, .form-select {
+    max-width: 100% !important;
+    width: 100% !important;
 }
