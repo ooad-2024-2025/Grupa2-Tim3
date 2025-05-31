@@ -24,6 +24,7 @@ builder.Services.AddDefaultIdentity<Korisnik>(
             RequireNonAlphanumeric = false,
         };
     })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 

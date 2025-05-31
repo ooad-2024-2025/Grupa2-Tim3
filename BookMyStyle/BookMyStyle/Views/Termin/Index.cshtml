@@ -7,7 +7,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+    {
+        <a asp-action="Create">Kreiraj termin</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -34,30 +37,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NazivSalona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdresaSalona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NazivFrizera)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumIVrijeme)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.salonID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.uslugaID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.terminID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.terminID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.terminID">Delete</a>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivSalona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdresaSalona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazivFrizera)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumIVrijeme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.salonID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uslugaID)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer")) 
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.terminID">Edit</a> 
+                        <nobr>|</nobr>
+                        <a asp-action="Delete" asp-route-id="@item.terminID">Delete</a>
+                        <nobr>|</nobr>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.terminID">Details</a>
             </td>
         </tr>
 }

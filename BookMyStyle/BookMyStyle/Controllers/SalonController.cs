@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookMyStyle.Data;
 using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookMyStyle.Controllers
 {
@@ -19,12 +20,14 @@ namespace BookMyStyle.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Salon
         public async Task<IActionResult> Index()
         {
             return View(await _context.Salon.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Salon/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +46,7 @@ namespace BookMyStyle.Controllers
             return View(salon);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Salon/Create
         public IActionResult Create()
         {
@@ -65,6 +69,7 @@ namespace BookMyStyle.Controllers
             return View(salon);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Salon/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,6 +91,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> Edit(int id, [Bind("salonID,Naziv,Adresa,RadnoVrijeme")] Salon salon)
         {
             if (id != salon.salonID)
@@ -116,6 +122,7 @@ namespace BookMyStyle.Controllers
             return View(salon);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Salon/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -137,6 +144,7 @@ namespace BookMyStyle.Controllers
         // POST: Salon/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var salon = await _context.Salon.FindAsync(id);

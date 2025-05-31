@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookMyStyle.Data;
 using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookMyStyle.Controllers
 {
@@ -19,12 +20,14 @@ namespace BookMyStyle.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Usluga
         public async Task<IActionResult> Index()
         {
             return View(await _context.Usluga.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Usluga/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +46,7 @@ namespace BookMyStyle.Controllers
             return View(usluga);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Create
         public IActionResult Create()
         {
@@ -54,6 +58,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> Create([Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
         {
             if (ModelState.IsValid)
@@ -65,6 +70,7 @@ namespace BookMyStyle.Controllers
             return View(usluga);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,6 +92,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> Edit(int id, [Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
         {
             if (id != usluga.uslugaID)
@@ -116,6 +123,7 @@ namespace BookMyStyle.Controllers
             return View(usluga);
         }
 
+        [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -137,6 +145,7 @@ namespace BookMyStyle.Controllers
         // POST: Usluga/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usluga = await _context.Usluga.FindAsync(id);

@@ -7,7 +7,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+    {
+        <a asp-action="Create">Kreiraj salon</a>
+    }
 </p>
 <table class="table">
     <thead>
@@ -37,9 +40,14 @@
                 @Html.DisplayFor(modelItem => item.RadnoVrijeme)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.salonID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.salonID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.salonID">Delete</a>
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.salonID">Edit</a>
+                        <nobr>|</nobr>
+                        <a asp-action="Delete" asp-route-id="@item.salonID">Delete</a>
+                        <nobr>|</nobr>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.salonID">Details</a>
             </td>
         </tr>
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookMyStyle.Data;
 using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookMyStyle.Controllers
 {
@@ -19,12 +20,14 @@ namespace BookMyStyle.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Recenzija
         public async Task<IActionResult> Index()
         {
             return View(await _context.Recenzija.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Recenzija/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +46,7 @@ namespace BookMyStyle.Controllers
             return View(recenzija);
         }
 
+        [Authorize(Roles = "Administrator, Korisnik")]
         // GET: Recenzija/Create
         public IActionResult Create()
         {
@@ -54,6 +58,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Korisnik")]
         public async Task<IActionResult> Create([Bind("recenzijaID,Ocjena,DatumObjave,Komentar,korisnikID,salonID")] Recenzija recenzija)
         {
             if (ModelState.IsValid)
@@ -65,6 +70,7 @@ namespace BookMyStyle.Controllers
             return View(recenzija);
         }
 
+        [Authorize(Roles = "Administrator, Korisnik")]
         // GET: Recenzija/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,6 +92,7 @@ namespace BookMyStyle.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Korisnik")]
         public async Task<IActionResult> Edit(int id, [Bind("recenzijaID,Ocjena,DatumObjave,Komentar,korisnikID,salonID")] Recenzija recenzija)
         {
             if (id != recenzija.recenzijaID)
@@ -117,6 +124,7 @@ namespace BookMyStyle.Controllers
         }
 
         // GET: Recenzija/Delete/5
+        [Authorize(Roles = "Administrator, Korisnik")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +145,7 @@ namespace BookMyStyle.Controllers
         // POST: Recenzija/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Korisnik")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var recenzija = await _context.Recenzija.FindAsync(id);
