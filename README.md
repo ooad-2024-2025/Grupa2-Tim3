@@ -44,6 +44,7 @@
 
 ### Pristupni podaci za SmarterASP servis:  
 Username:novabaza
+
 Password:admin123_
 
 
@@ -53,6 +54,7 @@ Data Source=Data Source=SQL1002.site4now.net;Initial Catalog=db_ab9979_bookmysty
 Password=admin123_
 
 Username: BookMyStyle
+
 Password: admin123_:
 
 Pristupni podaci za uloge:
