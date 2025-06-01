@@ -43,17 +43,18 @@
 ## 🔒 Pristupni podaci
 
 ### Pristupni podaci za SmarterASP servis:  
-**Username:**novabaza
-**Password:**admin123_
+Username:**novabaza
+Password:**admin123_
 
 
 
 **Pristupni podaci za bazu:**
-**Data Source=Data Source=SQL1002.site4now.net;Initial Catalog=db_ab9979_bookmystyle;User Id=db_ab9979_bookmystyle_admin;**Password=admin123_**
-**Username: BookMyStyle**
-**Password: admin123_:**
+Data Source=Data Source=SQL1002.site4now.net;Initial Catalog=db_ab9979_bookmystyle;User Id=db_ab9979_bookmystyle_admin;
+Password=admin123_
+Username: BookMyStyle
+Password: admin123_:
 
-**Pristupni podaci za uloge:**
+Pristupni podaci za uloge:
 
 **Admin account:**  
 Email: admini@gmail.com  
