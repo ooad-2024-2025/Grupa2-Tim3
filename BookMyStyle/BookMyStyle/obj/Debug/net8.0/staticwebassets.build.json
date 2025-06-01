@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A54H011SO6YgE0dHShbkF4aOLNA0lGTXolYZILGz+98=",
+  "Hash": "Hom2USVXycFTbncNJICKbHPcoNyd1OJie2Ex0bBXxz0=",
   "Source": "BookMyStyle",
   "BasePath": "_content/BookMyStyle",
   "Mode": "Default",
@@ -1401,6 +1401,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\images\\BookMyStyle logo.png",
+      "SourceId": "BookMyStyle",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\",
+      "BasePath": "_content/BookMyStyle",
+      "RelativePath": "images/BookMyStyle logo#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p2d8yzcjtn",
+      "Integrity": "z72xQnScoBTZrwY+iEU1kHSxx2dR+11dQPveWD1tXHE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\BookMyStyle logo.png"
     },
     {
       "Identity": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\js\\site.js",
@@ -5226,6 +5247,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "images/BookMyStyle logo.p2d8yzcjtn.png",
+      "AssetFile": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\images\\BookMyStyle logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2079698"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z72xQnScoBTZrwY+iEU1kHSxx2dR+11dQPveWD1tXHE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 22:35:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p2d8yzcjtn"
+        },
+        {
+          "Name": "label",
+          "Value": "images/BookMyStyle logo.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z72xQnScoBTZrwY+iEU1kHSxx2dR+11dQPveWD1tXHE="
+        }
+      ]
+    },
+    {
+      "Route": "images/BookMyStyle logo.png",
+      "AssetFile": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\images\\BookMyStyle logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2079698"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z72xQnScoBTZrwY+iEU1kHSxx2dR+11dQPveWD1tXHE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 16 Apr 2025 22:35:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z72xQnScoBTZrwY+iEU1kHSxx2dR+11dQPveWD1tXHE="
         }
       ]
     },
