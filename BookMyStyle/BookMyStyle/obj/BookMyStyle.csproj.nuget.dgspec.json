@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj": {}
+    "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj": {
+    "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj",
+        "projectUniqueName": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj",
         "projectName": "BookMyStyle",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\Radna površina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\obj\\",
+        "projectPath": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\BookMyStyle.csproj",
+        "packagesPath": "C:\\Users\\Ajnurator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ajnurator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -77,6 +77,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.4, )"
             }
           },
           "imports": [
@@ -98,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

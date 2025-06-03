@@ -19,6 +19,8 @@ namespace BookMyStyle.Data
         public DbSet<Termin> Termin { get; set; }
         public DbSet<TerminUsluga> TerminUsluga { get; set; }
         public DbSet<Usluga> Usluga { get; set; }
+        public DbSet<QRCodeModel> QRCodeModels { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,5 +41,6 @@ namespace BookMyStyle.Data
             });
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<BookMyStyle.Models.QRCodeModel> QRCodeModel { get; set; } = default!;
     }
 }

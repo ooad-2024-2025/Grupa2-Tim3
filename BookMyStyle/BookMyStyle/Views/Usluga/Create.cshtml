@@ -1,63 +1,77 @@
 ﻿@model BookMyStyle.Models.Usluga
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Dodaj uslugu";
 }
 
-<h1>Create</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/salon.css" />
+}
 
-<h4>Usluga</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="content-wrapper">
+    <h1 class="salon-title">Dodaj novu uslugu</h1>
+
+    <div class="details-container">
+        @* Forma koja šalje POST u UslugaController.Create *@
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            @* Ako postoje poruke validacije, pokaži ih ovdje *@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="Cijena" class="control-label"></label>
-                <input asp-for="Cijena" class="form-control" />
+                <label asp-for="Cijena" class="control-label">Cijena usluge:</label>
+                <input asp-for="Cijena" class="form-control" type="number" step="0.01" />
                 <span asp-validation-for="Cijena" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Naziv" class="control-label"></label>
+                <label asp-for="Naziv" class="control-label">Naziv usluge:</label>
                 <input asp-for="Naziv" class="form-control" />
                 <span asp-validation-for="Naziv" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Popust" class="control-label"></label>
-                <input asp-for="Popust" class="form-control" />
+                <label asp-for="Popust" class="control-label">Popust [%]:</label>
+                <input asp-for="Popust" class="form-control" type="number" step="1" />
                 <span asp-validation-for="Popust" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Opis" class="control-label"></label>
-                <input asp-for="Opis" class="form-control" />
+                <label asp-for="Opis" class="control-label">Opis:</label>
+                <textarea asp-for="Opis" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Trajanje" class="control-label"></label>
-                <input asp-for="Trajanje" class="form-control" />
+                <label asp-for="Trajanje" class="control-label">Trajanje [min]:</label>
+                <input asp-for="Trajanje" class="form-control" type="number" step="1" />
                 <span asp-validation-for="Trajanje" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Tip" class="control-label"></label>
+                <label asp-for="Tip" class="control-label">Tip usluge:</label>
                 <select asp-for="Tip" class="form-control" asp-items="Html.GetEnumSelectList<TipUsluge>()"></select>
                 <span asp-validation-for="Tip" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="salonID" class="control-label"></label>
-                <input asp-for="salonID" class="form-control" />
+                <label asp-for="salonID" class="control-label">Salon:</label>
+                <select asp-for="salonID" class="form-control" asp-items="ViewBag.SalonID"></select>
                 <span asp-validation-for="salonID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <div class="form-group" style="margin-top:20px;">
+                <button type="submit" class="btn btn-primary">Spremi uslugu</button>
+                <a asp-action="Index" class="btn btn-secondary" style="margin-left:10px;">Odustani</a>
             </div>
         </form>
+        @* Kraj forme *@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

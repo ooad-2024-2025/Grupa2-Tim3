@@ -1,55 +1,51 @@
 ﻿@model IEnumerable<BookMyStyle.Models.Salon>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Saloni";
 }
 
-<h1>Index</h1>
-
-<p>
-    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-    {
-        <a asp-action="Create">Kreiraj salon</a>
-    }
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adresa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RadnoVrijeme)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RadnoVrijeme)
-            </td>
-            <td>
-                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.salonID">Edit</a>
-                        <nobr>|</nobr>
-                        <a asp-action="Delete" asp-route-id="@item.salonID">Delete</a>
-                        <nobr>|</nobr>
-                    }
-                    <a asp-action="Details" asp-route-id="@item.salonID">Details</a>
-            </td>
-        </tr>
+@section Styles {
+    <link rel="stylesheet" href="~/css/salon.css" />
 }
-    </tbody>
-</table>
+
+<div class="content-wrapper">
+    <h1 class="salon-title">Saloni</h1>
+
+    <p>
+        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+        {
+            <a asp-action="Create" class="create-link">Dodaj novi salon</a>
+        }
+    </p>
+
+    <table class="table table-custom">
+        <thead>
+            <tr>
+                <th>Ime salona</th>
+                <th>Adresa</th>
+                <th>Radno vrijeme</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Naziv</td>
+                    <td>@item.Adresa</td>
+                    <td>@item.RadnoVrijeme</td>
+                    <td>
+                        @* Stilizovani dugmad za Uredi, Obriši i Detalji *@
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.salonID" class="btn-details">Uredi</a>
+                            <a asp-action="Delete" asp-route-id="@item.salonID" class="btn-details">Obriši</a>
+                        }
+
+                        <a asp-action="Details" asp-route-id="@item.salonID" class="btn-details">Detalji</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

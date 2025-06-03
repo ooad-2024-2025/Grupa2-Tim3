@@ -24,7 +24,9 @@ namespace BookMyStyle.Controllers
         // GET: Usluga
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usluga.ToListAsync());
+            // Možete u budućnosti uključiti i .Include(s => s.Salon) ako želite prikazati naziv salona uz uslugu
+            var usluge = await _context.Usluga.Include(u => u.Salon).ToListAsync();
+            return View(usluge);
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
@@ -37,6 +39,7 @@ namespace BookMyStyle.Controllers
             }
 
             var usluga = await _context.Usluga
+                .Include(u => u.Salon) // da vidite i naziv salona u Details viewu
                 .FirstOrDefaultAsync(m => m.uslugaID == id);
             if (usluga == null)
             {
@@ -48,14 +51,26 @@ namespace BookMyStyle.Controllers
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Create
-        public IActionResult Create()
+        public IActionResult Create(int? salonID)
         {
+            if (salonID != null)
+            {
+                // Ako URL dolazi s ?salonID=3, onda DropDown bude samo taj salon i unaprijed odabran
+                ViewBag.SalonID = new SelectList(
+                    _context.Salon.Where(s => s.salonID == salonID),
+                    "salonID",
+                    "Naziv",
+                    salonID);
+            }
+            else
+            {
+                // Inače drop‐down popunimo svim salonima
+                ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv");
+            }
             return View();
         }
 
         // POST: Usluga/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
@@ -65,8 +80,13 @@ namespace BookMyStyle.Controllers
             {
                 _context.Add(usluga);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                // Opcionalno: nakon kreiranja, preusmjerite natrag na Details salona
+                return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
             }
+
+            // Ako validacija ne prođe, ponovno popunimo DropDown listu salona (da oporavak forme ne bi pao)
+            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
             return View(usluga);
         }
 
@@ -84,12 +104,13 @@ namespace BookMyStyle.Controllers
             {
                 return NotFound();
             }
+
+            // Prilikom Edit prikaza također želimo DropDown svih salona s aktivnim odabirom
+            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
             return View(usluga);
         }
 
         // POST: Usluga/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
@@ -120,6 +141,8 @@ namespace BookMyStyle.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            // Ako validacija ne prođe, ponovo popunimo DropDown listu
+            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
             return View(usluga);
         }
 
@@ -133,6 +156,7 @@ namespace BookMyStyle.Controllers
             }
 
             var usluga = await _context.Usluga
+                .Include(u => u.Salon)
                 .FirstOrDefaultAsync(m => m.uslugaID == id);
             if (usluga == null)
             {
@@ -152,9 +176,8 @@ namespace BookMyStyle.Controllers
             if (usluga != null)
             {
                 _context.Usluga.Remove(usluga);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,0 +1,219 @@
+﻿/* ===== salon.css ===== */
+
+/* 0) Glavni flex‐kontejner: lijeva i desna kolona jedan pored drugog */
+.content-flex {
+    display: flex;
+    gap: 24px; /* razmak između lijeve i desne kolone */
+    flex-wrap: wrap; /* prelaz u stupce na užim ekranima */
+    margin-top: 20px;
+}
+
+/* Centrirani i suženi kontejner */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Naslov stranice */
+.salon-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Link “Dodaj novi salon” */
+.create-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #12c4a3;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    .create-link:hover {
+        color: #ffffff;
+    }
+
+/* Tabela unutar suženog regiona */
+.table-custom {
+    margin-left: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table-custom th {
+        color: #12c4a3;
+        font-weight: 600;
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .table-custom td {
+        color: #ffffff;
+        padding: 8px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .table-custom tbody tr:hover {
+        background-color: rgba(18, 196, 163, 0.1);
+    }
+
+/* Stilizacija svih dugmadi (“btn-details”) */
+.btn-details {
+    background-color: #169976;
+    color: #ffffff !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 8px; /* razmak između dugmadi */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+a.btn-details:hover {
+    transform: scale(1.05);
+    background-color: #127a64;
+    color: #ffffff !important;
+}
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Desna kolona: stil za wrapper Usluge + Termini */
+.services-container {
+    flex: 1 1 480px; /* zauzima min. 480px u horizontalnom rasporedu */
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* Glavni flex unutar .services-container: Usluge pored Termini */
+.services-flex {
+    display: flex; /* horizontalno slaganje dva .sub-container */
+    gap: 24px; /* razmak između “Usluge” i “Termini” */
+    flex-wrap: wrap; /* prelazak u stupce na užem ekranu */
+}
+
+/* Svaka od dvije pod‐sekcije (Usluge ili Termini) */
+.sub-container {
+    flex: 1 1 300px; /* zauzima min. 300px, raste po potrebi */
+    background-color: #2b2b2b; /* malo tamnija nijansa od .services-container */
+    padding: 16px;
+    border-radius: 6px;
+}
+
+/* Naslov unutar svake pod‐sekcije */
+.services-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* Tablice (koristi se i za Usluge i za Termini) */
+.table-services {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px; /* razmak ispod tablice */
+}
+
+    .table-services th {
+        color: #12c4a3;
+        font-weight: 600;
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .table-services td {
+        color: #ffffff;
+        padding: 6px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .table-services tbody tr:hover {
+        background-color: rgba(18, 196, 163, 0.1);
+    }
+
+/* “Nema unesenih” poruke */
+.no-services {
+    color: #cccccc;
+    font-style: italic;
+}
+
+/* Manji gumbi u tablici termina */
+.btn-details.small {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+}
+
+    /* “Otkaži” gumb unutar tablice termina - crvena boja */
+    .btn-details.small.cancel {
+        background-color: #c0392b; /* tamnocrvena pozadina */
+        color: #ffffff;
+    }
+
+        .btn-details.small.cancel:hover {
+            background-color: #a93226 !important;
+        }
+
+/* ------------------------------------------------------------------------------------------------- */
+
+/* Responsive prilagodba za manje ekrane */
+@media (max-width: 900px) {
+    /* Kada je ekran uži od 900px, i glavne kolone prelaze u stupce */
+    .content-flex {
+        flex-direction: column;
+    }
+
+    /* .services-flex prelazi u vertikalno slaganje */
+    .services-flex {
+        flex-direction: column;
+    }
+
+    .sub-container {
+        flex: 1 1 100%;
+        margin-bottom: 16px;
+    }
+}
+
+/* Dodatna prilagodba za vrlo male ekrane ispod 768px */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 10px;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 6px 8px;
+    }
+
+    .salon-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-details {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+}
+.btn-strong {
+    background-color: #e67e22;
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    padding: 10px 24px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+    .btn-strong:hover {
+        transform: scale(1.05);
+        background-color: #cf711e;
+    }

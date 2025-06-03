@@ -21,6 +21,8 @@ textarea::placeholder {
 .btn-primary {
     background-color: #179c7d !important;
     border-color: #179c7d !important;
+    
+
 }
 
 .btn-primary:hover {
@@ -57,3 +59,28 @@ a:hover {
     max-width: 100% !important;
     width: 100% !important;
 }
+
+
+//salon
+.table-custom {
+    margin-left: 10px; /* ili bilo koja vrijednost kojom tablicu pomjeraš ulijevo */
+}
+
+/* Dugme “Pogledaj detalje salona” */
+.btn-details {
+    background-color: #169976; /* tamnija nijansa zelene */
+    color: #ffffff !important; /* bijeli tekst */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+    .btn-details:hover {
+        transform: scale(1.2); /* blago povećanje na hover */
+        color: #ffffff !important; /* tekst ostaje bijel, možeš promijeniti u drugu boju po želji */
+    }

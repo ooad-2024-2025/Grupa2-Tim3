@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookMyStyle.Models
 {
@@ -18,11 +19,13 @@ namespace BookMyStyle.Models
         [MinLength(3, ErrorMessage = "Adresa salona mora imati najmanje 3 karaktera.")]
         public string Adresa { get; set; }
 
-       
         [MinLength(11, ErrorMessage = "Radno vrijeme mora imati minimalno 11 karaktera (npr. 08:00 - 21:00).")]
-        [RegularExpression(@"^([01]\d|2[0-3]|24):([0-5]\d) - ([01]\d|2[0-3]|24):([0-5]\d)$", ErrorMessage = "Radno vrijeme mora biti u formatu HH:mm - HH:mm (24-satno vrijeme).")]
+        [RegularExpression(@"^([01]\d|2[0-3]|24):([0-5]\d) - ([01]\d|2[0-3]|24):([0-5]\d)$",
+            ErrorMessage = "Radno vrijeme mora biti u formatu HH:mm - HH:mm (24-satno vrijeme).")]
         public string RadnoVrijeme { get; set; }
 
-
+        
+        public ICollection<Usluga> Usluga { get; set; }
+        public ICollection<Termin> Termin { get; set; }
     }
 }

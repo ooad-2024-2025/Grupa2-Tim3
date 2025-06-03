@@ -29,19 +29,21 @@ namespace BookMyStyle.Controllers
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Salon/Details/5
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
+        // GET: Salon/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
+            // Uključujemo i kolekciju Usluga i kolekciju Termin
             var salon = await _context.Salon
+                .Include(s => s.Usluga)
+                .Include(s => s.Termin)
                 .FirstOrDefaultAsync(m => m.salonID == id);
+
             if (salon == null)
-            {
                 return NotFound();
-            }
 
             return View(salon);
         }
@@ -54,10 +56,9 @@ namespace BookMyStyle.Controllers
         }
 
         // POST: Salon/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> Create([Bind("salonID,Naziv,Adresa,RadnoVrijeme")] Salon salon)
         {
             if (ModelState.IsValid)
@@ -87,8 +88,6 @@ namespace BookMyStyle.Controllers
         }
 
         // POST: Salon/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]

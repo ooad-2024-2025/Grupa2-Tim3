@@ -1,36 +1,139 @@
 ﻿@model BookMyStyle.Models.Salon
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji salona";
 }
 
-<h1>Details</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/salon.css" />
+}
 
-<div>
-    <h4>Salon</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adresa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adresa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RadnoVrijeme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RadnoVrijeme)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.salonID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="content-wrapper">
+    <h1 class="salon-title">DETALJI SALONA</h1>
+
+    <div class="content-flex">
+        <!-- 1) Lijeva kolona: detalji o salonu -->
+        <div class="details-container">
+            <dl class="details-list">
+                <dt>Naziv</dt>
+                <dd>@Model.Naziv</dd>
+                <dt>Adresa</dt>
+                <dd>@Model.Adresa</dd>
+                <dt>Radno vrijeme</dt>
+                <dd>@Model.RadnoVrijeme</dd>
+            </dl>
+
+            <!-- 1A) Veliko istaknuto dugme “Zakaži termin” -->
+            <div class="book-appointment-wrapper" style="margin: 20px 0;">
+                <a asp-controller="Termin"
+                   asp-action="Create"
+                   asp-route-salonID="@Model.salonID"
+                   class="btn-details"
+                   style="display:inline-block; font-size:1.1rem; padding:10px 24px; background-color:#e67e22; border-radius:6px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+                    ZAKAŽI TERMIN
+                </a>
+            </div>
+
+            <div class="buttons-container">
+                @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.salonID" class="btn-details">Uredi</a>
+                }
+                <a asp-action="Index" class="btn-details">Nazad na listu</a>
+                @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                {
+                    <a asp-controller="Usluga" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj uslugu</a>
+                    <a asp-controller="Termin" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj termin</a>
+                }
+            </div>
+        </div>
+
+        <!-- 2) Desna kolona: sadržaj koji treba biti side-by-side -->
+        <div class="services-container">
+            <div class="services-flex">
+                <!-- 2A) Usluge -->
+                <div class="sub-container">
+                    <h2 class="services-title">USLUGE SALONA</h2>
+                    @if (Model.Usluga != null && Model.Usluga.Any())
+                    {
+                        <table class="table table-services">
+                            <thead>
+                                <tr>
+                                    <th>Naziv usluge</th>
+                                    <th>Cijena</th>
+                                    <th>Popust [%]</th>
+                                    <th>Trajanje (min)</th>
+                                    <th>Tip usluge</th>
+                                    <th>Opis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var usl in Model.Usluga)
+                                {
+                                    <tr>
+                                        <td>@usl.Naziv</td>
+                                        <td>@usl.Cijena.ToString("F2") KM</td>
+                                        <td>@usl.Popust.ToString("F0")%</td>
+                                        <td>@usl.Trajanje</td>
+                                        <td>@usl.Tip</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(usl.Opis))
+                                            {
+                                                @usl.Opis
+                                            }
+                                            else
+                                            {
+                                                <span class="no-description">Nema opisa</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="no-services">Ovaj salon trenutno nema unesenih usluga.</p>
+                    }
+                </div>
+
+                <!-- 2B) Termini -->
+                <div class="sub-container">
+                    <h2 class="services-title">ZAKAZANI TERMINI</h2>
+                    @if (Model.Termin != null && Model.Termin.Any())
+                    {
+                        <table class="table table-services">
+                            <thead>
+                                <tr>
+                                    <th>ID termina</th>
+                                    <th>Vrijeme termina</th>
+                                    <th>Akcije</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in Model.Termin)
+                                {
+                                    <tr>
+                                        <td>@t.terminID</td>
+                                        <td>@t.DatumIVrijeme.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td>
+                                            @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                                            {
+                                                <a asp-controller="Termin" asp-action="Edit" asp-route-id="@t.terminID" class="btn-details small">Uredi</a>
+                                                <a asp-controller="Termin" asp-action="Delete" asp-route-id="@t.terminID" class="btn-details small cancel">Otkaži</a>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="no-services">Ovaj salon nema zakazanih termina.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
