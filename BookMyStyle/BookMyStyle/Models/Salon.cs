@@ -27,5 +27,6 @@ namespace BookMyStyle.Models
         
         public ICollection<Usluga> Usluga { get; set; }
         public ICollection<Termin> Termin { get; set; }
+        
     }
 }

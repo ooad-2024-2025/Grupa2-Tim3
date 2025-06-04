@@ -27,5 +27,7 @@ namespace BookMyStyle.Models
 
         [ForeignKey("terminID")]
         public int terminID { get; set; }
+       
+
     }
 }

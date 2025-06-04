@@ -4,41 +4,61 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<!-- Omotač koji sužava sadržaj i centira ga na stranici -->
+<div class="content-wrapper">
 
-<h4>Salon</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    <!-- Naslov stranice -->
+    <h1 class="salon-title">Uredi Salon</h1>
+    <hr style="border-color: rgba(255,255,255,0.1);" />
+
+    <!-- Tamni “card” okvir za formu -->
+    <div style="background-color: #252525; padding: 20px; border-radius: 6px; margin-top: 16px;">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="salonID" />
-            <div class="form-group">
-                <label asp-for="Naziv" class="control-label"></label>
-                <input asp-for="Naziv" class="form-control" />
+
+            <!-- Naziv -->
+            <div style="margin-bottom: 16px;">
+                <label asp-for="Naziv" style="color: #ffffff; font-weight: 500;"></label>
+                <input asp-for="Naziv"
+                       style="width: 100%; padding: 8px 12px; margin-top: 4px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background-color: #ffffff; color: #2b2b2b;" />
                 <span asp-validation-for="Naziv" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Adresa" class="control-label"></label>
-                <input asp-for="Adresa" class="form-control" />
+
+            <!-- Adresa -->
+            <div style="margin-bottom: 16px;">
+                <label asp-for="Adresa" style="color: #ffffff; font-weight: 500;"></label>
+                <input asp-for="Adresa"
+                       style="width: 100%; padding: 8px 12px; margin-top: 4px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background-color: #ffffff; color: #2b2b2b;" />
                 <span asp-validation-for="Adresa" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="RadnoVrijeme" class="control-label"></label>
-                <input asp-for="RadnoVrijeme" class="form-control" />
+
+            <!-- Radno Vrijeme -->
+            <div style="margin-bottom: 16px;">
+                <label asp-for="RadnoVrijeme" style="color: #ffffff; font-weight: 500;"></label>
+                <input asp-for="RadnoVrijeme"
+                       style="width: 100%; padding: 8px 12px; margin-top: 4px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background-color: #ffffff; color: #2b2b2b;" />
                 <span asp-validation-for="RadnoVrijeme" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <!-- Dugmad: Sačuvaj i Nazad -->
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <!-- “Sačuvaj” dugme stilizovano kao .btn-strong -->
+                <button type="submit" class="btn-strong">
+                    Sačuvaj
+                </button>
+
+                <!-- “Nazad” dugme stilizovano kao .btn-details -->
+                <a asp-action="Index" class="btn-details">
+                    Nazad
+                </a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

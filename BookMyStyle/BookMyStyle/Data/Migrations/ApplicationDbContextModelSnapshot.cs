@@ -148,34 +148,20 @@ namespace BookMyStyle.Data.Migrations
 
             modelBuilder.Entity("BookMyStyle.Models.QRCodeModel", b =>
                 {
-                    b.Property<int>("QRCodeID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QRCodeID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("EmailMessage")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("EmailSubject")
+                    b.Property<string>("QRCodeText")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("QRImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                    b.Property<string>("ReceiverEmailAddress")
-                        .IsRequired()
-                        .HasMaxLength(254)
-                        .HasColumnType("nvarchar(254)");
-
-                    b.HasKey("QRCodeID");
-
-                    b.ToTable("QRCodeModel");
+                    b.ToTable("QRCodeModels");
                 });
 
             modelBuilder.Entity("BookMyStyle.Models.Recenzija", b =>
@@ -269,6 +255,8 @@ namespace BookMyStyle.Data.Migrations
 
                     b.HasKey("terminID");
 
+                    b.HasIndex("salonID");
+
                     b.ToTable("Termin", (string)null);
                 });
 
@@ -325,6 +313,8 @@ namespace BookMyStyle.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("uslugaID");
+
+                    b.HasIndex("salonID");
 
                     b.ToTable("Usluga", (string)null);
                 });
@@ -466,6 +456,65 @@ namespace BookMyStyle.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SmtpSettings", b =>
+                {
+                    b.Property<int>("SmtpSettingsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SmtpSettingsId"));
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EnableSsl")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("From")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Host")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Port")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SmtpSettingsId");
+
+                    b.ToTable("SmtpSettings");
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Termin", b =>
+                {
+                    b.HasOne("BookMyStyle.Models.Salon", null)
+                        .WithMany("Termin")
+                        .HasForeignKey("salonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Usluga", b =>
+                {
+                    b.HasOne("BookMyStyle.Models.Salon", "Salon")
+                        .WithMany("Usluga")
+                        .HasForeignKey("salonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Salon");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -515,6 +564,13 @@ namespace BookMyStyle.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookMyStyle.Models.Salon", b =>
+                {
+                    b.Navigation("Termin");
+
+                    b.Navigation("Usluga");
                 });
 #pragma warning restore 612, 618
         }

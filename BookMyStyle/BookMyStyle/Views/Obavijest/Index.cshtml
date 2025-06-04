@@ -1,53 +1,55 @@
 ﻿@model IEnumerable<BookMyStyle.Models.Obavijest>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Obavijesti";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/obavijest.css" />
 }
 
-<h1>Index</h1>
 
-@if (User.IsInRole("Administrator"))
-{
-    <a asp-action="Create">Kreiraj obavijest</a>
-}
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tekst)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumIVrijeme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.terminID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tekst)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumIVrijeme)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.terminID)
-            </td>
-            <td>
-                    @if (User.IsInRole("Administrator")){
-                <a asp-action="Edit" asp-route-id="@item.obavijestID">Edit</a> 
-                <nobr>|</nobr>
-                <a asp-action="Delete" asp-route-id="@item.obavijestID">Delete</a>
-                <nobr>|</nobr>
-                }
-                <a asp-action="Details" asp-route-id="@item.obavijestID">Details</a>
-                
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<h1 class="h2">Obavijesti</h1>
+
+<div class="container obavijesti-container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-body d-flex flex-column">
+                <!-- Badge/Chip naslov -->
+                <h6>
+                    <span class="badge">@item.Tekst</span>
+                </h6>
+
+                <!-- Datum i vrijeme -->
+                <p class="text-muted">@item.DatumIVrijeme.ToString("dd.MM.yyyy HH:mm")</p>
+
+                <!-- Termin -->
+                <p class="text-muted">Termin: @item.terminID</p>
+
+                <!-- Dugmad (QR Kod, Uredi, Obriši, Detalji) -->
+                <div class="mt-auto d-flex flex-wrap">
+                    <a class="btn btn-outline-light btn-sm me-2 mb-2"
+                       asp-controller="QRCodeModel"
+                       asp-action="Create"
+                       asp-route-id="@item.obavijestID">
+                        QR Kod
+                    </a>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a class="btn btn-outline-secondary btn-sm me-2 mb-2"
+                           asp-action="Edit" asp-route-id="@item.obavijestID">
+                            Uredi
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm me-2 mb-2"
+                           asp-action="Delete" asp-route-id="@item.obavijestID">
+                            Obriši
+                        </a>
+                    }
+                    <a class="btn btn-outline-info btn-sm mb-2"
+                       asp-action="Details" asp-route-id="@item.obavijestID">
+                        Detalji
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

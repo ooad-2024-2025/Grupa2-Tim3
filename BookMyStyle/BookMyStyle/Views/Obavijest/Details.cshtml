@@ -1,36 +1,66 @@
 ﻿@model BookMyStyle.Models.Obavijest
+@section Styles {
+    <link rel="stylesheet" href="~/css/obavijest.css" />
+}
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="text-white mb-4">Detalji Obavijesti</h2>
+        </div>
+    </div>
 
-<div>
-    <h4>Obavijest</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tekst)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tekst)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DatumIVrijeme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DatumIVrijeme)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.terminID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.terminID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.obavijestID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+   
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-body">
+                    
+                    <h5 class="card-title mb-3">Obavijest</h5>
+                    <hr class="border-secondary" />
+
+                    
+                    <dl class="row mb-4">
+                        <dt class="col-sm-3 text-secondary">Tekst</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tekst)</dd>
+
+                        <dt class="col-sm-3 text-secondary">Datum i vrijeme</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.DatumIVrijeme)</dd>
+
+                        <dt class="col-sm-3 text-secondary">Termin ID</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.terminID)</dd>
+                    </dl>
+
+                   
+                    <div class="d-flex justify-content-center gap-3">
+                       
+                        <a asp-controller="QRCodeModel"
+                           asp-action="Create"
+                           asp-route-id="@Model.obavijestID"
+                           class="btn btn-warning btn-sm">
+                            QR Kod
+                        </a>
+
+                       
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.obavijestID"
+                           class="btn btn-outline-light btn-sm">
+                            Uredi
+                        </a>
+
+                        
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary btn-sm">
+                            Natrag na listu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

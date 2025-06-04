@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "_Layout";  // Koristi vaš glavni layout (koji već ima navbar i tamnu pozadinu)
+}
+
+@section Styles {
+    <style>
+        /* Osiguravamo da pozadina ostane tamna kao na stranici obavijesti */
+        body {
+            background-color: #1a1a1a;
+        }
+        /* Karte imaju bijeli obrub i zaobljene rubove */
+        .confirmation-card {
+            border: 1px solid #ffffff;
+            border-radius: 0.5rem;
+        }
+            /* Badge za naslov u kartici */
+            .confirmation-card .badge-success {
+                background-color: #28a745;
+            }
+    </style>
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card confirmation-card bg-dark text-white">
+                <div class="card-body">
+                    <!-- Naslov kao zelena "badge" traka -->
+                    <h3 class="card-title mb-4">
+                        <span class="badge badge-success">Potvrđeno!</span>
+                    </h3>
+
+                    <!-- Glavna poruka -->
+                    <p class="mb-1">QR kod je skeniran za e-mail:</p>
+                    <p class="h5 mb-4"><strong>@ViewBag.ConfirmedEmail</strong></p>
+
+                    <!-- Status slanja e-maila -->
+                    <div class="alert alert-light text-dark">
+                        @ViewBag.EmailStatus
+                    </div>
+
+                    <!-- Dugmad od izlaza i povratka -->
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <!-- Generiši novi QR kod (zeleno-outline) -->
+                        <a asp-action="Create"
+                           asp-controller="QRCodeModel"
+                           class="btn btn-outline-success btn-sm">
+                            Generiši novi QR kod
+                        </a>
+
+                        <!-- Nazad na obavijesti (tirkizno-outline) -->
+                        <a asp-action="Index"
+                           asp-controller="Obavijest"
+                           class="btn btn-outline-info btn-sm">
+                            Nazad na obavijesti
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,39 +1,46 @@
 ﻿@model BookMyStyle.Models.Salon
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Obriši Salon";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Salon</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Adresa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Adresa)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RadnoVrijeme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RadnoVrijeme)
-        </dd>
-    </dl>
+<div class="content-wrapper">
     
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="salonID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <h1 class="salon-title">Obriši Salon</h1>
+    <hr style="border-color: rgba(255,255,255,0.1);" />
+
+    <!-- Tamni okvir za prikaz podataka i dugmadi -->
+    <div class="card-dark">
+        <!-- Podnaslov -->
+        <h4 class="text-white mb-3">Detalji Salona</h4>
+
+        <!-- Prikaz podataka -->
+        <dl class="row text-white">
+            <dt class="col-sm-2">Naziv</dt>
+            <dd class="col-sm-10">@Model.Naziv</dd>
+
+            <dt class="col-sm-2">Adresa</dt>
+            <dd class="col-sm-10">@Model.Adresa</dd>
+
+            <dt class="col-sm-2">Radno Vrijeme</dt>
+            <dd class="col-sm-10">@Model.RadnoVrijeme</dd>
+        </dl>
+
+        <!-- Potvrda brisanja -->
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="salonID" />
+            <div class="buttons-row mt-3">
+                <!-- Obriši dugme (crveno) -->
+                <button type="submit" class="btn-details cancel">Obriši</button>
+                <!-- Nazad dugme (zeleno) -->
+                <a asp-action="Index" class="btn-details">Nazad</a>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
