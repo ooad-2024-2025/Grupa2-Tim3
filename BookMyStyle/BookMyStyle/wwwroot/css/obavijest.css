@@ -86,3 +86,39 @@ s
         grid-template-columns: 1fr;
     }
 }
+.btn-success {
+    background-color: #169976 !important;
+    border-color: #ffffff;
+    color: #ffffff !important;
+    transition: transform 0.2s ease;
+}
+
+    
+    .btn-success:hover {
+        background-color: #0f7a5c !important;
+        border-color: #ffffff;
+        color: #ffffff !important;
+        transform: scale(1.1);
+    }
+
+
+
+.form-card {
+    max-width: 40%; 
+    border-radius: 0.75rem; 
+    overflow: hidden;
+}
+.btn-create {
+    background-color: #169976;
+    border: 1px solid #169976;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+    .btn-create:hover {
+        background-color: #0f7a5c;
+        transform: scale(1.01);
+        color: #ffffff;
+    }

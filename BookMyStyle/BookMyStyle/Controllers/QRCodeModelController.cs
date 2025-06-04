@@ -61,13 +61,13 @@ namespace BookMyStyle.Controllers
                     protocol: Request.Scheme
                 );
 
-                // Generate QR code as PNG byte array
+                // generisanje qr koda
                 using var qrGenerator = new QRCodeGenerator();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(callbackUrl, QRCodeGenerator.ECCLevel.Q);
                 var pngByteQRCode = new PngByteQRCode(qrCodeData);
                 byte[] qrCodeBytes = pngByteQRCode.GetGraphic(20);
 
-                // Save PNG to wwwroot/GeneratedQRCode
+                
                 string wwwroot = _env.WebRootPath;
                 string folder = Path.Combine(wwwroot, "GeneratedQRCode");
                 if (!Directory.Exists(folder))
@@ -82,11 +82,11 @@ namespace BookMyStyle.Controllers
                 ViewBag.QRCodeImage = imageUrl;
                 ViewBag.CallbackUrl = callbackUrl;
 
-                // Save model to database
+               
                 _context.QRCodeModels.Add(qRCodeModel);
                 await _context.SaveChangesAsync();
 
-                // Redirect to Index or show confirmation
+               
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -143,9 +143,9 @@ namespace BookMyStyle.Controllers
                 IsBodyHtml = true,
                 Body = $@"
                         <h3>Dragi/a korisniče,</h3>
-                        <p>Vaš QR kod je uspješno skeniran.</p>
+                        <p>Vaš QR kod je uspješno skeniran i uspješno je potvrđena Vaša rezeravacija termina.</p>
                         <p>Poslali smo potvrdu na: <strong>{toEmail}</strong></p>
-                        <p>Hvala što koristite BookMyStyle!</p>"
+                        <p>Hvala što koristite naš sistem BookMyStyle!</p>"
             };
             msg.To.Add(new MailAddress(toEmail));
 

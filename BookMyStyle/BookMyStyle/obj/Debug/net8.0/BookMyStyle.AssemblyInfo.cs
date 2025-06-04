@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookMyStyle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0b42df271dce592f1037c45120c1e418e75bba8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+165eebfc855eb6605266f0995e59997b89909f49")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookMyStyle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookMyStyle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

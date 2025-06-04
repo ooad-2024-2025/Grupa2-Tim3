@@ -1,46 +1,57 @@
 ﻿@model BookMyStyle.Models.Obavijest
+
+@{
+    ViewData["Title"] = "Create Obavijest";
+}
+
 @section Styles {
     <link rel="stylesheet" href="~/css/obavijest.css" />
 }
 
-@{
-    ViewData["Title"] = "Create";
-}
+<div class="container py-5">
+    <div class="card form-card mx-auto shadow-lg">
+        <div class="card-header bg-dark text-white">
+            <h2 class="m-0">Kreiraj novu obavijest</h2>
+        </div>
+        <div class="card-body bg-secondary text-light">
+            <form asp-action="Create" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<h1>Create</h1>
+                <!-- Polje za “Tekst” -->
+                <div class="mb-4">
+                    <label asp-for="Tekst" class="form-label">Tekst</label>
+                    <input asp-for="Tekst" class="form-control form-control-dark" placeholder="Unesite tekst obavijesti…" />
+                    <span asp-validation-for="Tekst" class="text-danger"></span>
+                </div>
 
-<h4>Obavijest</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Tekst" class="control-label"></label>
-                <input asp-for="Tekst" class="form-control" />
-                <span asp-validation-for="Tekst" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DatumIVrijeme" class="control-label"></label>
-                <input asp-for="DatumIVrijeme" class="form-control" />
-                <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="terminID" class="control-label"></label>
-                <input asp-for="terminID" class="form-control" />
-                <span asp-validation-for="terminID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <!-- Polje za “Datum i Vrijeme” -->
+                <div class="mb-4">
+                    <label asp-for="DatumIVrijeme" class="form-label">Datum i Vrijeme</label>
+                    <input asp-for="DatumIVrijeme" class="form-control form-control-dark" type="datetime-local" />
+                    <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
+                </div>
+
+                <!-- Polje za “terminID” -->
+                <div class="mb-4">
+                    <label asp-for="terminID" class="form-label">Termin ID</label>
+                    <input asp-for="terminID" class="form-control form-control-dark" placeholder="Unesite ID termina…" />
+                    <span asp-validation-for="terminID" class="text-danger"></span>
+                </div>
+
+                <!-- Submit dugme -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-create">
+                        <i class="bi bi-plus-circle me-2"></i> Kreiraj
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer bg-dark text-center">
+            <a asp-action="Index" class="link-back">← Vrati se na listu</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
