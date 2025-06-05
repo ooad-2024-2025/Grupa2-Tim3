@@ -6,6 +6,7 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\GeneratedQRCode\qrcode_0bee85cd-2d6f-4b00-bc50-45f04796651a.png
 wwwroot\GeneratedQRCode\qrcode_1266ee27-a74a-484a-b951-434000c2c06d.png
+wwwroot\GeneratedQRCode\qrcode_14398595-8214-4ccf-9f72-02cd509d2e77.png
 wwwroot\GeneratedQRCode\qrcode_1c4ce7fe-ec40-4f77-8c85-6912fb04afbf.png
 wwwroot\GeneratedQRCode\qrcode_2b8342fd-494f-4312-89aa-1e6b6e0ae0f9.png
 wwwroot\GeneratedQRCode\qrcode_337f36dd-f954-4c70-9019-7a9e8ce67012.png

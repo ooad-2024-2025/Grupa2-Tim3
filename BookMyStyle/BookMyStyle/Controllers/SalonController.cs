@@ -20,16 +20,13 @@ namespace BookMyStyle.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Salon
         public async Task<IActionResult> Index()
         {
             return View(await _context.Salon.ToListAsync());
         }
 
-        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
-        // GET: Salon/Details/5
-        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
+    
         // GET: Salon/Details/5
         public async Task<IActionResult> Details(int? id)
         {

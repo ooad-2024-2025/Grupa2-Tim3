@@ -111,9 +111,7 @@ namespace BookMyStyle.Areas.Identity.Pages.Account
             [Display(Name = "Prezime korisnika")]
             public string Prezime { get; set; }
 
-            [EnumDataType(typeof(TipFrizera))]
-            [Display(Name = "Tip frizera")]
-            public TipFrizera tipFrizera { get; set; }
+           
         }
 
 
@@ -135,13 +133,16 @@ namespace BookMyStyle.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.Ime = Input.Ime;
                 user.Prezime = Input.Prezime;
-                user.tipFrizera = Input.tipFrizera;
+                
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, "Korisnik");
+
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

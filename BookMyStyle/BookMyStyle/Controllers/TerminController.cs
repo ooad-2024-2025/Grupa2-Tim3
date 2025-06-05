@@ -21,14 +21,12 @@ namespace BookMyStyle.Controllers
         }
 
         // GET: Termin
-        [Authorize(Roles ="Administrator, Korisnik, Frizer")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Termin.ToListAsync());//umjesto usluge id staviti naziv usluge 
         }
 
         // GET: Termin/Details/5
-        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
