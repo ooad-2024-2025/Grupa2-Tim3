@@ -1,59 +1,70 @@
 ﻿@model BookMyStyle.Models.Termin
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Uredi termin";
 }
 
-<h1>Edit</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/obavijest.css" />
+}
 
-<h4>Termin</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="terminID" />
-            <div class="form-group">
-                <label asp-for="NazivSalona" class="control-label"></label>
-                <input asp-for="NazivSalona" class="form-control" />
-                <span asp-validation-for="NazivSalona" class="text-danger"></span>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="text-white mb-4">Uredi termin</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="terminID" />
+                        <input type="hidden" asp-for="FrizerID" />
+                        <input type="hidden" asp-for="KorisnikID" />
+                        <input type="hidden" asp-for="uslugaID" />
+                        <input type="hidden" asp-for="salonID" />
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="NazivSalona" class="form-label">Naziv salona:</label>
+                            <input asp-for="NazivSalona" class="form-control" />
+                            <span asp-validation-for="NazivSalona" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="AdresaSalona" class="form-label">Adresa salona:</label>
+                            <input asp-for="AdresaSalona" class="form-control" />
+                            <span asp-validation-for="AdresaSalona" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="NazivFrizera" class="form-label">Frizer:</label>
+                            <input asp-for="NazivFrizera" class="form-control" />
+                            <span asp-validation-for="NazivFrizera" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="DatumIVrijeme" class="form-label">Datum i vrijeme:</label>
+                            <input asp-for="DatumIVrijeme" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-3">
+                            <button type="submit" class="btn btn-success btn-sm">Spremi izmjene</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Natrag na listu</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="AdresaSalona" class="control-label"></label>
-                <input asp-for="AdresaSalona" class="form-control" />
-                <span asp-validation-for="AdresaSalona" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NazivFrizera" class="control-label"></label>
-                <input asp-for="NazivFrizera" class="form-control" />
-                <span asp-validation-for="NazivFrizera" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DatumIVrijeme" class="control-label"></label>
-                <input asp-for="DatumIVrijeme" class="form-control" />
-                <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="salonID" class="control-label"></label>
-                <input asp-for="salonID" class="form-control" />
-                <span asp-validation-for="salonID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="uslugaID" class="control-label"></label>
-                <input asp-for="uslugaID" class="form-control" />
-                <span asp-validation-for="uslugaID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

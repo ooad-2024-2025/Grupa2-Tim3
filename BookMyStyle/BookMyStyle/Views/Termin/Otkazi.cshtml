@@ -1,18 +1,20 @@
 ﻿@model BookMyStyle.Models.Termin
 
 @{
-    ViewData["Title"] = "Obriši Termin";
+    ViewData["Title"] = "Otkaži Termin";
 }
 
 <div class="content-wrapper">
 
-    <h1 class="salon-title">Obriši Termin</h1>
+    <h1 class="salon-title">Otkaži Termin</h1>
     <hr style="border-color: rgba(255,255,255,0.1);" />
 
-    <!-- Tamni okvir -->
+    <!-- Tamni okvir za prikaz podataka i dugmadi -->
     <div class="card-dark">
-        <h4 class="text-white mb-3">Detalji termina</h4>
+        <!-- Podnaslov -->
+        <h4 class="text-white mb-3">Detalji Termina</h4>
 
+        <!-- Prikaz podataka -->
         <dl class="row text-white">
             <dt class="col-sm-3">Salon</dt>
             <dd class="col-sm-9">@Model.NazivSalona</dd>
@@ -24,15 +26,17 @@
             <dd class="col-sm-9">@Model.NazivFrizera</dd>
 
             <dt class="col-sm-3">Datum i vrijeme</dt>
-            <dd class="col-sm-9">@Model.DatumIVrijeme.ToString("dd. MM. yyyy. HH:mm")</dd>
+            <dd class="col-sm-9">@Model.DatumIVrijeme.ToString("dd.MM.yyyy. HH:mm")</dd>
         </dl>
 
-        <!-- Potvrda brisanja -->
-        <form asp-action="Delete" method="post">
+        <!-- Potvrda otkazivanja -->
+        <form asp-action="OtkaziPotvrda" method="post">
             <input type="hidden" asp-for="terminID" />
             <div class="buttons-row mt-3">
-                <button type="submit" class="btn-details cancel">Obriši</button>
-                <a asp-action="Index" class="btn-details">Nazad</a>
+                <!-- Otkaži dugme -->
+                <button type="submit" class="btn-details cancel">Otkaži</button>
+                <!-- Nazad dugme -->
+                <a asp-controller="Obavijest" asp-action="Index" class="btn-details">Nazad</a>
             </div>
         </form>
     </div>

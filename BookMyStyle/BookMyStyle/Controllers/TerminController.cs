@@ -161,29 +161,49 @@ namespace BookMyStyle.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
-        public async Task<IActionResult> Edit(int id, Termin termin)
+        public async Task<IActionResult> Edit(int id, Termin izForme)
         {
-            if (id != termin.terminID)
+            if (id != izForme.terminID)
                 return NotFound();
 
             var frizerId = _userManager.GetUserId(User);
-            var original = await _context.Termin.AsNoTracking().FirstOrDefaultAsync(t => t.terminID == id);
 
-            if (original == null)
+            // Dohvati originalni termin iz baze
+            var termin = await _context.Termin.FirstOrDefaultAsync(t => t.terminID == id);
+            if (termin == null)
                 return NotFound();
 
-            if (User.IsInRole("Frizer") && original.FrizerID != frizerId)
-                return Forbid(); // Sprečava uređivanje tuđih termina
+            // Ako frizer pokušava uređivati tuđi termin
+            if (User.IsInRole("Frizer") && termin.FrizerID != frizerId)
+                return Forbid();
 
+            // Samo ažuriraj dozvoljena polja
             if (ModelState.IsValid)
             {
-                _context.Update(termin);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                termin.NazivSalona = izForme.NazivSalona;
+                termin.AdresaSalona = izForme.AdresaSalona;
+                termin.NazivFrizera = izForme.NazivFrizera;
+                termin.DatumIVrijeme = izForme.DatumIVrijeme;
+
+                try
+                {
+                    _context.Update(termin);
+                    await _context.SaveChangesAsync();
+                    TempData["Success"] = "Termin uspješno izmijenjen.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TerminExists(termin.terminID))
+                        return NotFound();
+                    else
+                        throw;
+                }
             }
 
-            return View(termin);
+            return View(izForme);
         }
+
 
 
         // GET: Termin/Delete/5
@@ -257,6 +277,49 @@ namespace BookMyStyle.Controllers
             TempData["Success"] = "Termin je uspješno zakazan i obavijest je kreirana.";
             return RedirectToAction("Index");
         }
+
+
+        [Authorize(Roles = "Korisnik")]
+        public async Task<IActionResult> Otkazi(int id)
+        {
+            var korisnikId = _userManager.GetUserId(User);
+
+            var termin = await _context.Termin
+                .FirstOrDefaultAsync(t => t.terminID == id && t.KorisnikID == korisnikId);
+
+            if (termin == null)
+                return NotFound();
+
+            return View(termin); // Ovo prikazuje Otkazi.cshtml
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Korisnik")]
+        public async Task<IActionResult> OtkaziPotvrda(int terminID)
+        {
+            var korisnikId = _userManager.GetUserId(User);
+
+            var termin = await _context.Termin
+                .FirstOrDefaultAsync(t => t.terminID == terminID && t.KorisnikID == korisnikId);
+
+            if (termin == null)
+                return NotFound();
+
+            termin.KorisnikID = null;
+
+            var obavijest = await _context.Obavijest.FirstOrDefaultAsync(o => o.terminID == terminID);
+            if (obavijest != null)
+                _context.Obavijest.Remove(obavijest);
+
+            _context.Update(termin);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "Termin je uspješno otkazan.";
+            return RedirectToAction("Index", "Obavijest");
+        }
+
+
 
 
         private bool TerminExists(int id)

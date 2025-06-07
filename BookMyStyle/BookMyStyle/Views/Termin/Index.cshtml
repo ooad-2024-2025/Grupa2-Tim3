@@ -6,71 +6,85 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/salon.css" />
-}
-
-<h1 class="salon-title">DOSTUPNI TERMINI</h1>
-
-<div style="margin-bottom: 20px;">
-    <a asp-controller="Obavijest" asp-action="Index" class="btn btn-outline-primary">Moji termini</a>
-</div>
-
-@if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-{
-    <p>
-        <a asp-action="Create" class="btn btn-success">Kreiraj termin</a>
-    </p>
-}
-
-<table class="table table-striped table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>Naziv salona</th>
-            <th>Adresa salona</th>
-            <th>Frizer</th>
-            <th>Datum i vrijeme</th>
-            <th>Usluga</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.NazivSalona</td>
-                <td>@item.AdresaSalona</td>
-                <td>@item.NazivFrizera</td>
-                <td>@item.DatumIVrijeme.ToString("dd.MM.yyyy. HH:mm")</td>
-                <td>
-                    @{
-                        var usluge = ViewBag.Usluge as List<BookMyStyle.Models.Usluga>;
-                        var usluga = usluge?.FirstOrDefault(u => u.uslugaID == item.uslugaID);
-                        if (usluga != null)
-                        {
-                            <text>@usluga.Naziv</text>
-                        }
-                        else
-                        {
-                            <text>?</text>
-                        }
-                    }
-
-                    @if (User.IsInRole("Korisnik"))
-                    {
-                        <form asp-action="Zakazi" method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="@item.terminID" />
-                            <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Da li ste sigurni da želite zakazati ovaj termin?')">Zakaži</button>
-                        </form>
-                    }
-
-                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.terminID" class="btn btn-warning btn-sm">Uredi</a>
-                        <a asp-action="Delete" asp-route-id="@item.terminID" class="btn btn-danger btn-sm">Obriši</a>
-                    }
-
-                    <a asp-action="Details" asp-route-id="@item.terminID" class="btn btn-info btn-sm">Detalji</a>
-                </td>
-
-            </tr>
+    <style>
+        .btn-group-termin {
+            display: flex;
+            gap: 8px;
+            flex-wrap: nowrap;
         }
-    </tbody>
-</table>
+
+        .table-custom td, .table-custom th {
+            white-space: nowrap;
+        }
+
+        .table-custom {
+            width: 100%;
+            table-layout: auto;
+        }
+
+        .btn-details {
+            white-space: nowrap;
+            padding: 6px 12px;
+        }
+    </style>
+}
+
+<div class="content-wrapper">
+    <h1 class="salon-title">DOSTUPNI TERMINI</h1>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-controller="Obavijest" asp-action="Index" class="btn-details">Moji termini</a>
+
+        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+        {
+            <a asp-action="Create" class="btn-details">Kreiraj termin</a>
+        }
+    </div>
+
+
+    <table class="table table-custom">
+        <thead>
+            <tr>
+                <th>Naziv salona</th>
+                <th>Adresa salona</th>
+                <th>Frizer</th>
+                <th>Datum i vrijeme</th>
+                <th>Usluga</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var usluga = ((List<BookMyStyle.Models.Usluga>)ViewBag.Usluge)
+                .FirstOrDefault(u => u.uslugaID == item.uslugaID);
+
+                <tr>
+                    <td>@item.NazivSalona</td>
+                    <td>@item.AdresaSalona</td>
+                    <td>@item.NazivFrizera</td>
+                    <td>@item.DatumIVrijeme.ToString("dd.MM.yyyy. HH:mm")</td>
+                    <td>@(usluga?.Naziv ?? "?")</td>
+                    <td class="btn-group-termin">
+                        @if (User.IsInRole("Korisnik"))
+                        {
+                            <form asp-action="Zakazi" method="post">
+                                <input type="hidden" name="id" value="@item.terminID" />
+                                <button type="submit" class="btn-details" onclick="return confirm('Da li ste sigurni da želite zakazati ovaj termin?')">Zakaži</button>
+                            </form>
+                        }
+
+
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.terminID" class="btn-details">Uredi</a>
+                            <a asp-action="Delete" asp-route-id="@item.terminID" class="btn-details">Obriši</a>
+                        }
+
+                        <a asp-action="Details" asp-route-id="@item.terminID" class="btn-details">Detalji</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

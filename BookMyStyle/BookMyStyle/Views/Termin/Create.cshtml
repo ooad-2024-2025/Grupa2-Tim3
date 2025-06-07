@@ -9,43 +9,39 @@
 }
 
 <div class="content-wrapper">
-    <h1 class="salon-title">DODAJ NOVI TERMIN</h1>
+    <h1 class="salon-title">Dodaj novi termin</h1>
+    <hr style="border-color: rgba(255,255,255,0.1);" />
 
     @if (TempData["Error"] != null)
     {
         <div class="alert alert-danger">@TempData["Error"]</div>
     }
 
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success">@TempData["Success"]</div>
-    }
-
-    <div class="details-container">
+    <div class="card-dark">
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-            <!-- Datum i vrijeme termina -->
-            <div class="form-group">
-                <label asp-for="DatumIVrijeme" class="control-label"></label>
+            <!-- Datum i vrijeme -->
+            <div class="form-group mb-3">
+                <label asp-for="DatumIVrijeme" class="control-label text-white">Datum i vrijeme termina</label>
                 <input asp-for="DatumIVrijeme" class="form-control" type="datetime-local" />
                 <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
             </div>
 
-            <!-- Odabir usluge -->
-            <div class="form-group">
-                <label asp-for="uslugaID" class="control-label"></label>
+            <!-- Usluga -->
+            <div class="form-group mb-3">
+                <label asp-for="uslugaID" class="control-label text-white">Odaberi uslugu</label>
                 <select asp-for="uslugaID" class="form-control" asp-items="ViewBag.Usluge">
                     <option value="">-- Odaberi uslugu --</option>
                 </select>
                 <span asp-validation-for="uslugaID" class="text-danger"></span>
             </div>
 
-            <!-- Submit -->
-            <div class="form-group" style="margin-top:20px;">
-                <button type="submit" class="btn-details">Spremi termin</button>
-                <a asp-action="Index" class="btn-details" style="margin-left:10px;">Nazad na listu</a>
+            <!-- Dugmad -->
+            <div class="buttons-row mt-4">
+                <button type="submit" class="btn-details">Spremi</button>
+                <a asp-action="Index" class="btn-details">Nazad</a>
             </div>
         </form>
     </div>
