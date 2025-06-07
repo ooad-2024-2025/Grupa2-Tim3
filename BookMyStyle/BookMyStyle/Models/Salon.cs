@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookMyStyle.Models
 {
@@ -24,9 +25,11 @@ namespace BookMyStyle.Models
             ErrorMessage = "Radno vrijeme mora biti u formatu HH:mm - HH:mm (24-satno vrijeme).")]
         public string RadnoVrijeme { get; set; }
 
-        
+       
         public ICollection<Usluga> Usluga { get; set; }
         public ICollection<Termin> Termin { get; set; }
-        
+        public ICollection<Korisnik> Frizeri { get; set; }
+
+
     }
 }

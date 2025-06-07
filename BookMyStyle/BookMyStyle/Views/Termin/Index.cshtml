@@ -1,73 +1,76 @@
 ﻿@model IEnumerable<BookMyStyle.Models.Termin>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Dostupni termini";
 }
 
-<h1>Index</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/salon.css" />
+}
 
-<p>
-    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-    {
-        <a asp-action="Create">Kreiraj termin</a>
-    }
-</p>
-<table class="table">
-    <thead>
+<h1 class="salon-title">DOSTUPNI TERMINI</h1>
+
+<div style="margin-bottom: 20px;">
+    <a asp-controller="Obavijest" asp-action="Index" class="btn btn-outline-primary">Moji termini</a>
+</div>
+
+@if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success">Kreiraj termin</a>
+    </p>
+}
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NazivSalona)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AdresaSalona)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NazivFrizera)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumIVrijeme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.salonID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.uslugaID)
-            </th>
-            <th></th>
+            <th>Naziv salona</th>
+            <th>Adresa salona</th>
+            <th>Frizer</th>
+            <th>Datum i vrijeme</th>
+            <th>Usluga</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
             <tr>
+                <td>@item.NazivSalona</td>
+                <td>@item.AdresaSalona</td>
+                <td>@item.NazivFrizera</td>
+                <td>@item.DatumIVrijeme.ToString("dd.MM.yyyy. HH:mm")</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NazivSalona)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdresaSalona)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NazivFrizera)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DatumIVrijeme)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.salonID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.uslugaID)
-                </td>
-                <td>
-                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer")) 
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.terminID">Edit</a> 
-                        <nobr>|</nobr>
-                        <a asp-action="Delete" asp-route-id="@item.terminID">Delete</a>
-                        <nobr>|</nobr>
+                    @{
+                        var usluge = ViewBag.Usluge as List<BookMyStyle.Models.Usluga>;
+                        var usluga = usluge?.FirstOrDefault(u => u.uslugaID == item.uslugaID);
+                        if (usluga != null)
+                        {
+                            <text>@usluga.Naziv</text>
+                        }
+                        else
+                        {
+                            <text>?</text>
+                        }
                     }
-                    <a asp-action="Details" asp-route-id="@item.terminID">Details</a>
-            </td>
-        </tr>
-}
+
+                    @if (User.IsInRole("Korisnik"))
+                    {
+                        <form asp-action="Zakazi" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@item.terminID" />
+                            <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Da li ste sigurni da želite zakazati ovaj termin?')">Zakaži</button>
+                        </form>
+                    }
+
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.terminID" class="btn btn-warning btn-sm">Uredi</a>
+                        <a asp-action="Delete" asp-route-id="@item.terminID" class="btn btn-danger btn-sm">Obriši</a>
+                    }
+
+                    <a asp-action="Details" asp-route-id="@item.terminID" class="btn btn-info btn-sm">Detalji</a>
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>

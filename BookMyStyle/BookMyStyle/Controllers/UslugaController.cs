@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookMyStyle.Data;
+using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookMyStyle.Data;
-using BookMyStyle.Models;
-using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookMyStyle.Controllers
 {
     public class UslugaController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public UslugaController(ApplicationDbContext context)
+        public UslugaController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
@@ -53,20 +56,7 @@ namespace BookMyStyle.Controllers
         // GET: Usluga/Create
         public IActionResult Create(int? salonID)
         {
-            if (salonID != null)
-            {
-                // Ako URL dolazi s ?salonID=3, onda DropDown bude samo taj salon i unaprijed odabran
-                ViewBag.SalonID = new SelectList(
-                    _context.Salon.Where(s => s.salonID == salonID),
-                    "salonID",
-                    "Naziv",
-                    salonID);
-            }
-            else
-            {
-                // Inače drop‐down popunimo svim salonima
-                ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv");
-            }
+           
             return View();
         }
 
@@ -74,21 +64,38 @@ namespace BookMyStyle.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
-        public async Task<IActionResult> Create([Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
+        public async Task<IActionResult> Create(Usluga usluga)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(usluga);
-                await _context.SaveChangesAsync();
-
-                // Opcionalno: nakon kreiranja, preusmjerite natrag na Details salona
-                return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
+                TempData["Greska"] = "Neispravni podaci. Molimo provjerite formu.";
+                return View(usluga);
             }
 
-            // Ako validacija ne prođe, ponovno popunimo DropDown listu salona (da oporavak forme ne bi pao)
-            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
-            return View(usluga);
+            var frizerId = _userManager.GetUserId(User);
+            var frizer = await _userManager.FindByIdAsync(frizerId);
+
+            if (frizer?.SalonID == null)
+            {
+                TempData["Greska"] = "Vaš korisnički račun nije povezan s nijednim salonom.";
+                return View(usluga);
+            }
+
+            usluga.salonID = frizer.SalonID.Value;
+
+            _context.Add(usluga);
+            await _context.SaveChangesAsync();
+
+            TempData["Uspjeh"] = "Usluga uspješno dodana.";
+
+            // vraćanje na prethodnu stranicu ako postoji Referer
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+                return Redirect(referer);
+
+            return RedirectToAction("Index", "Usluga");
         }
+
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Edit/5

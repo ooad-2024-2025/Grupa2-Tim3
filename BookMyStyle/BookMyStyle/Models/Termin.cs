@@ -13,24 +13,24 @@ namespace BookMyStyle.Models
         public int terminID { get; set; }
 
 
-        [Required]
+        
         [StringLength(30,ErrorMessage = "Naziv salona moze imati najviše 30 karaktera!")]
         [DisplayName("Naziv salona:")]
-        public string NazivSalona { get; set; }
+        public string? NazivSalona { get; set; }
 
 
-        [Required]
+        
         [StringLength(50,ErrorMessage = "Adresa salona može imati najviše 50 karaktera!")]
         [RegularExpression(@"[0-9| |a-z|A-Z]*", ErrorMessage = "Dozvoljeno je samo korištenje velikih i malih slova, brojeva i razmaka!")]
         [DisplayName("Adresa salona:")]
-        public string AdresaSalona { get; set; }
+        public string? AdresaSalona { get; set; }
 
 
-        [Required]
+        
         [StringLength(20,ErrorMessage ="Naziv frizera može imati najviše 20 karaktera!")]
         [RegularExpression(@"^[A-ZŽĆČŠĐ][a-zžćčšđ]+ [A-ZŽĆČŠĐ][a-zžćčšđ]+$", ErrorMessage = "Unesite ime i prezime u formatu: Ime Prezime.")]
         [DisplayName("Ime i prezime frizera: ")]
-        public string NazivFrizera { get; set; }
+        public string? NazivFrizera { get; set; }
 
 
         [Required]
@@ -48,6 +48,18 @@ namespace BookMyStyle.Models
         [Required]
         [ForeignKey("uslugaID")]
         public int uslugaID { get; set; }
+
+        // ➕ Korisnik koji je zakazao termin
+        public string? KorisnikID { get; set; }
+
+        [ForeignKey("KorisnikID")]
+        public Korisnik? Korisnik { get; set; }
+
+        // ➕ Frizer koji je kreirao termin
+        public string? FrizerID { get; set; }
+
+        [ForeignKey("FrizerID")]
+        public Korisnik? Frizer { get; set; }
 
     }
 

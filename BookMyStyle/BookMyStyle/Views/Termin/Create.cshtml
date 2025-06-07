@@ -9,51 +9,40 @@
 }
 
 <div class="content-wrapper">
-    <!-- Veliki naslov -->
     <h1 class="salon-title">DODAJ NOVI TERMIN</h1>
 
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
     <div class="details-container">
-        <!-- Forma -->
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
-
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <!-- Naziv salona -->
-            <div class="form-group">
-                <label asp-for="NazivSalona" class="control-label">Naziv salona:</label>
-                <input asp-for="NazivSalona" class="form-control" placeholder="Upišite naziv salona..." />
-                <span asp-validation-for="NazivSalona" class="text-danger"></span>
-            </div>
-
-            <!-- Adresa salona -->
-            <div class="form-group">
-                <label asp-for="AdresaSalona" class="control-label">Adresa salona:</label>
-                <input asp-for="AdresaSalona" class="form-control" placeholder="Upišite adresu salona..." />
-                <span asp-validation-for="AdresaSalona" class="text-danger"></span>
-            </div>
-
-            <!-- Ime i prezime frizera -->
-            <div class="form-group">
-                <label asp-for="NazivFrizera" class="control-label">Ime i prezime frizera:</label>
-                <input asp-for="NazivFrizera" class="form-control" placeholder="Upišite ime frizera..." />
-                <span asp-validation-for="NazivFrizera" class="text-danger"></span>
-            </div>
 
             <!-- Datum i vrijeme termina -->
             <div class="form-group">
-                <label asp-for="DatumIVrijeme" class="control-label">Datum i vrijeme termina:</label>
+                <label asp-for="DatumIVrijeme" class="control-label"></label>
                 <input asp-for="DatumIVrijeme" class="form-control" type="datetime-local" />
                 <span asp-validation-for="DatumIVrijeme" class="text-danger"></span>
             </div>
 
-            <!-- SalonID -->
-            <input asp-for="salonID" type="hidden" />
+            <!-- Odabir usluge -->
+            <div class="form-group">
+                <label asp-for="uslugaID" class="control-label"></label>
+                <select asp-for="uslugaID" class="form-control" asp-items="ViewBag.Usluge">
+                    <option value="">-- Odaberi uslugu --</option>
+                </select>
+                <span asp-validation-for="uslugaID" class="text-danger"></span>
+            </div>
 
-            <!-- UslugaID -->
-            <input asp-for="uslugaID" type="hidden" />
-
-            <!-- Gumbe za submit i odustani -->
+            <!-- Submit -->
             <div class="form-group" style="margin-top:20px;">
                 <button type="submit" class="btn-details">Spremi termin</button>
                 <a asp-action="Index" class="btn-details" style="margin-left:10px;">Nazad na listu</a>
@@ -63,7 +52,6 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

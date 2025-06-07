@@ -27,7 +27,13 @@ namespace BookMyStyle.Models
 
         [ForeignKey("terminID")]
         public int terminID { get; set; }
-       
+
+        [ForeignKey("Salon")]
+        public int? SalonID { get; set; }
+
+        public Salon? Salon { get; set; }
+
+
 
     }
 }

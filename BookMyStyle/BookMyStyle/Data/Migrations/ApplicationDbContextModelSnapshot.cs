@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BookMyStyle.Data.Migrations
+namespace BookMyStyle.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -74,6 +74,9 @@ namespace BookMyStyle.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int?>("SalonID")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -99,6 +102,8 @@ namespace BookMyStyle.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("SalonID");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -237,6 +242,12 @@ namespace BookMyStyle.Data.Migrations
                     b.Property<DateTime>("DatumIVrijeme")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FrizerID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("KorisnikID")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("NazivFrizera")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -254,6 +265,10 @@ namespace BookMyStyle.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("terminID");
+
+                    b.HasIndex("FrizerID");
+
+                    b.HasIndex("KorisnikID");
 
                     b.HasIndex("salonID");
 
@@ -495,13 +510,34 @@ namespace BookMyStyle.Data.Migrations
                     b.ToTable("SmtpSettings");
                 });
 
+            modelBuilder.Entity("BookMyStyle.Models.Korisnik", b =>
+                {
+                    b.HasOne("BookMyStyle.Models.Salon", "Salon")
+                        .WithMany("Frizeri")
+                        .HasForeignKey("SalonID");
+
+                    b.Navigation("Salon");
+                });
+
             modelBuilder.Entity("BookMyStyle.Models.Termin", b =>
                 {
+                    b.HasOne("BookMyStyle.Models.Korisnik", "Frizer")
+                        .WithMany()
+                        .HasForeignKey("FrizerID");
+
+                    b.HasOne("BookMyStyle.Models.Korisnik", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikID");
+
                     b.HasOne("BookMyStyle.Models.Salon", null)
                         .WithMany("Termin")
                         .HasForeignKey("salonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Frizer");
+
+                    b.Navigation("Korisnik");
                 });
 
             modelBuilder.Entity("BookMyStyle.Models.Usluga", b =>
@@ -568,6 +604,8 @@ namespace BookMyStyle.Data.Migrations
 
             modelBuilder.Entity("BookMyStyle.Models.Salon", b =>
                 {
+                    b.Navigation("Frizeri");
+
                     b.Navigation("Termin");
 
                     b.Navigation("Usluga");

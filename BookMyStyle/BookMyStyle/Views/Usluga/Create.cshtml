@@ -11,12 +11,20 @@
 <div class="content-wrapper">
     <h1 class="salon-title">Dodaj novu uslugu</h1>
 
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
     <div class="details-container">
-        @* Forma koja šalje POST u UslugaController.Create *@
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
 
-            @* Ako postoje poruke validacije, pokaži ih ovdje *@
+            <!-- povratak na prethodnu stranicu -->
+            <input type="hidden" name="returnUrl" value="@Context.Request.Headers["Referer"]" />
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
@@ -55,23 +63,16 @@
                 <span asp-validation-for="Tip" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="salonID" class="control-label">Salon:</label>
-                <select asp-for="salonID" class="form-control" asp-items="ViewBag.SalonID"></select>
-                <span asp-validation-for="salonID" class="text-danger"></span>
-            </div>
+            <input asp-for="salonID" type="hidden" />
 
             <div class="form-group" style="margin-top:20px;">
                 <button type="submit" class="btn btn-primary">Spremi uslugu</button>
                 <a asp-action="Index" class="btn btn-secondary" style="margin-left:10px;">Odustani</a>
             </div>
         </form>
-        @* Kraj forme *@
     </div>
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
