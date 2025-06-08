@@ -1,48 +1,62 @@
 ﻿@model BookMyStyle.Models.Recenzija
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/obavijest.css" />
 }
 
-<h1>Details</h1>
+           
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h2 class="text-white mb-4">Detalji </h2>
+        </div>
+    </div>
 
-<div>
-    <h4>Recenzija</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ocjena)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ocjena)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DatumObjave)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DatumObjave)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Komentar)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Komentar)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.korisnikID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.korisnikID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.salonID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.salonID)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.recenzijaID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card bg-dark text-white mb-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">RECENZIJA</h5>
+                    <hr class="border-secondary" />
+
+                    <dl class="row mb-4">
+                     
+                       
+                          <dt class="col-sm-3 text-secondary">Ocjena</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ocjena)</dd>
+                         <dt class="col-sm-3 text-secondary">Korisnik</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.korisnikID)</dd>
+
+                        <dt class="col-sm-3 text-secondary">Salon</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.salonID)</dd>
+
+                        <dt class="col-sm-3 text-secondary">Komentar</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Komentar)</dd>
+                        <dt class="col-sm-3 text-secondary">Datum Objave</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.DatumObjave)</dd>
+                    </dl>
+
+                    <div class="d-flex justify-content-center gap-3">
+                       
+
+
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.recenzijaID"
+                           class="btn btn-outline-light btn-sm">
+                            Uredi
+                        </a>
+                        <div>
+                      
+                        <a asp-action="Index"
+                           class="btn btn-outline-secondary btn-sm">
+                            Natrag na listu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div

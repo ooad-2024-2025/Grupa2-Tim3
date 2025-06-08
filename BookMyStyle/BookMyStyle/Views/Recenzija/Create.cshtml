@@ -1,15 +1,19 @@
 ﻿@model BookMyStyle.Models.Recenzija
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "RECENZIJA";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/obavijest.css" />
 }
 
-<h1>Create</h1>
+<h1>Napiši</h1>
 
-<h4>Recenzija</h4>
+<h4>Recenziju</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
+       
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -37,17 +41,21 @@
                 <input asp-for="salonID" class="form-control" />
                 <span asp-validation-for="salonID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-create">
+                    <i class="bi bi-plus-circle me-2"></i> Kreiraj
+                </button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="card-footer bg-dark text-left">
+    <a asp-action="Index" class="link-back">← Vrati se na listu</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
