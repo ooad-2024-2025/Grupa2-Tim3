@@ -8,7 +8,6 @@
 }
 
 <h1>Napiši</h1>
-
 <h4>Recenziju</h4>
 <hr />
 <div class="row">
@@ -16,31 +15,33 @@
        
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+
+            <!-- Ocjena -->
+            <div class="form-group mb-3">
                 <label asp-for="Ocjena" class="control-label"></label>
                 <input asp-for="Ocjena" class="form-control" />
                 <span asp-validation-for="Ocjena" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DatumObjave" class="control-label"></label>
-                <input asp-for="DatumObjave" class="form-control" />
-                <span asp-validation-for="DatumObjave" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+
+
+            <!-- Komentar -->
+            <div class="form-group mb-3">
                 <label asp-for="Komentar" class="control-label"></label>
-                <input asp-for="Komentar" class="form-control" />
+                <textarea asp-for="Komentar" class="form-control"></textarea>
                 <span asp-validation-for="Komentar" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="korisnikID" class="control-label"></label>
-                <input asp-for="korisnikID" class="form-control" />
-                <span asp-validation-for="korisnikID" class="text-danger"></span>
+
+            
+
+            <!-- Salon (dropdown) -->
+            <div class="form-group mb-3">
+                <label asp-for="SalonID" class="control-label">Salon</label>
+                <select asp-for="SalonID" asp-items="ViewBag.Saloni" class="form-control">
+                    <option value="">-- Odaberi salon --</option>
+                </select>
+                <span asp-validation-for="SalonID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="salonID" class="control-label"></label>
-                <input asp-for="salonID" class="form-control" />
-                <span asp-validation-for="salonID" class="text-danger"></span>
-            </div>
+
             <div class="d-grid">
                 <button type="submit" class="btn btn-success btn-create">
                     <i class="bi bi-plus-circle me-2"></i> Kreiraj

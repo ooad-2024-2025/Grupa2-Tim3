@@ -28,10 +28,10 @@
                           <dt class="col-sm-3 text-secondary">Ocjena</dt>
                         <dd class="col-sm-9">@Html.DisplayFor(model => model.Ocjena)</dd>
                          <dt class="col-sm-3 text-secondary">Korisnik</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.korisnikID)</dd>
+                        <dd class="col-sm-9">@Model.Korisnik?.UserName</dd>
 
                         <dt class="col-sm-3 text-secondary">Salon</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.salonID)</dd>
+                        <dd class="col-sm-9">@Model.Salon?.Naziv</dd>
 
                         <dt class="col-sm-3 text-secondary">Komentar</dt>
                         <dd class="col-sm-9">@Html.DisplayFor(model => model.Komentar)</dd>
@@ -43,11 +43,15 @@
                        
 
 
-                        <a asp-action="Edit"
-                           asp-route-id="@Model.recenzijaID"
-                           class="btn btn-outline-light btn-sm">
+                        @if (User.IsInRole("Administrator") || 
+                           (User.IsInRole("Korisnik") && Model.KorisnikID == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value))
+                           {
+                            <a asp-action="Edit"
+                            asp-route-id="@Model.recenzijaID"
+                            class="btn btn-outline-light btn-sm">
                             Uredi
                         </a>
+                         }
                         <div>
                       
                         <a asp-action="Index"

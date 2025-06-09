@@ -1,7 +1,7 @@
 ﻿@model BookMyStyle.Models.Recenzija
 
 @{
-    ViewData["Title"] = "BRISANJE";
+    ViewData["Title"] = "Obriši recenziju";
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/obavijest.css" />
@@ -31,28 +31,33 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Komentar)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.korisnikID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.korisnikID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.salonID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.salonID)
-        </dd>
+        
+        <dt class="col-sm-2">Korisnik</dt>
+        <dd class="col-sm-10">@Model.Korisnik?.UserName</dd>
+
+        <dt class="col-sm-2">Salon</dt>
+        <dd class="col-sm-10">@Model.Salon?.Naziv</dd>
+
     </dl>
-    
-   
+
+    @if (User.IsInRole("Administrator") ||
+        (User.IsInRole("Korisnik") && Model.KorisnikID == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value))
+    {
         <form asp-action="Delete" method="post" class="d-flex justify-content-start gap-2">
+            @Html.AntiForgeryToken()
             <input type="hidden" asp-for="recenzijaID" />
-        <button type="submit" class="btn btn-danger">
-            <i class="fas fa-trash-alt me-1"></i> Obriši
-        </button>
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt me-1"></i> Obriši
+            </button>
+            <a asp-action="Index" class="btn btn-outline-light">
+                <i class="fas fa-arrow-left me-1"></i> Natrag na listu
+            </a>
+        </form>
+    }
+    else
+    {
         <a asp-action="Index" class="btn btn-outline-light">
             <i class="fas fa-arrow-left me-1"></i> Natrag na listu
         </a>
-    </form>
+    }
 </div>

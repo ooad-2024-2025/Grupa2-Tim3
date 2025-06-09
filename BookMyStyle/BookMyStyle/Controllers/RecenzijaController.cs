@@ -1,30 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookMyStyle.Data;
+using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookMyStyle.Data;
-using BookMyStyle.Models;
-using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookMyStyle.Controllers
 {
     public class RecenzijaController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public RecenzijaController(ApplicationDbContext context)
+        public RecenzijaController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Recenzija
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Recenzija.ToListAsync());
+            ViewBag.Saloni = await _context.Salon.ToListAsync();
+            ViewBag.Korisnici = await _context.Users.ToListAsync();
+
+            var recenzije = await _context.Recenzija
+                .Include(r => r.Salon)
+                .Include(r => r.Korisnik)
+                 .OrderByDescending(r => r.Ocjena)
+                .ToListAsync();
+
+            return View(recenzije);
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
@@ -48,27 +61,52 @@ namespace BookMyStyle.Controllers
 
         [Authorize(Roles = "Administrator, Korisnik")]
         // GET: Recenzija/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            //dropdown lista
+            var saloni = await _context.Salon
+                .Select(s => new SelectListItem
+                {
+                    Value = s.salonID.ToString(),
+                    Text = s.Naziv
+                }).ToListAsync();
+
+            ViewBag.Saloni = saloni;
+
             return View();
         }
 
         // POST: Recenzija/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Korisnik")]
-        public async Task<IActionResult> Create([Bind("recenzijaID,Ocjena,DatumObjave,Komentar,korisnikID,salonID")] Recenzija recenzija)
+        public async Task<IActionResult> Create([Bind("Ocjena,Komentar,salonID")] Recenzija recenzija)
         {
+            var korisnikID = _userManager.GetUserId(User);
+            recenzija.KorisnikID = korisnikID;
+            recenzija.DatumObjave = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _context.Add(recenzija);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "Recenzija uspješno dodana.";
                 return RedirectToAction(nameof(Index));
             }
-            return View(recenzija);
+
+            // Ako model nije validan, ponovo popuni ViewBag.Saloni
+            ViewBag.Saloni = await _context.Salon
+                .Select(s => new SelectListItem
+                {
+                    Value = s.salonID.ToString(),
+                    Text = s.Naziv
+                }).ToListAsync();
+
+            return View(recenzija); ;
         }
+
+
 
         [Authorize(Roles = "Administrator, Korisnik")]
         // GET: Recenzija/Edit/5
@@ -78,34 +116,60 @@ namespace BookMyStyle.Controllers
             {
                 return NotFound();
             }
-
             var recenzija = await _context.Recenzija.FindAsync(id);
             if (recenzija == null)
             {
                 return NotFound();
             }
+
+            // Dozvoli samo vlasniku recenzije ili administratoru
+            var korisnikId = _userManager.GetUserId(User);
+            if (User.IsInRole("Korisnik") && recenzija.KorisnikID != korisnikId)
+            {
+                return Forbid(); // 403 - korisnik pokušava uređivati tuđu recenziju
+            }
+
             return View(recenzija);
+
         }
 
         // POST: Recenzija/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Korisnik")]
-        public async Task<IActionResult> Edit(int id, [Bind("recenzijaID,Ocjena,DatumObjave,Komentar,korisnikID,salonID")] Recenzija recenzija)
+        public async Task<IActionResult> Edit(int id, [Bind("recenzijaID,Ocjena,Komentar,salonID")] Recenzija recenzija)
         {
             if (id != recenzija.recenzijaID)
             {
                 return NotFound();
             }
 
+            // Dohvati originalnu recenziju iz baze
+            var original = await _context.Recenzija.AsNoTracking().FirstOrDefaultAsync(r => r.recenzijaID == id);
+            if (original == null)
+            {
+                return NotFound();
+            }
+            // Dozvoli samo vlasniku recenzije ili administratoru
+            var korisnikId = _userManager.GetUserId(User);
+            if (User.IsInRole("Korisnik") && original.KorisnikID != korisnikId)
+            {
+                return Forbid(); // 403 - korisnik pokušava urediti tuđu recenziju
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Zadrži korisnikID i DatumObjave iz originala (ne dolaze iz forme!)
+                    recenzija.KorisnikID = original.KorisnikID;
+                    recenzija.DatumObjave = original.DatumObjave;
+
                     _context.Update(recenzija);
                     await _context.SaveChangesAsync();
+                    TempData["Success"] = "Recenzija je uspješno ažurirana.";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,8 +182,15 @@ namespace BookMyStyle.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
+            // Ako validacija ne prođe, ponovo popuni salone
+            ViewBag.Saloni = await _context.Salon
+                .Select(s => new SelectListItem
+                {
+                    Value = s.salonID.ToString(),
+                    Text = s.Naziv
+                }).ToListAsync();
+
             return View(recenzija);
         }
 
@@ -139,6 +210,13 @@ namespace BookMyStyle.Controllers
                 return NotFound();
             }
 
+            //  Dodaj provjeru: samo vlasnik ili admin može pristupiti
+            var korisnikId = _userManager.GetUserId(User);
+            if (User.IsInRole("Korisnik") && recenzija.KorisnikID != korisnikId)
+            {
+                return Forbid(); // 403 - pokušaj brisanja tuđe recenzije
+            }
+
             return View(recenzija);
         }
 
@@ -149,12 +227,22 @@ namespace BookMyStyle.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var recenzija = await _context.Recenzija.FindAsync(id);
-            if (recenzija != null)
+            if (recenzija == null)
             {
-                _context.Recenzija.Remove(recenzija);
+                return NotFound();
             }
 
+            var korisnikId = _userManager.GetUserId(User);
+
+            //  Dozvoli samo ako je admin ili vlasnik recenzije
+            if (User.IsInRole("Korisnik") && recenzija.KorisnikID != korisnikId)
+            {
+                return Forbid(); // 403 - korisnik pokušava obrisati tuđu recenziju
+            }
+
+            _context.Recenzija.Remove(recenzija);
             await _context.SaveChangesAsync();
+            TempData["Success"] = "Recenzija je uspješno obrisana.";
             return RedirectToAction(nameof(Index));
         }
 

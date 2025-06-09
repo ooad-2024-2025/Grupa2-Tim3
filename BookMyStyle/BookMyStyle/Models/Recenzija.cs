@@ -11,13 +11,13 @@ namespace BookMyStyle.Models
         public int recenzijaID { get; set; }
 
 
-        [Required]
+       
         [Range(1, 5, ErrorMessage = "Unesena ocjena mora biti između 1 i 5.")]
         [DisplayName("Ocjena:")]
         public int Ocjena { get; set; }
 
 
-        [Required]
+       
         [DataType(DataType.DateTime)]
         [TestDate(ErrorMessage = "Datum i vrijeme moraju biti u sadašnjosti ili prošlosti.")]
         [DisplayName("Datum i vrijeme objave: ")]
@@ -29,13 +29,21 @@ namespace BookMyStyle.Models
         [DisplayName("Komentar:")]
         public string Komentar { get; set; }
 
-        [DisplayName("Korisnik ID:")]
-        [ForeignKey("korisnikID")]
-        public int korisnikID { get; set; }
 
-        [DisplayName("Salon ID:")]
-        [ForeignKey("salonID")]
-        public int salonID { get; set; }
+      
+
+        //  Korisnik koji je napisao recenziju
+        public string? KorisnikID { get; set; }
+
+        [ForeignKey("KorisnikID")]
+        public Korisnik? Korisnik { get; set; }
+
+        // salon za koji je napisana recenzija
+        public int? SalonID { get; set; }
+
+        [ForeignKey("SalonID")]
+        public Salon? Salon { get; set; }
+
     }
 
 

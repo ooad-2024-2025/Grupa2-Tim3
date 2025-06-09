@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
+  "WorkspaceRootPath": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\emina\\onedrive\\desktop\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Title": "Recenzija.cs",
+              "DocumentMoniker": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Recenzija.cs",
+              "RelativeDocumentMoniker": "Models\\Recenzija.cs",
+              "ToolTip": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Recenzija.cs",
+              "RelativeToolTip": "Models\\Recenzija.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T16:19:23.562Z",
+              "WhenOpened": "2025-06-09T23:09:21.37Z",
               "EditorCaption": ""
             }
           ]
