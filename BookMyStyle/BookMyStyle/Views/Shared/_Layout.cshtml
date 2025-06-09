@@ -9,13 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="~/css/salon.css" />
-    
-    
-    
-
-   
-
-
     <link rel="stylesheet" href="~/BookMyStyle.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -67,6 +60,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-controller="Obavijest" asp-action="Create">Kreiraj obavijest</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Termin" asp-action="Create">Kreiraj termin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Salon" asp-action="Create">Kreiraj salon</a>
+                                </li>
                             }
                         }
 
@@ -84,11 +83,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <!--<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - BookMyStyle - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
