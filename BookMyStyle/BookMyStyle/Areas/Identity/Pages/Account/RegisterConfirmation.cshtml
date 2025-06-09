@@ -1,0 +1,39 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Potvrda registracije";
+}
+
+@{
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+    </style>
+}
+
+<div class="center-content">
+    <div class="col-md-4">
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (@Model.DisplayConfirmAccountLink)
+            {
+                <p>
+                    <a id="confirm-link" href="@Model.EmailConfirmationUrl">Potvrdi registraciju</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Please check your email to confirm your account.
+                </p>
+            }
+        }
+    </div>
+<div/>
+    
+
