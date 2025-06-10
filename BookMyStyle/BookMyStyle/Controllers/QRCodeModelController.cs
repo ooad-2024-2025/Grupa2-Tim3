@@ -1,99 +1,73 @@
-﻿using System;
+﻿using BookMyStyle.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using QRCoder;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
-using BookMyStyle.Data;
-using BookMyStyle.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using QRCoder;
 
 namespace BookMyStyle.Controllers
 {
     public class QRCodeModelController : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
         private readonly SmtpSettings _smtpSettings;
 
         public QRCodeModelController(
-            ApplicationDbContext context,
             IWebHostEnvironment env,
             IOptions<SmtpSettings> smtpOptions)
         {
-            _context = context;
             _env = env;
             _smtpSettings = smtpOptions.Value;
-        }
-
-        // GET: QRCodeModel
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.QRCodeModels.ToListAsync());
         }
 
         // GET: QRCodeModel/Create
         public IActionResult Create()
         {
+            // CHANGED: uklonili smo pogrešan View("")
             return View();
         }
 
         // POST: QRCodeModel/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("QRCodeText")] QRCodeModel qRCodeModel)
+        public IActionResult Create([Bind("QRCodeText")] QRCodeModel qRCodeModel)
         {
             if (!ModelState.IsValid)
-            {
                 return View(qRCodeModel);
-            }
 
+            // 1) Generiraj URL za Confirm
+            string callbackUrl = Url.Action(
+                action: "Confirm",
+                controller: "QRCodeModel",
+                values: new { email = qRCodeModel.QRCodeText },
+                protocol: Request.Scheme
+            );
 
-            try
-            {
-                string callbackUrl = Url.Action(
-                    action: "Confirm",
-                    controller: "QRCodeModel",
-                    values: new { email = qRCodeModel.QRCodeText },
-                    protocol: Request.Scheme
-                );
+            // 2) Generiranje QR koda
+            using var qrGenerator = new QRCodeGenerator();
+            var qrData = qrGenerator.CreateQrCode(callbackUrl, QRCodeGenerator.ECCLevel.Q);
+            var png = new PngByteQRCode(qrData);
+            byte[] qrBytes = png.GetGraphic(20);
 
-                // generisanje qr koda
-                using var qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(callbackUrl, QRCodeGenerator.ECCLevel.Q);
-                var pngByteQRCode = new PngByteQRCode(qrCodeData);
-                byte[] qrCodeBytes = pngByteQRCode.GetGraphic(20);
+            // 3) Spremi sliku u wwwroot/GeneratedQRCode
+            string wwwroot = _env.WebRootPath;
+            string folder = Path.Combine(wwwroot, "GeneratedQRCode");
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
 
-                
-                string wwwroot = _env.WebRootPath;
-                string folder = Path.Combine(wwwroot, "GeneratedQRCode");
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
-                string fileName = $"qrcode_{Guid.NewGuid()}.png";
-                string fullPath = Path.Combine(folder, fileName);
-                await System.IO.File.WriteAllBytesAsync(fullPath, qrCodeBytes);
+            string fileName = $"qrcode_{Guid.NewGuid()}.png";
+            string fullPath = Path.Combine(folder, fileName);
+            System.IO.File.WriteAllBytes(fullPath, qrBytes);
 
-                string imageUrl = Url.Content($"~/GeneratedQRCode/{fileName}");
-                ViewBag.QRCodeImage = imageUrl;
-                ViewBag.CallbackUrl = callbackUrl;
+            // 4) Proslijedi URL slike i Confirm link u ViewBag
+            ViewBag.QRCodeImage = Url.Content($"~/GeneratedQRCode/{fileName}");
+            ViewBag.CallbackUrl = callbackUrl;
 
-               
-                _context.QRCodeModels.Add(qRCodeModel);
-                await _context.SaveChangesAsync();
-
-               
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception ex)
-            {
-                
-                return View(qRCodeModel);
-            }
+            // CHANGED: vraćamo se u Create.cshtml (s modelom), gdje ćete prikazati sliku i link
+            return View(qRCodeModel);
         }
 
         // GET: QRCodeModel/Confirm?email=neko@primjer.ba
@@ -101,9 +75,7 @@ namespace BookMyStyle.Controllers
         public IActionResult Confirm(string email)
         {
             if (string.IsNullOrEmpty(email) || !IsValidEmail(email))
-            {
                 return Content("Neispravan poziv potvrde.");
-            }
 
             try
             {
@@ -142,10 +114,10 @@ namespace BookMyStyle.Controllers
                 Subject = "Potvrda o uspješnom skeniranju QR koda",
                 IsBodyHtml = true,
                 Body = $@"
-                        <h3>Dragi/a korisniče,</h3>
-                        <p>Vaš QR kod je uspješno skeniran i uspješno je potvrđena Vaša rezeravacija termina.</p>
-                        <p>Poslali smo potvrdu na: <strong>{toEmail}</strong></p>
-                        <p>Hvala što koristite naš sistem BookMyStyle!</p>"
+                    <h3>Dragi/a korisniče,</h3>
+                    <p>Vaš QR kod je uspješno skeniran i potvrđena je Vaša rezervacija.</p>
+                    <p>Poslali smo potvrdu na: <strong>{toEmail}</strong></p>
+                    <p>Hvala što koristite BookMyStyle!</p>"
             };
             msg.To.Add(new MailAddress(toEmail));
 

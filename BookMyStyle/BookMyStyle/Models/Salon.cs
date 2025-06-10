@@ -6,6 +6,8 @@ namespace BookMyStyle.Models
 {
     public class Salon
     {
+        internal readonly object Termin;
+
         [Key]
         public int salonID { get; set; }
 
@@ -25,10 +27,8 @@ namespace BookMyStyle.Models
             ErrorMessage = "Radno vrijeme mora biti u formatu HH:mm - HH:mm (24-satno vrijeme).")]
         public string RadnoVrijeme { get; set; }
 
-       
-        public ICollection<Usluga> Usluga { get; set; }
-        public ICollection<Termin> Termin { get; set; }
-        public ICollection<Korisnik> Frizeri { get; set; }
+
+        public virtual ICollection<Usluga> Usluge { get; set; }
 
 
     }
