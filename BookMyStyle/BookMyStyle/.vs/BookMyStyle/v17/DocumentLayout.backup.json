@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
+  "WorkspaceRootPath": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\recenzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\recenzija\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\recenzija\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\emina\\onedrive\\desktop\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\termin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\termin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Recenzija\\Create.cshtml",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Create.cshtml",
-              "RelativeToolTip": "Views\\Recenzija\\Create.cshtml",
-              "ViewState": "AgIAABoAAAAAAAAAAADwvzEAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-10T09:15:00.473Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TerminController.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\TerminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TerminController.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\TerminController.cs",
-              "RelativeToolTip": "Controllers\\TerminController.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T09:11:17.211Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Recenzija.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Recenzija.cs",
-              "RelativeDocumentMoniker": "Models\\Recenzija.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Recenzija.cs",
-              "RelativeToolTip": "Models\\Recenzija.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwBoAAAB5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T09:08:51.73Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Termin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Termin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Termin\\Index.cshtml",
+              "RelativeToolTip": "Views\\Termin\\Index.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-10T18:36:28.39Z",
               "EditorCaption": ""
             }
           ]

@@ -26,19 +26,29 @@
             white-space: nowrap;
             padding: 6px 12px;
         }
+
     </style>
 }
 
 <div class="content-wrapper">
     <h1 class="salon-title">DOSTUPNI TERMINI</h1>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <a asp-controller="Obavijest" asp-action="Index" class="btn-details">Moji termini</a>
 
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex gap-2">
+            <a asp-controller="Obavijest" asp-action="Index" class="btn-details">Moji termini</a>
+            <button class="btn-details" onclick="document.getElementById('sort-section').classList.toggle('d-none')">Filteri</button>
+        </div>
         @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
         {
             <a asp-action="Create" class="btn-details">Kreiraj termin</a>
         }
+    </div>
+    <div id="sort-section" class="mb-3 d-none">
+        <select id="sortByPrice" class="form-select form-select-sm w-auto" onchange="sortByPrice()">
+            <option value="desc">Cijena: Viša ka nižoj</option>
+            <option value="asc">Cijena: Niža ka višoj</option>
+        </select>
     </div>
 
 
@@ -60,7 +70,7 @@
                 var usluga = ((List<BookMyStyle.Models.Usluga>)ViewBag.Usluge)
                 .FirstOrDefault(u => u.uslugaID == item.uslugaID);
 
-                <tr>
+                <tr class="termin-row" data-cijena="@(usluga?.Cijena ?? 0)">
                     <td>@item.NazivSalona</td>
                     <td>@item.AdresaSalona</td>
                     <td>@item.NazivFrizera</td>
@@ -90,3 +100,26 @@
         </tbody>
     </table>
 </div>
+
+
+@section Scripts {
+    <script>
+        function sortByPrice() {
+            const sortOrder = document.getElementById("sortByPrice").value;
+            const rows = Array.from(document.querySelectorAll(".termin-row"));
+
+            const tbody = document.querySelector(".table-custom tbody");
+
+            const sortedRows = rows.sort((a, b) => {
+                const aPrice = parseFloat(a.getAttribute("data-cijena"));
+                const bPrice = parseFloat(b.getAttribute("data-cijena"));
+
+                return sortOrder === "asc" ? aPrice - bPrice : bPrice - aPrice;
+            });
+
+            // Očisti i dodaj sortirano
+            tbody.innerHTML = "";
+            sortedRows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+}
