@@ -40,6 +40,7 @@ wwwroot\GeneratedQRCode\qrcode_eae638db-9cee-48d3-b1aa-f88baf836bcf.png
 wwwroot\GeneratedQRCode\qrcode_f5ab0338-274c-46a2-825f-a92899baf8a2.png
 wwwroot\GeneratedQRCode\qrcode_f8a05b4a-317f-4631-bdfa-0d59fb5068ac.png
 wwwroot\GeneratedQRCode\qrcode_fbc89b1e-ad95-464f-8b37-6a0a5e90d9a7.png
+wwwroot\images\bmsbackground.png
 wwwroot\images\BookMyStyle logo.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

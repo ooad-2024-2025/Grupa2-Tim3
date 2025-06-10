@@ -2,9 +2,180 @@
     ViewData["Title"] = "Početna";
 }
 
+@section Styles {
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
 
+        .hero {
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(30, 30, 30, 0.85);
+            border-radius: 10px;
+            margin: 2rem auto 1rem auto;
+            max-width: 800px;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Dobro došli na stranicu BookMyStyle</h1>
-    <p>DADADAD</p>
+            .hero img {
+                width: 150px;
+                margin-bottom: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                color: #ccc;
+            }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 2rem 2rem 2rem;
+            gap: 2rem;
+            margin-top: 0; 
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border: 2px solid white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0 15px rgba(255,255,255,0.4);
+            }
+
+            .card h3 {
+                margin-bottom: 1rem;
+                color: #00d2a8;
+            }
+
+            .card p {
+                color: #ddd;
+            }
+
+        .subtitle {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #00d2a8;
+        }
+
+        .highlight {
+            color: #00d2a8;
+            font-weight: bold;
+        }
+
+        a.card-link {
+            text-decoration: none;
+        }
+
+        .layout-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .side-image img {
+            max-width: 150px;
+            height: auto;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border: 1px solid white;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+            .card h3 {
+                margin-bottom: 1rem;
+                color: #00d2a8;
+            }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+}
+
+<div class="layout-wrapper">
+    <div class="side-image">
+        <img src="~/images/bmsbackground.png" alt="BookMyStyle logo" />
+    </div>
+
+    <div class="main-content">
+        <div class="hero">
+            <h1>BookMyStyle</h1>
+            <p>Vaša destinacija za jednostavno rezervisanje termina i stiliziranje u renomiranim salonima.</p>
+            <p class="subtitle">Treba Vam <span class="highlight">brza rezervacija</span> za kvalitetne usluge? Na pravom ste mjestu!</p>
+        </div>
+
+        <div class="cards">
+            <a href="@Url.Action("Index", "Salon")" class="card-link">
+                <div class="card">
+                    <h3>Najbolji saloni</h3>
+                    <p>Pregledajte preporučene salone koji Vam odgovaraju i rezervišite svoj termin odmah.</p>
+                </div>
+            </a>
+            <a href="@Url.Action("Index", "Recenzija")" class="card-link">
+                <div class="card">
+                    <h3>Recenzije korisnika</h3>
+                    <p>Pročitajte iskustva drugih korisnika i podijelite svoje utiske.</p>
+                </div>
+            </a>
+            <a href="@Url.Action("Index", "Termin")" class="card-link">
+                <div class="card">
+                    <h3>Brza rezervacija</h3>
+                    <p>Rezervišite termin u samo nekoliko klikova uz potvrdu putem QR koda.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="side-image">
+        <img src="~/images/bmsbackground.png" alt="BookMyStyle logo" />
+    </div>
 </div>
