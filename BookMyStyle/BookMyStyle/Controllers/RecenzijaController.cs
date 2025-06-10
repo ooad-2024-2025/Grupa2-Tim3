@@ -81,7 +81,7 @@ namespace BookMyStyle.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Korisnik")]
-        public async Task<IActionResult> Create([Bind("Ocjena,Komentar,salonID")] Recenzija recenzija)
+        public async Task<IActionResult> Create([Bind("Ocjena,Komentar,SalonID")] Recenzija recenzija)
         {
             var korisnikID = _userManager.GetUserId(User);
             recenzija.KorisnikID = korisnikID;
@@ -138,7 +138,7 @@ namespace BookMyStyle.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Korisnik")]
-        public async Task<IActionResult> Edit(int id, [Bind("recenzijaID,Ocjena,Komentar,salonID")] Recenzija recenzija)
+        public async Task<IActionResult> Edit(int id, [Bind("recenzijaID,Ocjena,Komentar,SalonID")] Recenzija recenzija)
         {
             if (id != recenzija.recenzijaID)
             {

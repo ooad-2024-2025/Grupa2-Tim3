@@ -29,6 +29,7 @@ wwwroot\GeneratedQRCode\qrcode_99197aa3-4625-492c-bedf-a4d6b07226fd.png
 wwwroot\GeneratedQRCode\qrcode_9f838f44-1cb6-4dcd-bd14-9e9cb9cf0fc9.png
 wwwroot\GeneratedQRCode\qrcode_a2fad5b3-c879-4cf1-8097-0e4951f08107.png
 wwwroot\GeneratedQRCode\qrcode_a693d674-787d-486c-b2b2-68e6c0ea7cc2.png
+wwwroot\GeneratedQRCode\qrcode_aa03be3d-fb4b-4c02-ad7e-22b3fc1b970e.png
 wwwroot\GeneratedQRCode\qrcode_b05a3adb-7ea1-4ae1-8a75-363f702d36e8.png
 wwwroot\GeneratedQRCode\qrcode_bc9ccf37-2066-4143-9a17-0f21c91b9581.png
 wwwroot\GeneratedQRCode\qrcode_bdac2afd-9661-4657-a4d5-f8de8a493afc.png
@@ -41,8 +42,6 @@ wwwroot\GeneratedQRCode\qrcode_f8a05b4a-317f-4631-bdfa-0d59fb5068ac.png
 wwwroot\GeneratedQRCode\qrcode_fbc89b1e-ad95-464f-8b37-6a0a5e90d9a7.png
 wwwroot\images\BookMyStyle logo.png
 wwwroot\js\site.js
-wwwroot\lib\bootstrap\dist\css\bootstrap.css
-wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -67,6 +66,8 @@ wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
@@ -80,15 +81,15 @@ wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 wwwroot\lib\bootstrap\LICENSE
-wwwroot\lib\jquery\dist\jquery.js
-wwwroot\lib\jquery\dist\jquery.min.js
-wwwroot\lib\jquery\dist\jquery.min.map
-wwwroot\lib\jquery\LICENSE.txt
+wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
 wwwroot\lib\jquery-validation\dist\additional-methods.js
 wwwroot\lib\jquery-validation\dist\additional-methods.min.js
 wwwroot\lib\jquery-validation\dist\jquery.validate.js
 wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
 wwwroot\lib\jquery-validation\LICENSE.md
-wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
-wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
-wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\LICENSE.txt

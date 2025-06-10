@@ -24,8 +24,7 @@ namespace BookMyStyle.Models
         public DateTime DatumObjave { get; set; }
 
         [Required(ErrorMessage = "Komentar je obavezan.")]
-        [StringLength(maximumLength:150,MinimumLength =10, ErrorMessage = "Komentar može imati između 10 i 150 znakova!")]
-        [RegularExpression(@"[0-9| |a-z|A-Z]*", ErrorMessage = "Dozvoljeno je samo korištenje velikih i malih slova, brojeva i razmaka!")]
+        [StringLength(maximumLength:150,MinimumLength =1, ErrorMessage = "Komentar može imati između 10 i 150 znakova!")]
         [DisplayName("Komentar:")]
         public string Komentar { get; set; }
 
