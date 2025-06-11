@@ -25,6 +25,12 @@
         </div>
 
         <div class="card-body">
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger text-center my-2" role="alert">
+                    @ViewBag.Error
+                </div>
+            }
             <form asp-action="Create" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
@@ -70,13 +76,10 @@
             }
         </div>
 
-        <div class="card-footer text-center bg-light">
-            <a asp-controller="Obavijest"
-               asp-action="Index"
-               class="btn btn-outline-secondary btn-sm">
-                Nazad na listu obavijesti
-            </a>
-        </div>
+        <a asp-controller="Obavijest" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            Nazad na listu obavijesti
+        </a>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

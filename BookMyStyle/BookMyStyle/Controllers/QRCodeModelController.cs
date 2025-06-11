@@ -1,12 +1,11 @@
-﻿using BookMyStyle.Models;
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using QRCoder;
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Mail;
 
 namespace BookMyStyle.Controllers
 {
@@ -26,33 +25,35 @@ namespace BookMyStyle.Controllers
         // GET: QRCodeModel/Create
         public IActionResult Create()
         {
-            // CHANGED: uklonili smo pogrešan View("")
             return View();
         }
 
         // POST: QRCodeModel/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("QRCodeText")] QRCodeModel qRCodeModel)
+        public IActionResult Create(string QRCodeText)
         {
-            if (!ModelState.IsValid)
-                return View(qRCodeModel);
+            if (string.IsNullOrEmpty(QRCodeText) || !IsValidEmail(QRCodeText))
+            {
+                ViewBag.Error = "Unesite ispravan e-mail.";
+                return View();
+            }
 
-            // 1) Generiraj URL za Confirm
+            // generiši callback url (link za potvrdu)
             string callbackUrl = Url.Action(
                 action: "Confirm",
                 controller: "QRCodeModel",
-                values: new { email = qRCodeModel.QRCodeText },
+                values: new { email = QRCodeText },
                 protocol: Request.Scheme
             );
 
-            // 2) Generiranje QR koda
+            // generiši QR kod za callback url
             using var qrGenerator = new QRCodeGenerator();
-            var qrData = qrGenerator.CreateQrCode(callbackUrl, QRCodeGenerator.ECCLevel.Q);
-            var png = new PngByteQRCode(qrData);
-            byte[] qrBytes = png.GetGraphic(20);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(callbackUrl, QRCodeGenerator.ECCLevel.Q);
+            var pngByteQRCode = new PngByteQRCode(qrCodeData);
+            byte[] qrCodeBytes = pngByteQRCode.GetGraphic(20);
 
-            // 3) Spremi sliku u wwwroot/GeneratedQRCode
+            // snimi QR kao sliku u wwwroot/GeneratedQRCode
             string wwwroot = _env.WebRootPath;
             string folder = Path.Combine(wwwroot, "GeneratedQRCode");
             if (!Directory.Exists(folder))
@@ -60,14 +61,14 @@ namespace BookMyStyle.Controllers
 
             string fileName = $"qrcode_{Guid.NewGuid()}.png";
             string fullPath = Path.Combine(folder, fileName);
-            System.IO.File.WriteAllBytes(fullPath, qrBytes);
+            System.IO.File.WriteAllBytes(fullPath, qrCodeBytes);
 
-            // 4) Proslijedi URL slike i Confirm link u ViewBag
-            ViewBag.QRCodeImage = Url.Content($"~/GeneratedQRCode/{fileName}");
+            string imageUrl = Url.Content($"~/GeneratedQRCode/{fileName}");
+            ViewBag.QRCodeImage = imageUrl;
             ViewBag.CallbackUrl = callbackUrl;
+            ViewBag.EnteredEmail = QRCodeText;
 
-            // CHANGED: vraćamo se u Create.cshtml (s modelom), gdje ćete prikazati sliku i link
-            return View(qRCodeModel);
+            return View();
         }
 
         // GET: QRCodeModel/Confirm?email=neko@primjer.ba
@@ -91,7 +92,7 @@ namespace BookMyStyle.Controllers
             return View("Confirmed");
         }
 
-        #region Helper Methods
+        // ========== HELPER METODE ==========
 
         private bool IsValidEmail(string email)
         {
@@ -115,9 +116,9 @@ namespace BookMyStyle.Controllers
                 IsBodyHtml = true,
                 Body = $@"
                     <h3>Dragi/a korisniče,</h3>
-                    <p>Vaš QR kod je uspješno skeniran i potvrđena je Vaša rezervacija.</p>
-                    <p>Poslali smo potvrdu na: <strong>{toEmail}</strong></p>
-                    <p>Hvala što koristite BookMyStyle!</p>"
+                    <p>Vaš QR kod je uspješno skeniran i potvrđena je Vaša rezervacija termina.</p>
+                    <p>Potvrda je poslata na: <strong>{toEmail}</strong></p>
+                    <p>Hvala što koristite naš sistem BookMyStyle!</p>"
             };
             msg.To.Add(new MailAddress(toEmail));
 
@@ -128,7 +129,5 @@ namespace BookMyStyle.Controllers
             };
             client.Send(msg);
         }
-
-        #endregion
     }
 }

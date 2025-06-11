@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,63 +23,41 @@ namespace BookMyStyle.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles = "Administrator, Frizer")]
-        // GET: Usluga?salonID=5
-        public async Task<IActionResult> Index(int? salonID)   // ADDED: filtriranje po salonu
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
+        // GET: Usluga
+        public async Task<IActionResult> Index()
         {
-            var query = _context.Usluga
-                                .Include(u => u.Salon)
-                                .AsQueryable();
-
-            if (salonID.HasValue)
-            {
-                query = query.Where(u => u.salonID == salonID.Value);
-                ViewBag.SalonID = salonID.Value;              // šaljemo ID u view ako treba
-            }
-
-            var usluge = await query.ToListAsync();
+            // Možete u budućnosti uključiti i .Include(s => s.Salon) ako želite prikazati naziv salona uz uslugu
+            var usluge = await _context.Usluga.Include(u => u.Salon).ToListAsync();
             return View(usluge);
         }
 
-        [Authorize(Roles = "Administrator, Frizer")]
+        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Usluga/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (!id.HasValue) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
             var usluga = await _context.Usluga
-                .Include(u => u.Salon)
-                .FirstOrDefaultAsync(m => m.uslugaID == id.Value);
+                .Include(u => u.Salon) // da vidite i naziv salona u Details viewu
+                .FirstOrDefaultAsync(m => m.uslugaID == id);
+            if (usluga == null)
+            {
+                return NotFound();
+            }
 
-            if (usluga == null) return NotFound();
             return View(usluga);
         }
 
         [Authorize(Roles = "Administrator, Frizer")]
-        // GET: Usluga/Create?salonID=5
-        public async Task<IActionResult> Create(int? salonID)
+        // GET: Usluga/Create
+        public IActionResult Create(int? salonID)
         {
-            var model = new Usluga();
-
-            if (User.IsInRole("Frizer"))
-            {
-                // ADDED: frizer može dodavati usluge samo u svoj salon
-                var frizer = await _userManager.GetUserAsync(User);
-                if (frizer?.SalonID == null)
-                    return Forbid();
-                model.salonID = frizer.SalonID.Value;
-            }
-            else if (User.IsInRole("Administrator"))
-            {
-                // ADDED: admin može birati salon iz padajuće liste
-                ViewBag.Saloni = new SelectList(_context.Salon, "salonID", "Naziv");
-            }
-
-            // ADDED: ako smo dohvatili salonID kroz ruta, prepiši ga
-            if (salonID.HasValue)
-                model.salonID = salonID.Value;
-
-            return View(model);
+           
+            return View();
         }
 
         // POST: Usluga/Create
@@ -86,47 +66,54 @@ namespace BookMyStyle.Controllers
         [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> Create(Usluga usluga)
         {
-            // ADDED: uvijek zaštitimo salonID iz trenutnog usera (frizer ne može lažirati)
-            if (User.IsInRole("Frizer"))
-            {
-                var frizer = await _userManager.GetUserAsync(User);
-                usluga.salonID = frizer.SalonID.Value;
-            }
-
             if (!ModelState.IsValid)
             {
-                // ako je admin, ponovo napuni listu salona
-                if (User.IsInRole("Administrator"))
-                    ViewBag.Saloni = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
+                TempData["Greska"] = "Neispravni podaci. Molimo provjerite formu.";
                 return View(usluga);
             }
+
+            var frizerId = _userManager.GetUserId(User);
+            var frizer = await _userManager.FindByIdAsync(frizerId);
+
+            if (frizer?.SalonID == null)
+            {
+                TempData["Greska"] = "Vaš korisnički račun nije povezan s nijednim salonom.";
+                return View(usluga);
+            }
+
+            usluga.salonID = frizer.SalonID.Value;
 
             _context.Add(usluga);
             await _context.SaveChangesAsync();
 
-            // nakon uspjeha, vraćamo se na detalje tog salona
-            return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
+            TempData["Uspjeh"] = "Usluga uspješno dodana.";
+
+            // vraćanje na prethodnu stranicu ako postoji Referer
+            var referer = Request.Headers["Referer"].ToString();
+            if (!string.IsNullOrEmpty(referer))
+                return Redirect(referer);
+
+            return RedirectToAction("Index", "Usluga");
         }
+
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (!id.HasValue) return NotFound();
-            var usluga = await _context.Usluga.FindAsync(id.Value);
-            if (usluga == null) return NotFound();
-
-            if (User.IsInRole("Frizer"))
+            if (id == null)
             {
-                var frizer = await _userManager.GetUserAsync(User);
-                if (usluga.salonID != frizer.SalonID)
-                    return Forbid();
-            }
-            else if (User.IsInRole("Administrator"))
-            {
-                ViewBag.Saloni = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
+                return NotFound();
             }
 
+            var usluga = await _context.Usluga.FindAsync(id);
+            if (usluga == null)
+            {
+                return NotFound();
+            }
+
+            // Prilikom Edit prikaza također želimo DropDown svih salona s aktivnim odabirom
+            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
             return View(usluga);
         }
 
@@ -134,60 +121,76 @@ namespace BookMyStyle.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
-        public async Task<IActionResult> Edit(int id, Usluga usluga)
+        public async Task<IActionResult> Edit(int id, [Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
         {
-            if (id != usluga.uslugaID) return NotFound();
-
-            if (User.IsInRole("Frizer"))
+            if (id != usluga.uslugaID)
             {
-                var frizer = await _userManager.GetUserAsync(User);
-                usluga.salonID = frizer.SalonID.Value;
+                return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (User.IsInRole("Administrator"))
-                    ViewBag.Saloni = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
-                return View(usluga);
+                try
+                {
+                    _context.Update(usluga);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UslugaExists(usluga.uslugaID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
-
-            _context.Update(usluga);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
+            // Ako validacija ne prođe, ponovo popunimo DropDown listu
+            ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
+            return View(usluga);
         }
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Usluga/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (!id.HasValue) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var usluga = await _context.Usluga
                 .Include(u => u.Salon)
-                .FirstOrDefaultAsync(m => m.uslugaID == id.Value);
-            if (usluga == null) return NotFound();
-
-            if (User.IsInRole("Frizer"))
+                .FirstOrDefaultAsync(m => m.uslugaID == id);
+            if (usluga == null)
             {
-                var frizer = await _userManager.GetUserAsync(User);
-                if (usluga.salonID != frizer.SalonID)
-                    return Forbid();
+                return NotFound();
             }
 
             return View(usluga);
         }
 
+        // POST: Usluga/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usluga = await _context.Usluga.FindAsync(id);
-            _context.Usluga.Remove(usluga);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
+            if (usluga != null)
+            {
+                _context.Usluga.Remove(usluga);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         private bool UslugaExists(int id)
-            => _context.Usluga.Any(e => e.uslugaID == id);
+        {
+            return _context.Usluga.Any(e => e.uslugaID == id);
+        }
     }
 }
