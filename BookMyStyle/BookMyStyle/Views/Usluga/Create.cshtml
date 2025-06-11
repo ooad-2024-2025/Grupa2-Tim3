@@ -106,7 +106,6 @@
             }
 
                 .create-usluga-card .btn-cancel:hover {
-                    
                     color: #fff;
                 }
     </style>
@@ -119,7 +118,21 @@
     <div class="card-body">
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="salonID" value="@ViewBag.salonID" />
+
+            @if (User.IsInRole("Administrator"))
+            {
+                <div class="form-group">
+                    <label asp-for="salonID">Salon:</label>
+                    <select asp-for="salonID" asp-items="ViewBag.SalonID" class="form-control">
+                        <option value="">-- Odaberite salon --</option>
+                    </select>
+                    <span asp-validation-for="salonID" class="text-danger"></span>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" asp-for="salonID" value="@ViewBag.FrizerovSalonID" />
+            }
 
             <div class="form-group">
                 <label asp-for="Cijena">Cijena usluge:</label>

@@ -41,9 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Obavijest" asp-action="Index">Obavijesti</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Usluga" asp-action="Index">Usluge</a>
-                        </li>
+                        
 
                         <!-- Prikaz dodatnih opcija za autentifikovane korisnike -->
                         @if (User.Identity?.IsAuthenticated ?? false)
@@ -60,6 +58,9 @@
 
                             @if (User.IsInRole("Administrator"))
                             {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Usluga" asp-action="Index">Usluge</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-controller="Obavijest" asp-action="Create">Kreiraj obavijest</a>
                                 </li>

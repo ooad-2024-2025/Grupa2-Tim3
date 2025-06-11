@@ -36,7 +36,8 @@
                     <td>@item.RadnoVrijeme</td>
                     <td>
                         @* Stilizovani dugmad za Uredi, Obriši i Detalji *@
-                        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                        @if (User.IsInRole("Administrator") ||(User.IsInRole("Frizer") 
+                        && ViewBag.MojSalonID != null && ViewBag.MojSalonID == item.salonID))
                         {
                             <a asp-action="Edit" asp-route-id="@item.salonID" class="btn-details">Uredi</a>
                             <a asp-action="Delete" asp-route-id="@item.salonID" class="btn-details">Obriši</a>

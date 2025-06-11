@@ -23,7 +23,7 @@ namespace BookMyStyle.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles = "Administrator, Korisnik, Frizer")]
+        [Authorize(Roles = "Administrator")]
         // GET: Usluga
         public async Task<IActionResult> Index()
         {
@@ -52,60 +52,75 @@ namespace BookMyStyle.Controllers
             return View(usluga);
         }
 
-        [Authorize(Roles = "Administrator, Frizer")]
+
         // GET: Usluga/Create
-        public IActionResult Create(int? salonID)
+        [Authorize(Roles = "Administrator, Frizer")]
+        public async Task<IActionResult> Create()
         {
-            ViewBag.salonID = salonID;
+            var korisnik = await _userManager.GetUserAsync(User);
+
+            if (User.IsInRole("Administrator"))
+            {
+                ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv");
+            }
+            else if (korisnik?.SalonID != null)
+            {
+                ViewBag.FrizerovSalonID = korisnik.SalonID;
+            }
+
             return View();
         }
 
-        // POST: Usluga/Create
+
+
+
         // POST: Usluga/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
-        public async Task<IActionResult> Create([Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
+        public async Task<IActionResult> Create([Bind("Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
         {
+            var korisnik = await _userManager.GetUserAsync(User);
+            var salon = await _context.Salon.FirstOrDefaultAsync(s => s.salonID == korisnik.SalonID);
+
+            // Oslobađamo se validacije za navigacijsku properti
+            ModelState.Remove("Salon");
+
+            if (User.IsInRole("Frizer") && korisnik?.SalonID != null)
+            {
+                usluga.salonID = salon.salonID;
+            }
+
+            if (User.IsInRole("Administrator") && usluga.salonID == 0)
+            {
+                ModelState.AddModelError("salonID", "Salon je obavezan.");
+            }
+
             if (!ModelState.IsValid)
             {
-                TempData["Greska"] = "Neispravni podaci. Molimo provjerite formu.";
-                // NOVO: vrati salonID u ViewBag da ostane u hidden polju na ponovnom iscrtavanju forme
-                if (Request.Form.ContainsKey("salonID"))
-                    ViewBag.salonID = Request.Form["salonID"];
+                if (User.IsInRole("Administrator"))
+                {
+                    ViewBag.SalonID = new SelectList(_context.Salon, "salonID", "Naziv", usluga.salonID);
+                }
+                else
+                {
+                    ViewBag.FrizerovSalonID = korisnik?.SalonID;
+                }
+
                 return View(usluga);
             }
 
-            // salonID je već stigao kroz model binder!
-
-            // DODATNA sigurnost za frizera bez salona
-            if (usluga.salonID == 0)
-            {
-                var frizerId = _userManager.GetUserId(User);
-                var frizer = await _userManager.FindByIdAsync(frizerId);
-
-                if (frizer?.SalonID == null)
-                {
-                    TempData["Greska"] = "Vaš korisnički račun nije povezan s nijednim salonom.";
-                    if (Request.Form.ContainsKey("salonID"))
-                        ViewBag.salonID = Request.Form["salonID"];
-                    return View(usluga);
-                }
-                usluga.salonID = frizer.SalonID.Value;
-            }
-
-            _context.Add(usluga);
+            _context.Usluga.Add(usluga);
             await _context.SaveChangesAsync();
 
             TempData["Uspjeh"] = "Usluga uspješno dodana.";
-
-            // vraćanje na prethodnu stranicu ako postoji Referer
-            var referer = Request.Headers["Referer"].ToString();
-            if (!string.IsNullOrEmpty(referer))
-                return Redirect(referer);
-
-            return RedirectToAction("Index", "Usluga");
+            return RedirectToAction("Details", "Salon", new { id = usluga.salonID });
         }
+
+
+
+
+
 
 
 

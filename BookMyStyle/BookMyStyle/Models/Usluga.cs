@@ -40,7 +40,7 @@ namespace BookMyStyle.Models
         [DisplayName("Tip usluge:")]
         public TipUsluge Tip { get; set; }
 
-        [Required]
+        
         [ForeignKey("Salon")]
         public int salonID { get; set; }
 

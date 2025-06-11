@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Detalji salona";
+    var usluge = ViewBag.Usluge as List<BookMyStyle.Models.Usluga>;
+    var termini = ViewBag.Termini as List<BookMyStyle.Models.Termin>;
 }
 
 @section Styles {
@@ -12,7 +14,8 @@
     <h1 class="salon-title">DETALJI SALONA</h1>
 
     <div class="content-flex">
-       
+
+        <!-- Lijeva kolona: informacije o salonu -->
         <div class="details-container">
             <dl class="details-list">
                 <dt>Naziv</dt>
@@ -23,38 +26,25 @@
                 <dd>@Model.RadnoVrijeme</dd>
             </dl>
 
-            <!-- 1A) Veliko istaknuto dugme “Zakaži termin” -->
-            <div class="book-appointment-wrapper" style="margin: 20px 0;">
-                <a asp-controller="Termin"
-                   asp-action="Create"
-                   asp-route-salonID="@Model.salonID"
-                   class="btn-details"
-                   style="display:inline-block; font-size:1.1rem; padding:10px 24px; background-color:#e67e22; border-radius:6px; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
-                    ZAKAŽI TERMIN
-                </a>
-            </div>
-
             <div class="buttons-container">
-                @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+                @if (ViewBag.JeVlasnik == true)
                 {
                     <a asp-action="Edit" asp-route-id="@Model.salonID" class="btn-details">Uredi</a>
-                }
-                <a asp-action="Index" class="btn-details">Nazad na listu</a>
-                @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-                {
                     <a asp-controller="Usluga" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj uslugu</a>
                     <a asp-controller="Termin" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj termin</a>
                 }
+                <a asp-action="Index" class="btn-details">Nazad na listu</a>
             </div>
         </div>
 
-        <!-- 2) Desna kolona: sadržaj koji treba biti side-by-side -->
+        <!-- Desna kolona: Usluge i Termini -->
         <div class="services-container">
             <div class="services-flex">
-                <!-- 2A) Usluge -->
+
+                <!-- USLUGE -->
                 <div class="sub-container">
                     <h2 class="services-title">USLUGE SALONA</h2>
-                    @if (Model.Usluga != null && Model.Usluga.Any())
+                    @if (usluge != null && usluge.Any())
                     {
                         <table class="table table-services">
                             <thead>
@@ -68,7 +58,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var usl in ViewBag.Usluge as List<BookMyStyle.Models.Usluga>)
+                                @foreach (var usl in usluge)
                                 {
                                     <tr>
                                         <td>@usl.Naziv</td>
@@ -97,32 +87,30 @@
                     }
                 </div>
 
-                <!-- 2B) Termini -->
+                <!-- TERMINI -->
                 <div class="sub-container">
                     <h2 class="services-title">ZAKAZANI TERMINI</h2>
-                    @if (Model.Termin != null && Model.Termin.Any())
+                    @if (termini != null && termini.Any())
                     {
-                        <table class="table table-services">
+                        <table class="table table-services" style="min-width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>ID termina</th>
+                                    <th>Frizer</th>
                                     <th>Vrijeme termina</th>
-                                    <th>Akcije</th>
+                                    <th>Usluga</th>
+                                    <th>Cijena</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var t in Model.Termin)
+                                @foreach (var t in termini)
                                 {
+                                    var usluga = t.uslugaID != 0 ? usluge?.FirstOrDefault(u => u.uslugaID == t.uslugaID) : null;
+
                                     <tr>
-                                        <td>@t.terminID</td>
+                                        <td>@t.NazivFrizera</td>
                                         <td>@t.DatumIVrijeme.ToString("dd.MM.yyyy HH:mm")</td>
-                                        <td>
-                                            @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-                                            {
-                                                <a asp-controller="Termin" asp-action="Edit" asp-route-id="@t.terminID" class="btn-details small">Uredi</a>
-                                                <a asp-controller="Termin" asp-action="Delete" asp-route-id="@t.terminID" class="btn-details small cancel">Otkaži</a>
-                                            }
-                                        </td>
+                                        <td>@(usluga?.Naziv ?? "-")</td>
+                                        <td>@(usluga != null ? usluga.Cijena.ToString("F2") + " KM" : "-")</td>
                                     </tr>
                                 }
                             </tbody>
@@ -133,6 +121,7 @@
                         <p class="no-services">Ovaj salon nema zakazanih termina.</p>
                     }
                 </div>
+
             </div>
         </div>
     </div>

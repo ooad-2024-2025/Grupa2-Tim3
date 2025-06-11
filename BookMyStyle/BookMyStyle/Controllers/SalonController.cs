@@ -1,6 +1,7 @@
 ﻿using BookMyStyle.Data;
 using BookMyStyle.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,39 +15,62 @@ namespace BookMyStyle.Controllers
     public class SalonController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public SalonController(ApplicationDbContext context)
+        public SalonController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Salon
         public async Task<IActionResult> Index()
         {
+
+            if (User.IsInRole("Frizer"))
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                ViewBag.MojSalonID = currentUser?.SalonID;
+            }
+            else
+            {
+                ViewBag.MojSalonID = null;
+            }
+
             return View(await _context.Salon.ToListAsync());
         }
 
-    
+
         // GET: Salon/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            // Uključujemo i kolekciju Usluga i kolekciju Termin
-            var salon = await _context.Salon
-                .Include(s => s.Usluga)
-                .Include(s => s.Termin)
-                .FirstOrDefaultAsync(m => m.salonID == id);
-            var usluge = await _context.Usluga
-       .Where(u => u.salonID == id)
-       .ToListAsync();
+            var salon = await _context.Salon.FirstOrDefaultAsync(m => m.salonID == id);
+            if (salon == null)
+                return NotFound();
 
-            ViewBag.Usluge = usluge;
+            ViewBag.Usluge = await _context.Usluga.Where(u => u.salonID == id).ToListAsync();
+            ViewBag.Termini = await _context.Termin.Where(t => t.salonID == id && t.KorisnikID != null).ToListAsync();
+
+            // Dodajemo informaciju o vlasništvu
+            ViewBag.JeVlasnik = false;
+
+            if (User.IsInRole("Frizer"))
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                if (currentUser?.SalonID == salon.salonID)
+                    ViewBag.JeVlasnik = true;
+            }
+            else if (User.IsInRole("Administrator"))
+            {
+                ViewBag.JeVlasnik = true;
+            }
+
             return View(salon);
-
-          
         }
+
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Salon/Create
@@ -67,6 +91,7 @@ namespace BookMyStyle.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(salon);
         }
 
@@ -84,6 +109,13 @@ namespace BookMyStyle.Controllers
             {
                 return NotFound();
             }
+
+            if(User.IsInRole("Frizer")){
+                var currentUser = await _userManager.GetUserAsync(User);
+                if (currentUser?.SalonID != salon.salonID)
+                    return Forbid();
+            }
+
             return View(salon);
         }
 
@@ -96,6 +128,11 @@ namespace BookMyStyle.Controllers
             {
                 return NotFound();
             }
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (User.IsInRole("Frizer") && currentUser?.SalonID != id)
+                return Forbid();
+
 
             if (ModelState.IsValid)
             {
@@ -137,6 +174,11 @@ namespace BookMyStyle.Controllers
                 return NotFound();
             }
 
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (User.IsInRole("Frizer") && currentUser?.SalonID != salon.salonID)
+                return Forbid();
+
+
             return View(salon);
         }
 
@@ -147,14 +189,18 @@ namespace BookMyStyle.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var salon = await _context.Salon.FindAsync(id);
-            if (salon != null)
-            {
-                _context.Salon.Remove(salon);
-            }
+            if (salon == null)
+                return NotFound();
 
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (User.IsInRole("Frizer") && currentUser?.SalonID != salon.salonID)
+                return Forbid();
+
+            _context.Salon.Remove(salon);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool SalonExists(int id)
         {
