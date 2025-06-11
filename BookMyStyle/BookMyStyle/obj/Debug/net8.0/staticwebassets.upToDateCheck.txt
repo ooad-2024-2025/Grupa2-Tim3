@@ -3,6 +3,7 @@ wwwroot\css\bootstrap.min.css
 wwwroot\css\obavijest.css
 wwwroot\css\salon.css
 wwwroot\css\site.css
+wwwroot\css\usluga.css
 wwwroot\favicon.ico
 wwwroot\GeneratedQRCode\qrcode_0bee85cd-2d6f-4b00-bc50-45f04796651a.png
 wwwroot\GeneratedQRCode\qrcode_1266ee27-a74a-484a-b951-434000c2c06d.png
@@ -20,6 +21,7 @@ wwwroot\GeneratedQRCode\qrcode_52efb347-2683-4232-bba1-4eb80307acf9.png
 wwwroot\GeneratedQRCode\qrcode_5b3a695c-19bb-495a-8bb0-dd240b25ebc0.png
 wwwroot\GeneratedQRCode\qrcode_5e57d456-4a1f-4f31-8724-063247053167.png
 wwwroot\GeneratedQRCode\qrcode_5ef8b322-c889-4e32-8710-ceb191620495.png
+wwwroot\GeneratedQRCode\qrcode_5f83c5df-6945-4969-948f-038d6bf56777.png
 wwwroot\GeneratedQRCode\qrcode_602fd5f8-445f-4f33-bfd3-82e4d03b1616.png
 wwwroot\GeneratedQRCode\qrcode_7a4b780c-e03b-43fa-82d9-b7ffc32146f7.png
 wwwroot\GeneratedQRCode\qrcode_7c1511aa-d79e-44fe-ab7c-2342e2035351.png
@@ -37,6 +39,7 @@ wwwroot\GeneratedQRCode\qrcode_a2fad5b3-c879-4cf1-8097-0e4951f08107.png
 wwwroot\GeneratedQRCode\qrcode_a693d674-787d-486c-b2b2-68e6c0ea7cc2.png
 wwwroot\GeneratedQRCode\qrcode_aa03be3d-fb4b-4c02-ad7e-22b3fc1b970e.png
 wwwroot\GeneratedQRCode\qrcode_b05a3adb-7ea1-4ae1-8a75-363f702d36e8.png
+wwwroot\GeneratedQRCode\qrcode_b0b1de08-5054-4a7b-8317-8c5c9c2a85eb.png
 wwwroot\GeneratedQRCode\qrcode_bc9ccf37-2066-4143-9a17-0f21c91b9581.png
 wwwroot\GeneratedQRCode\qrcode_bdac2afd-9661-4657-a4d5-f8de8a493afc.png
 wwwroot\GeneratedQRCode\qrcode_cbf9df88-dff4-4e71-bcee-f310b3924cc0.png

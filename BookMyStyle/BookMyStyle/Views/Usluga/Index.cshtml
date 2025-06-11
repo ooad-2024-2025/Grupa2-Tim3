@@ -1,79 +1,44 @@
 ﻿@model IEnumerable<BookMyStyle.Models.Usluga>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "USLUGE";
 }
 
-<h1>Index</h1>
+<h1 class="salon-title">USLUGE</h1>
+<a asp-action="Create" class="create-link">Dodaj novu uslugu</a>
 
-<p>
-    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-    {
-        <a asp-action="Create">Kreiraj uslugu</a>
-    }
-</p>
-<table class="table">
+<table class="table-custom">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cijena)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Naziv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Popust)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Opis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Trajanje)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tip)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.salonID)
-            </th>
+            <th>Cijena usluge</th>
+            <th>Naziv usluge</th>
+            <th>Popust [%]</th>
+            <th>Opis</th>
+            <th>Trajanje [min]</th>
+            <th>Tip usluge</th>
+            <th>Salon</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cijena)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Popust)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Trajanje)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.salonID)
-            </td>
-            <td>
-                    @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.uslugaID">Edit</a>
-                        <nobr>|</nobr>
-                        <a asp-action="Delete" asp-route-id="@item.uslugaID">Delete</a>
-                        <nobr>|</nobr>
-                    }
-                    <a asp-action="Details" asp-route-id="@item.uslugaID">Details</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Cijena.ToString("F2")</td>
+                <td>@item.Naziv</td>
+                <td>@item.Popust.ToString("F0")%</td>
+                <td>@item.Opis</td>
+                <td>@item.Trajanje</td>
+                <td>@item.Tip</td>
+                <td>@item.Salon?.Naziv</td>
+                <td>
+                    <div class="usluga-actions">
+                        <a asp-action="Edit" asp-route-id="@item.uslugaID" class="btn-details">Uredi</a>
+                        <a asp-action="Delete" asp-route-id="@item.uslugaID" class="btn-details cancel">Obriši</a>
+                        <a asp-action="Details" asp-route-id="@item.uslugaID" class="btn-details">Detalji</a>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

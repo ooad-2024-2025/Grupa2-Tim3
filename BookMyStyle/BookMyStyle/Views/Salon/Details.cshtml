@@ -68,7 +68,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var usl in Model.Usluga)
+                                @foreach (var usl in ViewBag.Usluge as List<BookMyStyle.Models.Usluga>)
                                 {
                                     <tr>
                                         <td>@usl.Naziv</td>

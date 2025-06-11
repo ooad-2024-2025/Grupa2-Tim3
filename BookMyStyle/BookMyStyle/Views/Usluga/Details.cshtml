@@ -1,60 +1,142 @@
 ﻿@model BookMyStyle.Models.Usluga
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji usluge";
 }
 
-<h1>Details</h1>
+@section Styles {
+    <style>
+        /* Card container */
+        .detail-card {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #252525;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+            /* Header */
+            .detail-card .card-header {
+                background-color: #2b2b2b;
+                padding: 20px 24px;
+            }
 
-<div>
-    <h4>Usluga</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cijena)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cijena)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Popust)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Popust)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Trajanje)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Trajanje)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tip)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tip)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.salonID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.salonID)
-        </dd>
-    </dl>
+                .detail-card .card-header h1 {
+                    margin: 0;
+                    color: #fff;
+                    font-size: 1.8rem;
+                    letter-spacing: 1px;
+                }
+
+                .detail-card .card-header .subtitle {
+                    color: #ccc;
+                    margin-top: 8px;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: .5px;
+                }
+            /* Body */
+            .detail-card .card-body {
+                padding: 24px;
+            }
+
+            .detail-card dl {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                row-gap: 12px;
+                column-gap: 16px;
+            }
+
+            .detail-card dt {
+                color: #aaa;
+                font-weight: 500;
+                margin: 0;
+            }
+
+            .detail-card dd {
+                margin: 0;
+                color: #fff;
+            }
+
+            .detail-card hr {
+                border: none;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                margin: 16px 0;
+            }
+            /* Actions */
+            .detail-card .actions {
+                display: flex;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .detail-card .btn-details {
+                background: #169976;
+                color: #fff !important;
+                padding: 8px 16px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background 0.2s, transform 0.2s;
+            }
+
+                .detail-card .btn-details:hover {
+                    background: #127a64;
+                    transform: scale(1.03);
+                }
+
+                .detail-card .btn-details.cancel {
+                    background: transparent;
+                    color: #12c4a3 !important;
+                    border: 1px solid #12c4a3;
+                }
+
+                    .detail-card .btn-details.cancel:hover {
+                        background: #12c4a3;
+                        color: #fff !important;
+                    }
+    </style>
+}
+
+<div class="detail-card">
+    <div class="card-header">
+        <h1>DETALJI USLUGE</h1>
+        <div class="subtitle">Usluga</div>
+    </div>
+    <div class="card-body">
+        <dl>
+            <dt>Cijena usluge:</dt>
+            <dd>@Model.Cijena.ToString("F2")</dd>
+
+            <dt>Naziv usluge:</dt>
+            <dd>@Model.Naziv</dd>
+
+            <dt>Popust [%]:</dt>
+            <dd>@Model.Popust.ToString("F0")%</dd>
+
+            <dt>Opis:</dt>
+            <dd>@Model.Opis</dd>
+
+            <dt>Trajanje [min]:</dt>
+            <dd>@Model.Trajanje</dd>
+
+            <dt>Tip usluge:</dt>
+            <dd>@Model.Tip</dd>
+
+            <dt>Salon:</dt>
+            <dd>@(Model.Salon?.Naziv ?? Model.salonID.ToString())</dd>
+        </dl>
+
+        <hr />
+
+        <div class="actions">
+            <a asp-action="Edit" asp-route-id="@Model.uslugaID" class="btn-details">Uredi</a>
+            <a asp-action="Index" class="btn-details cancel">Natrag na listu</a>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.uslugaID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

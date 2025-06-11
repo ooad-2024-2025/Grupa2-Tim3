@@ -38,11 +38,14 @@ namespace BookMyStyle.Controllers
                 .Include(s => s.Usluga)
                 .Include(s => s.Termin)
                 .FirstOrDefaultAsync(m => m.salonID == id);
+            var usluge = await _context.Usluga
+       .Where(u => u.salonID == id)
+       .ToListAsync();
 
-            if (salon == null)
-                return NotFound();
-
+            ViewBag.Usluge = usluge;
             return View(salon);
+
+          
         }
 
         [Authorize(Roles = "Administrator, Frizer")]
@@ -84,7 +87,6 @@ namespace BookMyStyle.Controllers
             return View(salon);
         }
 
-        // POST: Salon/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
@@ -117,6 +119,7 @@ namespace BookMyStyle.Controllers
             }
             return View(salon);
         }
+
 
         [Authorize(Roles = "Administrator, Frizer")]
         // GET: Salon/Delete/5

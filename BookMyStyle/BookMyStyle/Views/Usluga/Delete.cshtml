@@ -1,63 +1,149 @@
 ﻿@model BookMyStyle.Models.Usluga
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Obriši uslugu";
 }
 
-<h1>Delete</h1>
+@section Styles {
+    <style>
+        /* Card wrapper */
+        .delete-card {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #252525;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+            /* Header */
+            .delete-card .card-header {
+                background-color: #2b2b2b;
+                padding: 20px 24px;
+            }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Usluga</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cijena)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cijena)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Popust)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Popust)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Trajanje)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Trajanje)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tip)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tip)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.salonID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.salonID)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="uslugaID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+                .delete-card .card-header h1 {
+                    margin: 0;
+                    color: #fff;
+                    font-size: 1.8rem;
+                    letter-spacing: 1px;
+                }
+
+                .delete-card .card-header .subtitle {
+                    color: #ccc;
+                    margin-top: 8px;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: .5px;
+                }
+            /* Body */
+            .delete-card .card-body {
+                padding: 24px;
+            }
+
+            .delete-card dl {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                row-gap: 12px;
+                column-gap: 16px;
+            }
+
+            .delete-card dt {
+                color: #aaa;
+                font-weight: 500;
+            }
+
+            .delete-card dd {
+                margin: 0;
+                color: #fff;
+            }
+
+            .delete-card hr {
+                border: none;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                margin: 16px 0;
+            }
+            /* Actions */
+            .delete-card .actions {
+                display: flex;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .delete-card .btn-delete {
+                background: #e74c3c;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                font-weight: 600;
+                cursor: pointer;
+                text-transform: uppercase;
+                transition: background 0.2s;
+            }
+
+                .delete-card .btn-delete:hover {
+                    background: #c0392b;
+                }
+
+            .delete-card .btn-back {
+                background: transparent;
+                color: #12c4a3;
+                border: 1px solid #12c4a3;
+                padding: 10px 20px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                align-self: center;
+                transition: background 0.2s, color 0.2s;
+            }
+
+                .delete-card .btn-back:hover {
+                    background: #12c4a3;
+                    color: #fff;
+                }
+    </style>
+}
+
+<div class="delete-card">
+    <div class="card-header">
+        <h1>OBRIŠI USLUGU</h1>
+        <div class="subtitle">Jeste li sigurni da želite obrisati ovu uslugu?</div>
+    </div>
+    <div class="card-body">
+        <dl>
+            <dt>Cijena usluge:</dt>
+            <dd>@Model.Cijena.ToString("F2")</dd>
+
+            <dt>Naziv usluge:</dt>
+            <dd>@Model.Naziv</dd>
+
+            <dt>Popust [%]:</dt>
+            <dd>@Model.Popust.ToString("F0")%</dd>
+
+            <dt>Opis:</dt>
+            <dd>@Model.Opis</dd>
+
+            <dt>Trajanje [min]:</dt>
+            <dd>@Model.Trajanje</dd>
+
+            <dt>Tip usluge:</dt>
+            <dd>@Model.Tip</dd>
+
+            <dt>Salon:</dt>
+            <dd>@Model.Salon?.Naziv</dd>
+        </dl>
+
+        <hr />
+
+        <form asp-action="Delete" method="post" class="actions">
+            <input type="hidden" asp-for="uslugaID" />
+            <button type="submit" class="btn-delete">Obriši</button>
+            <a asp-action="Index" class="btn-back">Natrag na listu</a>
+        </form>
+    </div>
 </div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

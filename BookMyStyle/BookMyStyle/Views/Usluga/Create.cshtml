@@ -5,69 +5,161 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/salon.css" />
+    <style>
+        .create-usluga-card {
+            max-width: 520px;
+            margin: 40px auto;
+            background-color: #252525;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+        }
+
+            .create-usluga-card .card-header {
+                background-color: #2b2b2b;
+                padding: 16px 24px;
+            }
+
+                .create-usluga-card .card-header h2 {
+                    margin: 0;
+                    color: #fff;
+                    font-size: 1.75rem;
+                    letter-spacing: 1px;
+                }
+
+            .create-usluga-card .card-body {
+                padding: 24px;
+            }
+
+            .create-usluga-card .form-group {
+                margin-bottom: 18px;
+            }
+
+            .create-usluga-card label {
+                display: block;
+                color: #fff;
+                margin-bottom: 6px;
+                font-weight: 500;
+            }
+
+            .create-usluga-card input,
+            .create-usluga-card select,
+            .create-usluga-card textarea {
+                width: 100%;
+                padding: 10px 12px;
+                font-size: 1rem;
+                border: 1px solid #1fbfaf;
+                border-radius: 4px;
+                background: #f8fafc;
+                color: #202124;
+                transition: border-color 0.2s;
+            }
+
+                .create-usluga-card input:focus,
+                .create-usluga-card select:focus,
+                .create-usluga-card textarea:focus {
+                    outline: none;
+                    border-color: #13a08c;
+                }
+
+            .create-usluga-card .text-danger {
+                color: #ff6161;
+                font-size: 0.9rem;
+                min-height: 18px;
+                margin-top: 4px;
+            }
+
+            .create-usluga-card .actions {
+                display: flex;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .create-usluga-card .btn-save {
+                flex: 1;
+                background: #12c4a3;
+                color: #fff;
+                padding: 10px 0;
+                border: none;
+                border-radius: 4px;
+                font-weight: 600;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+                .create-usluga-card .btn-save:hover {
+                    background: #10917e;
+                }
+
+            .create-usluga-card .btn-cancel {
+                flex: 1;
+                text-align: center;
+                line-height: 2.2;
+                color: #12c4a3;
+                text-decoration: none;
+                border: 1px solid #12c4a3;
+                border-radius: 4px;
+                font-weight: 500;
+                transition: background 0.2s, color 0.2s;
+            }
+
+                .create-usluga-card .btn-cancel:hover {
+                    
+                    color: #fff;
+                }
+    </style>
 }
 
-<div class="content-wrapper">
-    <h1 class="salon-title">Dodaj novu uslugu</h1>
-
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            @TempData["SuccessMessage"]
-        </div>
-    }
-
-    <div class="details-container">
+<div class="create-usluga-card">
+    <div class="card-header">
+        <h2>DODAJ NOVU USLUGU</h2>
+    </div>
+    <div class="card-body">
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
-
-            <!-- povratak na prethodnu stranicu -->
-            <input type="hidden" name="returnUrl" value="@Context.Request.Headers["Referer"]" />
-
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="salonID" value="@ViewBag.salonID" />
 
             <div class="form-group">
-                <label asp-for="Cijena" class="control-label">Cijena usluge:</label>
-                <input asp-for="Cijena" class="form-control" type="number" step="0.01" />
+                <label asp-for="Cijena">Cijena usluge:</label>
+                <input asp-for="Cijena" type="number" step="0.01" />
                 <span asp-validation-for="Cijena" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Naziv" class="control-label">Naziv usluge:</label>
-                <input asp-for="Naziv" class="form-control" />
+                <label asp-for="Naziv">Naziv usluge:</label>
+                <input asp-for="Naziv" />
                 <span asp-validation-for="Naziv" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Popust" class="control-label">Popust [%]:</label>
-                <input asp-for="Popust" class="form-control" type="number" step="1" />
+                <label asp-for="Popust">Popust [%]:</label>
+                <input asp-for="Popust" type="number" step="1" />
                 <span asp-validation-for="Popust" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Opis" class="control-label">Opis:</label>
-                <textarea asp-for="Opis" class="form-control" rows="3"></textarea>
+                <label asp-for="Opis">Opis:</label>
+                <textarea asp-for="Opis" rows="2"></textarea>
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Trajanje" class="control-label">Trajanje [min]:</label>
-                <input asp-for="Trajanje" class="form-control" type="number" step="1" />
+                <label asp-for="Trajanje">Trajanje [min]:</label>
+                <input asp-for="Trajanje" type="number" step="1" />
                 <span asp-validation-for="Trajanje" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Tip" class="control-label">Tip usluge:</label>
-                <select asp-for="Tip" class="form-control" asp-items="Html.GetEnumSelectList<TipUsluge>()"></select>
+                <label asp-for="Tip">Tip usluge:</label>
+                <select asp-for="Tip" asp-items="Html.GetEnumSelectList<TipUsluge>()"></select>
                 <span asp-validation-for="Tip" class="text-danger"></span>
             </div>
 
-            <input asp-for="salonID" type="hidden" />
-
-            <div class="form-group" style="margin-top:20px;">
-                <button type="submit" class="btn btn-primary">Spremi uslugu</button>
-                <a asp-action="Index" class="btn btn-secondary" style="margin-left:10px;">Odustani</a>
+            <div class="actions">
+                <button type="submit" class="btn-save">Spremi uslugu</button>
+                <a asp-action="Index" class="btn-cancel">Odustani</a>
             </div>
         </form>
     </div>

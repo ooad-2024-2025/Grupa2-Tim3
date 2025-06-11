@@ -56,32 +56,43 @@ namespace BookMyStyle.Controllers
         // GET: Usluga/Create
         public IActionResult Create(int? salonID)
         {
-           
+            ViewBag.salonID = salonID;
             return View();
         }
 
         // POST: Usluga/Create
+        // POST: Usluga/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator, Frizer")]
-        public async Task<IActionResult> Create(Usluga usluga)
+        public async Task<IActionResult> Create([Bind("uslugaID,Cijena,Naziv,Popust,Opis,Trajanje,Tip,salonID")] Usluga usluga)
         {
             if (!ModelState.IsValid)
             {
                 TempData["Greska"] = "Neispravni podaci. Molimo provjerite formu.";
+                // NOVO: vrati salonID u ViewBag da ostane u hidden polju na ponovnom iscrtavanju forme
+                if (Request.Form.ContainsKey("salonID"))
+                    ViewBag.salonID = Request.Form["salonID"];
                 return View(usluga);
             }
 
-            var frizerId = _userManager.GetUserId(User);
-            var frizer = await _userManager.FindByIdAsync(frizerId);
+            // salonID je već stigao kroz model binder!
 
-            if (frizer?.SalonID == null)
+            // DODATNA sigurnost za frizera bez salona
+            if (usluga.salonID == 0)
             {
-                TempData["Greska"] = "Vaš korisnički račun nije povezan s nijednim salonom.";
-                return View(usluga);
-            }
+                var frizerId = _userManager.GetUserId(User);
+                var frizer = await _userManager.FindByIdAsync(frizerId);
 
-            usluga.salonID = frizer.SalonID.Value;
+                if (frizer?.SalonID == null)
+                {
+                    TempData["Greska"] = "Vaš korisnički račun nije povezan s nijednim salonom.";
+                    if (Request.Form.ContainsKey("salonID"))
+                        ViewBag.salonID = Request.Form["salonID"];
+                    return View(usluga);
+                }
+                usluga.salonID = frizer.SalonID.Value;
+            }
 
             _context.Add(usluga);
             await _context.SaveChangesAsync();
@@ -95,6 +106,7 @@ namespace BookMyStyle.Controllers
 
             return RedirectToAction("Index", "Usluga");
         }
+
 
 
         [Authorize(Roles = "Administrator, Frizer")]
