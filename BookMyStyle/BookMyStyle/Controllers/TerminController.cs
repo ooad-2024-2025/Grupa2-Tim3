@@ -52,7 +52,7 @@ namespace BookMyStyle.Controllers
         }
 
         // GET: Termin/Create
-        [Authorize(Roles = "Administrator, Frizer")]
+        [Authorize(Roles = "Frizer")]//samo frizeri mogu kreirati termine
         public async Task<IActionResult> Create()
         {
             var frizerId = _userManager.GetUserId(User);
