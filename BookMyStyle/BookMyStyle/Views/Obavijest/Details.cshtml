@@ -1,10 +1,11 @@
 ﻿@model BookMyStyle.Models.Obavijest
+
 @section Styles {
     <link rel="stylesheet" href="~/css/obavijest.css" />
 }
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji";
 }
 
 <div class="container mt-5">
@@ -27,18 +28,19 @@
 
                         <dt class="col-sm-3 text-secondary">Datum i vrijeme</dt>
                         <dd class="col-sm-9">@Html.DisplayFor(model => model.DatumIVrijeme)</dd>
-
-                        <dt class="col-sm-3 text-secondary">Termin ID</dt>
-                        <dd class="col-sm-9">@Html.DisplayFor(model => model.terminID)</dd>
                     </dl>
 
                     <div class="d-flex justify-content-center gap-3">
-                        <a asp-controller="QRCodeModel"
-                           asp-action="Create"
-                           asp-route-id="@Model.obavijestID"
-                           class="btn btn-warning btn-sm">
-                            QR Kod
-                        </a>
+                        @* Prikaz QR koda samo ako korisnik NIJE Frizer *@
+                        @if (!User.IsInRole("Frizer"))
+                        {
+                            <a asp-controller="QRCodeModel"
+                               asp-action="Create"
+                               asp-route-id="@Model.obavijestID"
+                               class="btn btn-warning btn-sm">
+                                QR Kod
+                            </a>
+                        }
 
                         <a asp-controller="Termin"
                            asp-action="Details"
@@ -47,11 +49,14 @@
                             Detalji termina
                         </a>
 
-                        <a asp-action="Edit"
-                           asp-route-id="@Model.obavijestID"
-                           class="btn btn-outline-light btn-sm">
-                            Uredi
-                        </a>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <a asp-action="Edit"
+                               asp-route-id="@Model.obavijestID"
+                               class="btn btn-outline-light btn-sm">
+                                Uredi
+                            </a>
+                        }
 
                         <a asp-action="Index"
                            class="btn btn-outline-secondary btn-sm">

@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
+  "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\emina\\onedrive\\desktop\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\recenzijacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\emina\\onedrive\\desktop\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\recenzija\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\recenzija\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\emina\\onedrive\\desktop\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\recenzija\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\recenzija\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\hp\\onedrive\\radna povr\u0161ina\\etf\\2.godina\\4. semestar\\ooad\\grupa2-tim3\\bookmystyle\\bookmystyle\\models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RecenzijaController.cs",
-              "DocumentMoniker": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\RecenzijaController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RecenzijaController.cs",
-              "ToolTip": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\RecenzijaController.cs",
-              "RelativeToolTip": "Controllers\\RecenzijaController.cs",
-              "ViewState": "AgIAAN0AAAAAAAAAAAAAwMwAAAA0AAAAAAAAAA==",
+              "Title": "Obavijest.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Obavijest.cs",
+              "RelativeDocumentMoniker": "Models\\Obavijest.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Radna povr\u0161ina\\ETF\\2.GODINA\\4. SEMESTAR\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Obavijest.cs",
+              "RelativeToolTip": "Models\\Obavijest.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T21:39:50.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Views\\Recenzija\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Delete.cshtml",
-              "RelativeToolTip": "Views\\Recenzija\\Delete.cshtml",
-              "ViewState": "AgIAABwAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T21:38:34.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Recenzija\\Details.cshtml",
-              "ToolTip": "C:\\Users\\emina\\OneDrive\\Desktop\\OOAD\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Recenzija\\Details.cshtml",
-              "RelativeToolTip": "Views\\Recenzija\\Details.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAiwBoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T21:34:24.431Z",
+              "WhenOpened": "2025-06-15T22:02:52.265Z",
               "EditorCaption": ""
             }
           ]

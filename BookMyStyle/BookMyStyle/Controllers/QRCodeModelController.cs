@@ -1,11 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Mail;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using QRCoder;
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
 
 namespace BookMyStyle.Controllers
 {
@@ -22,12 +23,14 @@ namespace BookMyStyle.Controllers
             _smtpSettings = smtpOptions.Value;
         }
 
+        [Authorize(Roles = "Administrator, Korisnik")]
         // GET: QRCodeModel/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator, Korisnik")]
         // POST: QRCodeModel/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -73,6 +76,7 @@ namespace BookMyStyle.Controllers
 
         // GET: QRCodeModel/Confirm?email=neko@primjer.ba
         [HttpGet]
+        [Authorize(Roles = "Administrator, Korisnik")]
         public IActionResult Confirm(string email)
         {
             if (string.IsNullOrEmpty(email) || !IsValidEmail(email))

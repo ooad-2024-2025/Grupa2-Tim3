@@ -6,56 +6,93 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/obavijest.css" />
+    <style>
+        .alert-custom {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border-left: 5px solid #179c7d;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+    </style>
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="h2 m-0">Obavijesti</h1>
-    <a asp-controller="Obavijest" asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-lg"></i> Kreiraj Obavijest
-    </a>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-controller="Obavijest" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Kreiraj Obavijest
+        </a>
+    }
 </div>
 
 <div class="container obavijesti-container">
-    @foreach (var item in Model)
+    @if (!Model.Any())
     {
-        <div class="card">
-            <div class="card-body d-flex flex-column">
-               
-                <h6>
-                    <span class="badge">@item.Tekst</span>
-                </h6>
+        <div class="sub-container" style="margin: 20px auto; padding: 20px; background-color: #1e1e1e; color: white; border-radius: 12px; box-shadow: 0 0 10px rgba(23,156,125,0.2);">
+            <h4 class="services-title" style="margin-bottom: 10px;">Obavijesti</h4>
+            <p style="margin: 0;">
+                @if (User.IsInRole("Korisnik"))
+                {
+                    <span>Nemate nijednu obavijest. Još uvijek niste zakazali nijedan termin.</span>
+                }
+                else if (User.IsInRole("Frizer"))
+                {
+                    <span>Nemate nijednu obavijest.</span>
+                }
+                else if (User.IsInRole("Administrator"))
+                {
+                    <span>Trenutno nema dostupnih obavijesti u sistemu.</span>
+                }
+            </p>
+        </div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-body d-flex flex-column">
+                    <h6>
+                        <span class="badge">@item.Tekst</span>
+                    </h6>
 
-          
-                <p class="text-muted">Datum zakazivanja: @item.DatumIVrijeme.ToString("dd.MM.yyyy HH:mm")</p>
+                    <p class="text-muted">Datum zakazivanja: @item.DatumIVrijeme.ToString("dd.MM.yyyy HH:mm")</p>
 
-              
-                
+                    
+                    <div class="mt-auto d-flex flex-wrap">
 
-               
-                <div class="mt-auto d-flex flex-wrap">
-                    <a class="btn btn-outline-light btn-sm me-2 mb-2"
-                       asp-controller="QRCodeModel"
-                       asp-action="Create"
-                       asp-route-id="@item.obavijestID">
-                        QR Kod
-                    </a>
-                    @if (User.IsInRole("Administrator"))
-                    {
-                        <a class="btn btn-outline-secondary btn-sm me-2 mb-2"
-                           asp-action="Edit" asp-route-id="@item.obavijestID">
-                            Uredi
+                        @if (!User.IsInRole("Frizer"))
+                        {
+                            <a class="btn btn-outline-light btn-sm me-2 mb-2"
+                               asp-controller="QRCodeModel"
+                               asp-action="Create"
+                               asp-route-id="@item.obavijestID">
+                                QR Kod
+                            </a>
+                        }
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <a class="btn btn-outline-secondary btn-sm me-2 mb-2"
+                               asp-action="Edit" asp-route-id="@item.obavijestID">
+                                Uredi
+                            </a>
+                            <a class="btn btn-outline-danger btn-sm me-2 mb-2"
+                               asp-action="Delete" asp-route-id="@item.obavijestID">
+                                Obriši
+                            </a>
+                        }
+                        <a class="btn btn-outline-info btn-sm mb-2"
+                           asp-action="Details" asp-route-id="@item.obavijestID">
+                            Detalji
                         </a>
-                        <a class="btn btn-outline-danger btn-sm me-2 mb-2"
-                           asp-action="Delete" asp-route-id="@item.obavijestID">
-                            Obriši
-                        </a>
-                    }
-                    <a class="btn btn-outline-info btn-sm mb-2"
-                       asp-action="Details" asp-route-id="@item.obavijestID">
-                        Detalji
-                    </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
 </div>

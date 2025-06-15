@@ -1,30 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BookMyStyle.Data;
+using BookMyStyle.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BookMyStyle.Data;
-using BookMyStyle.Models;
-using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookMyStyle.Controllers
 {
     public class ObavijestController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public ObavijestController(ApplicationDbContext context)
+        public ObavijestController(ApplicationDbContext context, UserManager<Korisnik> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
         // GET: Obavijest
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Obavijest.ToListAsync());
+
+            var korisnikId = _userManager.GetUserId(User);
+
+            if (User.IsInRole("Administrator"))
+            {
+                // Admin vidi sve obavijesti
+                var sveObavijesti = await _context.Obavijest
+                    .OrderByDescending(o => o.DatumIVrijeme)
+                    .ToListAsync();
+                return View(sveObavijesti);
+            }
+
+            var relevantniTermini = await _context.Termin
+                .Where(t => t.KorisnikID == korisnikId || t.FrizerID == korisnikId)
+                .Select(t => t.terminID)
+                .ToListAsync();
+
+            var obavijesti = await _context.Obavijest
+                .Where(o => relevantniTermini.Contains(o.terminID))
+                .ToListAsync();
+
+            return View(obavijesti);
         }
 
         [Authorize(Roles = "Administrator, Korisnik, Frizer")]
