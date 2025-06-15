@@ -41,7 +41,7 @@
     </dl>
 
     @if (User.IsInRole("Administrator") ||
-        (User.IsInRole("Korisnik") && Model.KorisnikID == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value))
+        (Model.KorisnikID == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value))
     {
         <form asp-action="Delete" method="post" class="d-flex justify-content-start gap-2">
             @Html.AntiForgeryToken()

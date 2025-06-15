@@ -202,9 +202,10 @@ namespace BookMyStyle.Controllers
             {
                 return NotFound();
             }
-
             var recenzija = await _context.Recenzija
-                .FirstOrDefaultAsync(m => m.recenzijaID == id);
+    .Include(r => r.Korisnik)
+    .Include(r => r.Salon)
+    .FirstOrDefaultAsync(m => m.recenzijaID == id);
             if (recenzija == null)
             {
                 return NotFound();

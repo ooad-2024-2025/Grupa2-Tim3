@@ -26,7 +26,7 @@
     <div class="d-flex align-items-center gap-2">
         <button class="btn btn-outline-light"
                 onclick="document.getElementById('filter-section').classList.toggle('d-none')">
-            Filteri
+            Filter
         </button>
 
         @if (User.IsInRole("Administrator") || User.IsInRole("Korisnik"))
@@ -41,13 +41,7 @@
 </div>
 
 <div id="filter-section" class="d-none mb-4 text-white">
-    <p class="mb-2">Filtriraj po ocjeni:</p>
-    <div id="star-filter" class="mb-3">
-        @for (int i = 1; i <= 5; i++)
-        {
-            <span class="star-filter" data-value="@i">★</span>
-        }
-    </div>
+   
     <p class="mb-2">Sortiraj po ocjeni:</p>
     <select id="sortOrder" class="form-select form-select-sm w-auto mb-3" onchange="applyFilterAndSort()">
         <option value="desc">Viša ka nižoj</option>
@@ -77,11 +71,12 @@
                         }
                     }
                 </h6>
-                <p class="text-muted">Korisnik: @item.Korisnik?.UserName</p>
+               
                 <p class="text-muted">Salon: @item.Salon?.Naziv</p>
-
-
                 <p class="text-muted">@item.Komentar</p>
+                <p class="text-muted">Korisnik: @item.Korisnik?.UserName</p>
+
+               
 
                 <p class="text-muted">@item.DatumObjave.ToString("dd.MM.yyyy HH:mm")</p>
 
@@ -90,9 +85,11 @@
               
 
                 <div class="mt-auto d-flex flex-wrap">
-                 
-                        @if (User.IsInRole("Administrator") || User.IsInRole("Korisnik"))
-                        {
+
+                    @if (User.IsInRole("Administrator") ||
+                                    (User.IsInRole("Korisnik") &&
+                                    item.KorisnikID == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value))
+                    {
                         <a class="btn btn-outline-secondary btn-sm me-2 mb-2"
                            asp-action="Edit" asp-route-id="@item.recenzijaID">
                             Uredi
@@ -101,15 +98,10 @@
                            asp-action="Delete" asp-route-id="@item.recenzijaID">
                             Obriši
                         </a>
-                        }
+                    }
+
                     
-                        @if (User.IsInRole("Administrator") || User.IsInRole("Korisnik") || User.IsInRole("Frizer"))
-                           {
-                        <a class="btn btn-outline-info btn-sm mb-2"
-                           asp-action="Details" asp-route-id="@item.recenzijaID">
-                            Detalji
-                        </a>
-                        }
+                       
                    
                 </div>
             </div>
@@ -119,35 +111,31 @@
         <script>
             let selectedRating = null;
 
-            document.querySelectorAll(".star-filter").forEach(star => {
-                star.addEventListener("click", function () {
-                    selectedRating = parseInt(this.dataset.value);
+            // Sortiranje i filtriranje odmah po promjeni selektora
+            document.getElementById("sortOrder").addEventListener("change", applyFilterAndSort);
 
-                    document.querySelectorAll(".star-filter").forEach(s => s.classList.remove("active"));
-                    this.classList.add("active");
-
-                    applyFilterAndSort();
-                });
-            });
-
+            // Funkcija za sortiranje i filtriranje po ocjeni
             function applyFilterAndSort() {
-                const cards = Array.from(document.querySelectorAll(".recenzija-card"));
                 const sortOrder = document.getElementById("sortOrder").value;
+                const cards = Array.from(document.querySelectorAll(".recenzija-card"));
 
                 let filtered = cards;
 
+                // Ako je odabrana zvjezdica (filtriranje po ocjeni)
                 if (selectedRating !== null) {
-                    filtered = cards.filter(card =>
+                    filtered = filtered.filter(card =>
                         parseInt(card.getAttribute("data-ocjena")) === selectedRating
                     );
                 }
 
+                // Sortiranje kartica po ocjeni
                 filtered.sort((a, b) => {
                     const aOcjena = parseInt(a.getAttribute("data-ocjena"));
                     const bOcjena = parseInt(b.getAttribute("data-ocjena"));
                     return sortOrder === "asc" ? aOcjena - bOcjena : bOcjena - aOcjena;
                 });
 
+                // Prikaz kartica
                 const container = document.querySelector(".obavijesti-container");
                 container.innerHTML = "";
                 filtered.forEach(card => container.appendChild(card));
@@ -155,17 +143,17 @@
 
             function resetFilter() {
                 selectedRating = null;
-
-                document.querySelectorAll(".star-filter").forEach(s => s.classList.remove("active"));
                 document.getElementById("sortOrder").value = "desc";
+                document.querySelectorAll(".star-filter").forEach(s => s.classList.remove("active"));
 
-                const cards = Array.from(document.querySelectorAll(".recenzija-card")).sort((a, b) =>
-                    parseInt(b.getAttribute("data-ocjena")) - parseInt(a.getAttribute("data-ocjena"))
-                );
-
-                const container = document.querySelector(".obavijesti-container");
-                container.innerHTML = "";
-                cards.forEach(card => container.appendChild(card));
+                applyFilterAndSort(); // Resetuj prikaz
             }
+
+            
+            window.addEventListener("DOMContentLoaded", () => {
+                applyFilterAndSort();
+            });
         </script>
 }
+
+
