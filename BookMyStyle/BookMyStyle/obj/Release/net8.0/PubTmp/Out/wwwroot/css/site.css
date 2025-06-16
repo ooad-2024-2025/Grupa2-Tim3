@@ -1,0 +1,86 @@
+
+/* Izgled formi i inputa */
+.form-control, .form-select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #179c7d !important;
+}
+
+input, select, textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #179c7d !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #666666 !important;
+}
+
+/* Dugmad */
+.btn-primary {
+    background-color: #179c7d !important;
+    border-color: #179c7d !important;
+    
+
+}
+
+.btn-primary:hover {
+    background-color: #127a64 !important;
+    border-color: #127a64 !important;
+}
+
+/* Pozadina i boje teksta */
+body {
+    background-color: #1e1e1e !important;
+    color: white !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Linkovi */
+a {
+    color: #179c7d !important;
+}
+
+a:hover {
+    color: #12c4a3 !important;
+}
+
+/* Upozorenja kod validacije */
+.field-validation-error,
+.validation-summary-errors,
+.input-validation-error {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+/* Uniformna širina elemenata za sve uređaje */
+.container, .form-group, .form-control, .form-select {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+
+//salon
+.table-custom {
+    margin-left: 10px; /* ili bilo koja vrijednost kojom tablicu pomjeraš ulijevo */
+}
+
+/* Dugme “Pogledaj detalje salona” */
+.btn-details {
+    background-color: #169976; /* tamnija nijansa zelene */
+    color: #ffffff !important; /* bijeli tekst */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+    .btn-details:hover {
+        transform: scale(1.2); /* blago povećanje na hover */
+        color: #ffffff !important; /* tekst ostaje bijel, možeš promijeniti u drugu boju po želji */
+    }

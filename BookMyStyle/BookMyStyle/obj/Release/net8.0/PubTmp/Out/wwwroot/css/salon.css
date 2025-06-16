@@ -1,0 +1,254 @@
+﻿
+
+
+.content-flex {
+    display: flex;
+    gap: 24px; 
+    flex-wrap: wrap; 
+    margin-top: 20px;
+}
+
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.salon-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+
+.create-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #12c4a3;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    .create-link:hover {
+        color: #ffffff;
+    }
+
+
+.table-custom {
+    margin-left: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table-custom th {
+        color: #12c4a3;
+        font-weight: 600;
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .table-custom td {
+        color: #ffffff;
+        padding: 8px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .table-custom tbody tr:hover {
+        background-color: rgba(18, 196, 163, 0.1);
+    }
+
+
+.btn-details {
+    background-color: #169976;
+    color: #ffffff !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 8px; 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+a.btn-details:hover {
+    transform: scale(1.05);
+    background-color: #127a64;
+    color: #ffffff !important;
+}
+
+
+.services-container {
+    flex: 1 1 480px;
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+
+.services-flex {
+    display: flex; 
+    gap: 24px; 
+    flex-wrap: wrap; 
+}
+
+
+.sub-container {
+    flex: 1 1 300px; 
+    background-color: #2b2b2b;
+    padding: 16px;
+    border-radius: 6px;
+}
+
+
+.services-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+.table-services {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px; 
+}
+
+    .table-services th {
+        color: #12c4a3;
+        font-weight: 600;
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .table-services td {
+        color: #ffffff;
+        padding: 6px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .table-services tbody tr:hover {
+        background-color: rgba(18, 196, 163, 0.1);
+    }
+
+
+.no-services {
+    color: #cccccc;
+    font-style: italic;
+}
+
+
+.btn-details.small {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+}
+   
+    .btn-details.small.cancel {
+        background-color: #c0392b; 
+        color: #ffffff;
+    }
+
+        .btn-details.small.cancel:hover {
+            background-color: #a93226 !important;
+        }
+
+
+@media (max-width: 900px) {
+    
+    .content-flex {
+        flex-direction: column;
+    }
+    
+    .services-flex {
+        flex-direction: column;
+    }
+
+    .sub-container {
+        flex: 1 1 100%;
+        margin-bottom: 16px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 10px;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 6px 8px;
+    }
+
+    .salon-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-details {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+
+.btn-strong {
+    background-color: #169976; 
+    color: #ffffff !important; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    padding: 6px 16px; 
+    border: none;
+    border-radius: 4px; 
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+    .btn-strong:hover {
+        transform: scale(1.05);
+        background-color: #127a64; 
+    }
+
+
+.card-dark {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+
+.form-input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #2b2b2b;
+}
+
+
+.buttons-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+
+.btn-details.cancel {
+    background-color: #c0392b;
+    color: #ffffff !important;
+}
+
+    .btn-details.cancel:hover {
+        background-color: #a93226 !important;
+    }

@@ -334,7 +334,6 @@ C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\stat
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.BookMyStyle.props
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BookMyStyle.props
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMySt.ABBE6837.Up2Date
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMyStyle.dll
 C:\Users\Mirza\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\refint\BookMyStyle.dll
