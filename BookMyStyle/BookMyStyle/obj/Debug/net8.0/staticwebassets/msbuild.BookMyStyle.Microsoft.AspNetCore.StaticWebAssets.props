@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>m5in4vl5ig</Fingerprint>
-      <Integrity>qqtmug91E0c1MzfApBEduGWJYvbPEtAJk1YSW96UcpY=</Integrity>
+      <Fingerprint>wnpb5teexh</Fingerprint>
+      <Integrity>rG98gYdfnuYGGVzuDwGZNd0qa2O/voXVJvEoNZ55geg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\obavijest.css'))</OriginalItemSpec>

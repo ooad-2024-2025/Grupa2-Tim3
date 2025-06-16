@@ -129,7 +129,7 @@ namespace BookMyStyle.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Pogresan email ili lozinka.");
                     return Page();
                 }
             }
