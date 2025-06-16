@@ -1,12 +1,103 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\qrcodemodel\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\qrcodemodel\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\wwwroot\\css\\obavijest.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:wwwroot\\css\\obavijest.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\qrcodemodel\\confirmed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\qrcodemodel\\confirmed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\qrcodemodel\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\qrcodemodel\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\qrcodemodel\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\qrcodemodel\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "obavijest.css",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\obavijest.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\obavijest.css",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\wwwroot\\css\\obavijest.css",
+              "RelativeToolTip": "wwwroot\\css\\obavijest.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-16T22:34:41.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Confirmed.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Confirmed.cshtml",
+              "RelativeDocumentMoniker": "Views\\QRCodeModel\\Confirmed.cshtml",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Confirmed.cshtml",
+              "RelativeToolTip": "Views\\QRCodeModel\\Confirmed.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T22:10:42.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\QRCodeModel\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Details.cshtml",
+              "RelativeToolTip": "Views\\QRCodeModel\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T22:10:41.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\QRCodeModel\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Delete.cshtml",
+              "RelativeToolTip": "Views\\QRCodeModel\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T22:10:40.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\QRCodeModel\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\QRCodeModel\\Create.cshtml",
+              "RelativeToolTip": "Views\\QRCodeModel\\Create.cshtml",
+              "ViewState": "AgIAACYAAAAAAAAAAAA0wDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T22:10:04.806Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

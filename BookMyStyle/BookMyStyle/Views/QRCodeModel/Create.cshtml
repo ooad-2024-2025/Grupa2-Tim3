@@ -10,47 +10,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Generiši QR kod</title>
 
-    <link rel="stylesheet" href="@Url.Content("~/css/salon.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/css/obavijest.css")" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1AnmKk6OVA5s3U4U4M1rZmZ9eSIt1w3/kic3dgWYf1BY8jhXzzG"
-          crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #1e1e1e;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-custom {
+            background: rgba(22, 32, 47, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            animation: fadeInScale 0.6s ease-out;
+            color: white;
+        }
+
+            .card-custom .card-header {
+                background: rgba(0, 123, 255, 0.95);
+                color: #ffffff;
+                font-size: 1.6rem;
+                font-weight: 700;
+                border-radius: 16px 16px 0 0;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .card-custom .form-label,
+            .card-custom h5,
+            .card-custom .btn,
+            .card-custom .text-center,
+            .card-custom span,
+            .card-custom label {
+                color: #ffffff ;
+            }
+
+            .card-custom .form-control {
+                border-radius: 10px;
+                padding: 10px 14px;
+                font-size: 1rem;
+            }
+
+        .btn-primary {
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .btn-warning {
+            border-radius: 10px;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .btn-outline-secondary {
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .text-danger.small {
+            font-size: 0.85rem;
+        }
+
+        .qr-image {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .text-white a {
+            text-decoration: none;
+        }
+
+        .alert-danger {
+            
+            
+            color:  #721c24 !important;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+        }
+
+       
+
+        
+        }
+    </style>
 </head>
 <body class="bg-dark text-white d-flex justify-content-center align-items-center" style="min-height:100vh;">
 
-    <div class="card shadow-lg rounded-3" style="max-width: 400px; width:100%;">
-        <div class="card-header bg-primary text-white text-center">
-            <h2 class="mb-0">Generiši QR kod</h2>
+    <div class="card-custom">
+
+        <div class="card-header">
+            Generiši QR kod
         </div>
 
         <div class="card-body">
             @if (ViewBag.Error != null)
             {
-                <div class="alert alert-danger text-center my-2" role="alert">
+                <div class="alert alert-danger text-center my-2 fw-semibold" role="alert">
                     @ViewBag.Error
                 </div>
             }
-            <form asp-action="Create" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <!-- PROMIJENJENA LABELA -->
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger text-center fw-semibold py-2"></div>
+
                 <div class="mb-3">
                     <label for="QRCodeText" class="form-label fw-semibold">Vaš e-mail za rezervaciju</label>
                     <input asp-for="QRCodeText"
                            id="QRCodeText"
                            class="form-control"
-                           placeholder="Unesite Vaš e-mail!"
-                           style="border-radius: 0.375rem;" />
+                           placeholder="Unesite Vaš e-mail!" />
                     <span asp-validation-for="QRCodeText" class="text-danger small"></span>
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Generiši QR kod</button>
+                    <button type="submit" class="btn btn-primary">Generiši QR kod</button>
                 </div>
             </form>
 
-            @* Ako je QR kod generisan, prikažemo ga *@
             @if (ViewBag.QRCodeImage != null)
             {
                 <hr class="my-4" />
@@ -58,54 +141,27 @@
                     <h5 class="mb-3">Vaš QR kod:</h5>
                     <img src="@ViewBag.QRCodeImage"
                          alt="QR Code"
-                         class="img-fluid"
-                         style="max-width: 250px;" />
+                         class="img-fluid qr-image" />
                 </div>
 
-                @* Umjesto tekstualnog “Callback URL” prikazujemo dugme koje vodi na akciju Confirm *@
                 @if (ViewBag.CallbackUrl != null)
                 {
-                    <div class="mt-3 text-center">
+                    <div class="text-center">
                         <a href="@ViewBag.CallbackUrl"
-                           class="btn btn-warning"
-                           role="button">
+                           class="btn btn-warning text-dark">
                             Pošalji e-mail potvrde
                         </a>
                     </div>
                 }
             }
+
+            <div class="text-center">
+                <a asp-controller="Obavijest" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+                    Nazad na listu obavijesti
+                </a>
+            </div>
         </div>
-
-        <a asp-controller="Obavijest" asp-action="Index" class="btn btn-outline-secondary btn-sm">
-            Nazad na listu obavijesti
-        </a>
-
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-F5NtF5n2jVuwlfuq8yOwTjTC8n173nu0gT0P/5mO+mD/khwsh+Sw3VEfORTzZ500"
-            crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-            integrity="sha512-894YeXLh6PvP0I6+LPMxUire9yZS6dHW+R9EACHU7YjvImDZlGq9zNEMhlZpoYe+Vi0m4K+nV/GXnUpwv9ur3A=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
-            integrity="sha512-/dY80HPOmBLnjq+FvHN6a+qbBY85v269mwJ+jsb4AX+kIEEEO/z6bC2tSgG9jbsuHGYx3YzP0pGLaJOoZHx0jQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
-            integrity="sha512-WhxGJGS0udR4dpvZnWltE+pbF37XBvBA3yqt2AO3VSHJMu52GFWR3e8SV/glsQolKj9jF9b8h2LT3QBZYdJ2YA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-    </script>
-
-    @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
 </body>
 </html>

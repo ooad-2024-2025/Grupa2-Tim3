@@ -1358,3 +1358,4 @@ C:\Users\HP\OneDrive\Radna površina\ETF\2.GODINA\4. SEMESTAR\OOAD\Grupa2-Tim3\B
 C:\Users\HP\OneDrive\Radna površina\ETF\2.GODINA\4. SEMESTAR\OOAD\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMyStyle.pdb
 C:\Users\HP\OneDrive\Radna površina\ETF\2.GODINA\4. SEMESTAR\OOAD\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMyStyle.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Radna površina\ETF\2.GODINA\4. SEMESTAR\OOAD\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\ref\BookMyStyle.dll
+C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
