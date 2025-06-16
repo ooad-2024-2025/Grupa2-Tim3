@@ -31,7 +31,10 @@
                 {
                     <a asp-action="Edit" asp-route-id="@Model.salonID" class="btn-details">Uredi</a>
                     <a asp-controller="Usluga" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj uslugu</a>
-                    <a asp-controller="Termin" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj termin</a>
+                    @if (User.IsInRole("Frizer"))
+                    {
+                        <a asp-controller="Termin" asp-action="Create" asp-route-salonID="@Model.salonID" class="btn-details">Dodaj termin</a>
+                    }
                 }
                 <a asp-action="Index" class="btn-details">Nazad na listu</a>
             </div>

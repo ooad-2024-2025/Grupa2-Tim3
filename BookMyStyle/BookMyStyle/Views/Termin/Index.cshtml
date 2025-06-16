@@ -39,7 +39,7 @@
             <a asp-controller="Obavijest" asp-action="Index" class="btn-details">Moji termini</a>
             <button class="btn-details" onclick="document.getElementById('sort-section').classList.toggle('d-none')">Filteri</button>
         </div>
-        @if (User.IsInRole("Administrator") || User.IsInRole("Frizer"))
+        @if (User.IsInRole("Frizer"))
         {
             <a asp-action="Create" class="btn-details">Kreiraj termin</a>
         }
