@@ -1,88 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\salon\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\salon\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\views\\termin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:views\\termin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:controllers\\termincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|c:\\users\\ajnurator\\desktop\\grupa2-tim3\\bookmystyle\\bookmystyle\\models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE44F79C-B37D-4D34-A4AB-94C2DBFFC7FA}|BookMyStyle.csproj|solutionrelative:models\\obavijest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\Mirza\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Salon\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Salon\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Salon\\Details.cshtml",
-              "RelativeToolTip": "Views\\Salon\\Details.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T02:11:31.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Termin\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Termin\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Views\\Termin\\Index.cshtml",
-              "RelativeToolTip": "Views\\Termin\\Index.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T02:09:41.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TerminController.cs",
-              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\TerminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TerminController.cs",
-              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Controllers\\TerminController.cs",
-              "RelativeToolTip": "Controllers\\TerminController.cs",
-              "ViewState": "AgIAADYBAAAAAAAAAAAYwEoBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T02:07:36.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Obavijest.cs",
-              "DocumentMoniker": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Obavijest.cs",
-              "RelativeDocumentMoniker": "Models\\Obavijest.cs",
-              "ToolTip": "C:\\Users\\Ajnurator\\Desktop\\Grupa2-Tim3\\BookMyStyle\\BookMyStyle\\Models\\Obavijest.cs",
-              "RelativeToolTip": "Models\\Obavijest.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA/wBoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T22:02:52.265Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
