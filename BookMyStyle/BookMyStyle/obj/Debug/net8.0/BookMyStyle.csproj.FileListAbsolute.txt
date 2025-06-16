@@ -671,7 +671,6 @@ C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMySt.ABBE6837.Up2Date
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\BookMyStyle.dll
 C:\Users\Ajnurator\Desktop\Grupa2-Tim3\BookMyStyle\BookMyStyle\obj\Debug\net8.0\refint\BookMyStyle.dll
