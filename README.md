@@ -41,6 +41,10 @@
 
 
 ## 🔒 Pristupni podaci
+**Pristupni podaci za stranicu**
+Link: http://novabaza-001-site1.qtempurl.com/
+Username: 11245945
+Password: 60-dayfreetrial
 
 **Pristupni podaci za bazu:**
 Data Source=Data Source=SQL1002.site4now.net;Initial Catalog=db_ab9979_bookmystyle;User Id=db_ab9979_bookmystyle_admin;
