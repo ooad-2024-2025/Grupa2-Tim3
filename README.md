@@ -43,7 +43,9 @@
 ## 🔒 Pristupni podaci
 **Pristupni podaci za stranicu**
 Link: http://novabaza-001-site1.qtempurl.com/
+
 Username: 11245945
+
 Password: 60-dayfreetrial
 
 **Pristupni podaci za bazu:**
