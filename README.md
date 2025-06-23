@@ -54,7 +54,7 @@ Password=admin123_
 
 Username: BookMyStyle
 
-Password: admin123_:
+Password: admin123_
 
 Pristupni podaci za uloge:
 
